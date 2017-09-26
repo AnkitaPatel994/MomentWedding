@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/weddingapp_bg"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.ankita.momentwedding.HomeActivity"
+    tools:showIn="@layout/activity_home">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpAdminEvent"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/tabAdminEventLayout"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabAdminEventLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicatorColor="@color/colorSelect"
+        app:tabMode="fixed"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat"
+        app:tabSelectedTextColor="@color/colorWrite"
+        app:tabBackground="@drawable/background_tab"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>
