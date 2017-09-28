@@ -7,4 +7,6 @@
     <color name="colorWrite">#ffffff</color>
     <color name="colorGray">#b9b2b0</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorText">#94837f</color>
+    <color name="colorTransparent">#80000000</color>
 </resources>

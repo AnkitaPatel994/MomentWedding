@@ -7,6 +7,8 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static String mainUrl = "http://10.0.3.2/momentwedding//webservices/";
+    public static int user_code = 1;
     LinearLayout lnSnackbar;
 
     @Override

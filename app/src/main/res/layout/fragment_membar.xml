@@ -4,12 +4,62 @@
     android:layout_height="match_parent"
     tools:context="com.ankita.momentwedding.MembarFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:text="Membar" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_groom"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/red"
+                android:layout_gravity="center_horizontal"
+                app:civ_border_color="@color/colorSelect"
+                app:civ_border_width="5dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/background_transparent">
+
+                <TextView
+                    android:id="@+id/txtEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWrite"
+                    android:textSize="16dp"
+                    android:text="Pravinbhai Patel"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:textSize="10dp"
+                    android:text="Father"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWrite"
+                    android:textSize="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Android is a mobile operating system developed by Google, based on the Linux kernel and designed primarily for touchscreen mobile devices such as smartphones and tablets."/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>
