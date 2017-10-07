@@ -4,4 +4,17 @@
     <string name="title_activity_home">Moment Wedding</string>
     <string name="title_app">Moment Wedding</string>
 
+    <!--Login Page-->
+    <string name="txt_invite_code">Enter Your Invite Code</string>
+    <string name="btn_next">Next</string>
+
+    <!--Mobile Page-->
+    <string name="txt_mobile_no">Enter Your Mobile No</string>
+    <string name="btn_verification">Verification</string>
+
+    <!--OTP Code Page-->
+    <string name="txt_otp_code">Enter OTP Code</string>
+    <string name="txt_resend_sms"><u>Resend OTP Code</u></string>
+    <string name="btn_submit">Submit</string>
+
 </resources>

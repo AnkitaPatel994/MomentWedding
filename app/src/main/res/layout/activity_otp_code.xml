@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/LinearLayout_style"
+    tools:context="com.ankita.momentwedding.OTPCodeActivity">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/icon"
+        android:paddingRight="50dp"
+        android:layout_marginBottom="100dp"/>
+
+    <TextView
+        style="@style/TextView_style"
+        android:text="@string/txt_otp_code" />
+
+    <EditText
+        android:id="@+id/txtOtpCode"
+        style="@style/EditText_style"
+        android:inputType="phone"
+        android:digits="0123456789."
+        android:maxLength="10"/>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        style="@style/Button_style"
+        android:text="@string/btn_submit"/>
+
+    <TextView
+        android:id="@+id/txtResendSms"
+        style="@style/TextView_style"
+        android:layout_marginTop="10dp"
+        android:text="@string/txt_resend_sms" />
+
+</LinearLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/LinearLayout_style"
+    tools:context="com.ankita.momentwedding.LoginActivity">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/icon"
+        android:paddingRight="50dp"
+        android:layout_marginBottom="100dp"/>
+
+    <TextView
+        style="@style/TextView_style"
+        android:text="@string/txt_invite_code"/>
+
+    <EditText
+        android:id="@+id/txtInviteCode"
+        style="@style/EditText_style"
+        android:inputType="textPersonName"/>
+
+    <Button
+        android:id="@+id/btnNext"
+        style="@style/Button_style"
+        android:text="@string/btn_next"/>
+
+</LinearLayout>

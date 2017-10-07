@@ -76,7 +76,7 @@ public class ScheduleFragment extends Fragment {
             JSONObject joSchedule=new JSONObject();
             try {
 
-                joSchedule.put("user_code",MainActivity.user_code);
+                joSchedule.put("user_code",HomeActivity.user_code);
                 Postdata postdata=new Postdata();
                 String pdSchedule=postdata.post(MainActivity.mainUrl+"scheduleFatch",joSchedule.toString());
                 JSONObject j=new JSONObject(pdSchedule);

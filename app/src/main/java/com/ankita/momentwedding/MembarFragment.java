@@ -76,7 +76,7 @@ public class MembarFragment extends Fragment {
             JSONObject joMember=new JSONObject();
             try {
 
-                joMember.put("user_code",MainActivity.user_code);
+                joMember.put("user_code",HomeActivity.user_code);
                 Postdata postdata=new Postdata();
                 String pdMember=postdata.post(MainActivity.mainUrl+"memberFatch",joMember.toString());
                 JSONObject j=new JSONObject(pdMember);

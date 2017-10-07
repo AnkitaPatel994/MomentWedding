@@ -75,7 +75,7 @@ public class ProfileFragment extends Fragment {
             JSONObject joProfile=new JSONObject();
             try {
 
-                joProfile.put("user_code",MainActivity.user_code);
+                joProfile.put("user_code",HomeActivity.user_code);
                 Postdata postdata=new Postdata();
                 String pdPro=postdata.post(MainActivity.mainUrl+"profileFatch",joProfile.toString());
                 JSONObject j=new JSONObject(pdPro);

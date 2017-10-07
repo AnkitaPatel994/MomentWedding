@@ -79,7 +79,7 @@ public class InviteFragment extends Fragment {
             JSONObject joInvite=new JSONObject();
             try {
 
-                joInvite.put("user_code",MainActivity.user_code);
+                joInvite.put("user_code",HomeActivity.user_code);
                 Postdata postdata=new Postdata();
                 String pdInt=postdata.post(MainActivity.mainUrl+"invitationFatch",joInvite.toString());
                 JSONObject j=new JSONObject(pdInt);

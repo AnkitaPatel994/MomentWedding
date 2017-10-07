@@ -7,7 +7,14 @@
     android:layout_height="match_parent"
     android:id="@+id/lnSnackbar"
     android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/background_color"
     tools:context="com.ankita.momentwedding.MainActivity">
 
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/icon"
+        android:paddingRight="50dp"/>
 
 </LinearLayout>
