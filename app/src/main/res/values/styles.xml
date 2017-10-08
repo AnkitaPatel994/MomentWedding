@@ -60,4 +60,12 @@
         <item name="android:background">@color/background_color</item>
     </style>
 
+    <style name="clock_TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorWrite</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
 </resources>

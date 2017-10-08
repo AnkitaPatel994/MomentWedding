@@ -58,23 +58,33 @@ public class HomeActivity extends AppCompatActivity {
                 final Dialog dialog = new Dialog(HomeActivity.this,android.R.style.Theme_Light_NoTitleBar);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog.setContentView(R.layout.clock_dialog);
-                dialog.setCanceledOnTouchOutside(true);
+                dialog.setCancelable(true);
                 final TextView txtDate =(TextView)dialog.findViewById(R.id.txtDate);
+                final TextView txtDays =(TextView)dialog.findViewById(R.id.txtDays);
+                final TextView txtHours =(TextView)dialog.findViewById(R.id.txtHours);
+                final TextView txtMins =(TextView)dialog.findViewById(R.id.txtMins);
+                final TextView txtSecs =(TextView)dialog.findViewById(R.id.txtSecs);
                 dialog.show();
 
+                txtDate.setText("8 October 2017");
                 int d = 1000*60*30;
                 CountDownTimer timer = new CountDownTimer(d, 1000) {
                     @Override
                     public void onTick(long l) {
 
-                        txtDate.setText(""+String.format("%d:%d:%d:%d",
-                                TimeUnit.MILLISECONDS.toDays(l),
-                                TimeUnit.MILLISECONDS.toHours(l),
-                                TimeUnit.MILLISECONDS.toMinutes(l),
+                        txtDays.setText(""+String.format("%d",
+                                TimeUnit.MILLISECONDS.toDays(l)));
+
+                        txtHours.setText(""+String.format("%d",
+                                TimeUnit.MILLISECONDS.toHours(l)));
+
+                        txtMins.setText(""+String.format("%d",
+                                TimeUnit.MILLISECONDS.toMinutes(l)));
+
+                        txtSecs.setText(""+String.format("%d",
                                 TimeUnit.MILLISECONDS.toSeconds(l) -
                                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.
                                                 toMinutes(l))));
-
                     }
 
                     @Override

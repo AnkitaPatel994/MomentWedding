@@ -9,24 +9,116 @@
     android:background="#80000000"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:layout_margin="40dp"
-            android:background="@android:drawable/editbox_background"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:background="@drawable/top_background"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                style="@style/clock_TextView"
+                android:text="Keep Calm @ Countdown"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bottom_background"
+            android:orientation="vertical"
+            android:paddingBottom="5dp"
+            android:paddingTop="15dp">
 
             <TextView
                 android:id="@+id/txtDate"
+                style="@style/clock_TextView"/>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Test Event"
-                android:textSize="20dp"
-                android:textAllCaps="true"
-                android:gravity="center"
-                android:textColor="@color/colorPrimary"/>
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtDays"
+                        style="@style/clock_TextView"
+                        android:layout_marginBottom="5dp"/>
+
+                    <TextView
+                        style="@style/clock_TextView"
+                        android:text="Days" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtHours"
+                        style="@style/clock_TextView"
+                        android:layout_marginBottom="5dp"/>
+
+                    <TextView
+                        style="@style/clock_TextView"
+                        android:text="Hours" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtMins"
+                        style="@style/clock_TextView"
+                        android:layout_marginBottom="5dp"/>
+
+                    <TextView
+                        style="@style/clock_TextView"
+                        android:text="Mins" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtSecs"
+                        style="@style/clock_TextView"
+                        android:layout_marginBottom="5dp"/>
+
+                    <TextView
+                        style="@style/clock_TextView"
+                        android:text="Secs" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
