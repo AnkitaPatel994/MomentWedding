@@ -71,7 +71,7 @@ public class InviteFragment extends Fragment {
 
     private class GetInviteCard extends AsyncTask<String,Void,String> {
 
-        String status,message,groom_pic,bride_pic,groom_name,bride_name,inv_name,inv_details;
+        String status,message,groom_pic,bride_pic,groom_name,bride_name,guest_name,inv_details;
 
         @Override
         protected String doInBackground(String... strings) {
@@ -79,28 +79,25 @@ public class InviteFragment extends Fragment {
             JSONObject joInvite=new JSONObject();
             try {
 
-                joInvite.put("user_code",HomeActivity.user_code);
+                joInvite.put("wedding_id",HomeActivity.wedding_id);
+                joInvite.put("guest_id",HomeActivity.guest_id);
                 Postdata postdata=new Postdata();
-                String pdInt=postdata.post(MainActivity.mainUrl+"invitationFatch",joInvite.toString());
+                String pdInt=postdata.post(MainActivity.mainUrl+"getInvitationCard",joInvite.toString());
                 JSONObject j=new JSONObject(pdInt);
                 status=j.getString("status");
                 if(status.equals("1"))
                 {
                     Log.d("Like","Successfully");
                     message=j.getString("message");
-                    JSONArray JsArry=j.getJSONArray("Invitation");
+                    JSONObject jo=j.getJSONObject("data");
 
-                    for (int i=0;i<JsArry.length();i++)
-                    {
-                        JSONObject jo=JsArry.getJSONObject(i);
+                    groom_pic =jo.getString("groom_pic");
+                    bride_pic =jo.getString("bride_pic");
+                    groom_name =jo.getString("groom_name");
+                    bride_name =jo.getString("bride_name");
+                    guest_name =jo.getString("guest_name");
+                    inv_details =jo.getString("wedding_invitation");
 
-                        groom_pic =jo.getString("groom_pic");
-                        bride_pic =jo.getString("bride_pic");
-                        groom_name =jo.getString("groom_name");
-                        bride_name =jo.getString("bride_name");
-                        inv_name =jo.getString("inv_name");
-                        inv_details =jo.getString("inv_details");
-                    }
                 }
 
             } catch (JSONException e) {
@@ -136,7 +133,7 @@ public class InviteFragment extends Fragment {
 
                 txtInviteGroomName.setText(groom_name);
                 txtInviteBrideName.setText(bride_name);
-                txtInviteName.setText(inv_name);
+                txtInviteName.setText(guest_name);
                 txtInviteDetails.setText(inv_details);
 
                 imageLoader.displayImage(groom_pic,ivProfileGroom, options);

@@ -19,22 +19,34 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class HomeActivity extends AppCompatActivity {
 
     ViewPager vpAdminEvent;
     TabLayout tabAdminEventLayout;
-    LinearLayout llClock;
-    ImageView ivClock;
+    ImageView ivClock,ivLogOut;
+    SessionManager session;
 
-    public static int user_code = 1;
+    public static String wedding_id;
+    public static String profile_id;
+    public static String guest_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        session = new SessionManager(getApplicationContext());
+
+        session.checkLogin();
+        HashMap<String, String> user = session.getUserDetails();
+
+        guest_id = user.get(SessionManager.guest_id);
+        wedding_id = user.get(SessionManager.wedding_id);
+        profile_id = user.get(SessionManager.profile_id);
 
         vpAdminEvent = (ViewPager)findViewById(R.id.vpAdminEvent);
         setupViewPager(vpAdminEvent);
@@ -48,8 +60,17 @@ public class HomeActivity extends AppCompatActivity {
         tabAdminEventLayout.getTabAt(3).setIcon(R.drawable.invite);
         tabAdminEventLayout.getTabAt(4).setIcon(R.drawable.members);
 
+        /*---------------- LogOut ------------------*/
+        ivLogOut =(ImageView)findViewById(R.id.ivLogOut);
+        ivLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                session.logoutUser();
+            }
+        });
+
+
         /*---------------- Clock ------------------*/
-        llClock = (LinearLayout)findViewById(R.id.llClock);
         ivClock =(ImageView)findViewById(R.id.ivClock);
 
         ivClock.setOnClickListener(new View.OnClickListener() {

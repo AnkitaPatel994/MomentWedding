@@ -1,5 +1,6 @@
 package com.ankita.momentwedding;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -19,11 +20,14 @@ public class OTPCodeActivity extends AppCompatActivity {
     EditText txtOtpCode;
     Button btnSubmit;
     TextView txtResendSms;
+    SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp_code);
+
+        session = new SessionManager(getApplicationContext());
 
         txtOtpCode = (EditText) findViewById(R.id.txtOtpCode);
         txtResendSms = (TextView)findViewById(R.id.txtResendSms);
@@ -32,9 +36,6 @@ public class OTPCodeActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent i = new Intent(getApplicationContext(),HomeActivity.class);
-                startActivity(i);
-                finish();*/
 
                 String OtpCode = txtOtpCode.getText().toString();
                 String weddingId = getIntent().getExtras().getString("wedding_id");
@@ -48,12 +49,22 @@ public class OTPCodeActivity extends AppCompatActivity {
 
     private class GetOtpCode extends AsyncTask<String,Void,String> {
 
-        String otpCode,weddingId,mobileNo,status,message;
+        String otpCode,weddingId,mobileNo,status,message,id,profileId;
+        ProgressDialog dialog;
 
         public GetOtpCode(String otpCode, String weddingId, String mobileNo) {
             this.otpCode = otpCode;
             this.weddingId = weddingId;
             this.mobileNo = mobileNo;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog = new ProgressDialog(OTPCodeActivity.this);
+            dialog.setMessage("Loading...");
+            dialog.setCancelable(true);
+            dialog.show();
         }
 
         @Override
@@ -74,6 +85,9 @@ public class OTPCodeActivity extends AppCompatActivity {
                 {
                     Log.d("Like","Successfully");
                     message=j.getString("message");
+                    JSONObject jo=j.getJSONObject("guest_row");
+                    id =jo.getString("id");
+                    profileId =jo.getString("profile_id");
 
                 }
                 else
@@ -90,12 +104,14 @@ public class OTPCodeActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            dialog.dismiss();
             if(status.equals("1"))
             {
+                session.createLoginSession(id,weddingId,profileId,mobileNo);
+
                 Intent i = new Intent(getApplicationContext(),HomeActivity.class);
                 startActivity(i);
                 finish();
-                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
             }
             else
             {

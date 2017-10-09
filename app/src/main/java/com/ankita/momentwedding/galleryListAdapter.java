@@ -1,6 +1,7 @@
 package com.ankita.momentwedding;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -19,29 +21,26 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 /**
- * Created by shyam group on 9/28/2017.
+ * Created by shyam group on 10/9/2017.
  */
 
-class scheduleListAdapter extends RecyclerView.Adapter<scheduleListAdapter.ViewHolder> {
+class galleryListAdapter extends RecyclerView.Adapter<galleryListAdapter.ViewHolder> {
 
     View v;
     Context context;
-    ArrayList<HashMap<String, String>> scheduleListArray;
+    ArrayList<HashMap<String, String>> galleryListArray;
 
-    public scheduleListAdapter(Context context, ArrayList<HashMap<String, String>> scheduleListArray) {
+    public galleryListAdapter(Context context, ArrayList<HashMap<String, String>> galleryListArray) {
 
-        this.context = context ;
-        this.scheduleListArray = scheduleListArray ;
-
+        this.context = context;
+        this.galleryListArray = galleryListArray;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.schedule, parent, false);
+                .inflate(R.layout.gallery, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
@@ -50,21 +49,14 @@ class scheduleListAdapter extends RecyclerView.Adapter<scheduleListAdapter.ViewH
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        String name = scheduleListArray.get(position).get("name");
-        String time = scheduleListArray.get(position).get("time");
-        String location = scheduleListArray.get(position).get("location");
-        String eventDay = scheduleListArray.get(position).get("eventDay");
-        String eventMonth = scheduleListArray.get(position).get("eventMonth");
-        String event_note = scheduleListArray.get(position).get("event_note");
+        final String eventID = galleryListArray.get(position).get("eventID");
+        final String name = galleryListArray.get(position).get("name");
+        String photoCount = galleryListArray.get(position).get("photoCount");
 
+        holder.txtEvent.setText(name);
+        holder.txtImgCount.setText(photoCount + " Photos");
 
-        holder.txtScheduleEvent.setText(name);
-        holder.txtScheduleTimeAddress.setText(time+" | "+location);
-        holder.txtScheduleDetails.setText(event_note);
-        holder.txtScheduleDate.setText(eventDay);
-        holder.txtScheduleMonth.setText(eventMonth);
-
-        String image = scheduleListArray.get(position).get("image");
+        String background = galleryListArray.get(position).get("background");
 
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)
@@ -84,29 +76,39 @@ class scheduleListAdapter extends RecyclerView.Adapter<scheduleListAdapter.ViewH
                 .showImageForEmptyUri(fallback)
                 .showImageOnFail(fallback)
                 .showImageOnLoading(fallback).build();
-        imageLoader.displayImage(image,holder.ivSchedulePic, options);
+        imageLoader.displayImage(background,holder.ivBgImg, options);
+
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(context,GridGalleryActivity.class);
+                i.putExtra("eventName",name);
+                i.putExtra("eventID",eventID);
+                context.startActivity(i);
+
+            }
+        });
+
     }
 
     @Override
     public int getItemCount() {
-        return scheduleListArray.size();
+        return galleryListArray.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView ivSchedulePic;
-        TextView txtScheduleDate,txtScheduleMonth,txtScheduleEvent,txtScheduleTimeAddress,txtScheduleDetails;
+        ImageView ivBgImg;
+        TextView txtEvent,txtImgCount;
 
         public ViewHolder(View v) {
             super(v);
 
-            ivSchedulePic =(ImageView) v.findViewById(R.id.ivSchedulePic);
-            txtScheduleDate =(TextView) v.findViewById(R.id.txtScheduleDate);
-            txtScheduleMonth =(TextView) v.findViewById(R.id.txtScheduleMonth);
-            txtScheduleEvent =(TextView) v.findViewById(R.id.txtScheduleEvent);
-            txtScheduleTimeAddress =(TextView) v.findViewById(R.id.txtScheduleTimeAddress);
-            txtScheduleDetails =(TextView) v.findViewById(R.id.txtScheduleDetails);
+            ivBgImg = (ImageView)v.findViewById(R.id.ivBgImg);
+            txtEvent = (TextView)v.findViewById(R.id.txtEvent);
+            txtImgCount = (TextView)v.findViewById(R.id.txtImgCount);
+
         }
     }
-
 }

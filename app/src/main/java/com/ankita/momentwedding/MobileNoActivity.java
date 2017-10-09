@@ -1,5 +1,6 @@
 package com.ankita.momentwedding;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -42,12 +43,22 @@ public class MobileNoActivity extends AppCompatActivity {
     private class GetMobaileNo extends AsyncTask<String,Void,String> {
 
         String weddingId,mobileNo,status,message;
+        ProgressDialog dialog;
 
         public GetMobaileNo(String weddingId, String mobileNo) {
 
             this.weddingId = weddingId;
             this.mobileNo = mobileNo;
 
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog = new ProgressDialog(MobileNoActivity.this);
+            dialog.setMessage("Loading...");
+            dialog.setCancelable(true);
+            dialog.show();
         }
 
         @Override
@@ -81,6 +92,7 @@ public class MobileNoActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            dialog.dismiss();
             if(status.equals("1"))
             {
                 Intent i = new Intent(getApplicationContext(),OTPCodeActivity.class);

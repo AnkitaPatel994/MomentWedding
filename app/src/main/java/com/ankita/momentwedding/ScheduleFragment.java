@@ -76,39 +76,37 @@ public class ScheduleFragment extends Fragment {
             JSONObject joSchedule=new JSONObject();
             try {
 
-                joSchedule.put("user_code",HomeActivity.user_code);
+                joSchedule.put("wedding_id",HomeActivity.wedding_id);
                 Postdata postdata=new Postdata();
-                String pdSchedule=postdata.post(MainActivity.mainUrl+"scheduleFatch",joSchedule.toString());
+                String pdSchedule=postdata.post(MainActivity.mainUrl+"getEventList",joSchedule.toString());
                 JSONObject j=new JSONObject(pdSchedule);
                 status=j.getString("status");
                 if(status.equals("1"))
                 {
                     Log.d("Like","Successfully");
                     message=j.getString("message");
-                    JSONArray JsArry=j.getJSONArray("Schedule");
+                    JSONArray JsArry=j.getJSONArray("event_list");
                     for (int i=0;i<JsArry.length();i++)
                     {
                         JSONObject jo=JsArry.getJSONObject(i);
 
                         HashMap<String,String > hashMap = new HashMap<>();
 
-                        String sch_event =jo.getString("sch_event");
-                        String sch_pic =jo.getString("sch_pic");
-                        String address =jo.getString("address");
-                        String sch_details =jo.getString("sch_details");
+                        String name =jo.getString("name");
+                        String time =jo.getString("time");
+                        String location =jo.getString("location");
+                        String eventDay =jo.getString("eventDay");
+                        String eventMonth =jo.getString("eventMonth");
+                        String event_note =jo.getString("event_note");
+                        String image =jo.getString("image");
 
-                        JSONObject jd=jo.getJSONObject("date");
-                        String day =jd.getString("day");
-                        String month =jd.getString("month");
-                        String time =jd.getString("time");
-
-                        hashMap.put("sch_event",sch_event);
-                        hashMap.put("sch_pic",sch_pic);
-                        hashMap.put("address",address);
-                        hashMap.put("sch_details",sch_details);
-                        hashMap.put("day",day);
-                        hashMap.put("month",month);
+                        hashMap.put("name",name);
                         hashMap.put("time",time);
+                        hashMap.put("location",location);
+                        hashMap.put("eventDay",eventDay);
+                        hashMap.put("eventMonth",eventMonth);
+                        hashMap.put("event_note",event_note);
+                        hashMap.put("image",image);
 
                         scheduleListArray.add(hashMap);
                     }

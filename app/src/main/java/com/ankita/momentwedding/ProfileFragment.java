@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,7 +68,7 @@ public class ProfileFragment extends Fragment {
 
     private class GetProfileList extends AsyncTask<String,Void,String> {
 
-        String status,message,pic,name,occupation,profile_details;
+        String status,message,profile_pic,name,occupation,profile_details;
 
         @Override
         protected String doInBackground(String... strings) {
@@ -75,26 +76,23 @@ public class ProfileFragment extends Fragment {
             JSONObject joProfile=new JSONObject();
             try {
 
-                joProfile.put("user_code",HomeActivity.user_code);
+                joProfile.put("profile_id",HomeActivity.profile_id);
                 Postdata postdata=new Postdata();
-                String pdPro=postdata.post(MainActivity.mainUrl+"profileFatch",joProfile.toString());
+                String pdPro=postdata.post(MainActivity.mainUrl+"getProfile",joProfile.toString());
                 JSONObject j=new JSONObject(pdPro);
                 status=j.getString("status");
                 if(status.equals("1"))
                 {
                     Log.d("Like","Successfully");
                     message=j.getString("message");
-                    JSONArray JsArry=j.getJSONArray("User");
 
-                    for (int i=0;i<JsArry.length();i++)
-                    {
-                        JSONObject jo=JsArry.getJSONObject(i);
+                    JSONObject jo=j.getJSONObject("profile_row");
 
-                        pic =jo.getString("profile_pic");
-                        name =jo.getString("name");
-                        occupation =jo.getString("occupation");
-                        profile_details =jo.getString("profile_details");
-                    }
+                    profile_pic =jo.getString("profile_pic");
+                    name =jo.getString("name");
+                    occupation =jo.getString("occupation");
+                    profile_details =jo.getString("profile_details");
+
                 }
 
             } catch (JSONException e) {
@@ -108,6 +106,7 @@ public class ProfileFragment extends Fragment {
             super.onPostExecute(s);
             if(status.equals("1"))
             {
+
                 txtProfileName.setText(name);
                 txtProfileOccupation.setText(occupation);
                 txtProfileDetails.setText(profile_details);
@@ -130,7 +129,7 @@ public class ProfileFragment extends Fragment {
                         .showImageForEmptyUri(fallback)
                         .showImageOnFail(fallback)
                         .showImageOnLoading(fallback).build();
-                imageLoader.displayImage(pic,ivProfilePic, options);
+                imageLoader.displayImage(profile_pic,ivProfilePic, options);
             }
             else
             {

@@ -1,5 +1,6 @@
 package com.ankita.momentwedding;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText txtInviteCode;
     Button btnNext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +31,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                /*Intent i = new Intent(getApplicationContext(),MobileNoActivity.class);
-                startActivity(i);
-                finish();*/
-
                 String InviteCode = txtInviteCode.getText().toString();
 
                 GetInviteCode getInviteCode = new GetInviteCode(InviteCode);
@@ -44,9 +42,19 @@ public class LoginActivity extends AppCompatActivity {
     private class GetInviteCode extends AsyncTask<String,Void,String> {
 
         String inviteCode,status,message,wedding_id;
+        ProgressDialog dialog;
 
         public GetInviteCode(String inviteCode) {
             this.inviteCode = inviteCode;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog = new ProgressDialog(LoginActivity.this);
+            dialog.setMessage("Loading...");
+            dialog.setCancelable(true);
+            dialog.show();
         }
 
         @Override
@@ -81,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-
+            dialog.dismiss();
             if(status.equals("1"))
             {
                 Intent i = new Intent(getApplicationContext(),MobileNoActivity.class);

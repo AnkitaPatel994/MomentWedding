@@ -76,16 +76,16 @@ public class MembarFragment extends Fragment {
             JSONObject joMember=new JSONObject();
             try {
 
-                joMember.put("user_code",HomeActivity.user_code);
+                joMember.put("profile_id",HomeActivity.profile_id);
                 Postdata postdata=new Postdata();
-                String pdMember=postdata.post(MainActivity.mainUrl+"memberFatch",joMember.toString());
+                String pdMember=postdata.post(MainActivity.mainUrl+"familyMembers",joMember.toString());
                 JSONObject j=new JSONObject(pdMember);
                 status=j.getString("status");
                 if(status.equals("1"))
                 {
                     Log.d("Like","Successfully");
                     message=j.getString("message");
-                    JSONArray JsArry=j.getJSONArray("FamilyMember");
+                    JSONArray JsArry=j.getJSONArray("member_list");
 
                     for (int i=0;i<JsArry.length();i++)
                     {

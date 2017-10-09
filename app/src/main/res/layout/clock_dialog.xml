@@ -24,7 +24,7 @@
 
             <TextView
                 style="@style/clock_TextView"
-                android:text="Keep Calm @ Countdown"
+                android:text="@string/txt_wedding_countdown"
                 android:textColor="@color/colorPrimary" />
 
         </LinearLayout>
@@ -60,7 +60,7 @@
 
                     <TextView
                         style="@style/clock_TextView"
-                        android:text="Days" />
+                        android:text="@string/txt_Days" />
 
                 </LinearLayout>
 
@@ -77,7 +77,7 @@
 
                     <TextView
                         style="@style/clock_TextView"
-                        android:text="Hours" />
+                        android:text="@string/txt_Hours" />
 
                 </LinearLayout>
 
@@ -94,7 +94,7 @@
 
                     <TextView
                         style="@style/clock_TextView"
-                        android:text="Mins" />
+                        android:text="@string/txt_Mins" />
 
                 </LinearLayout>
 
@@ -111,7 +111,7 @@
 
                     <TextView
                         style="@style/clock_TextView"
-                        android:text="Secs" />
+                        android:text="@string/txt_Secs" />
 
                 </LinearLayout>
 

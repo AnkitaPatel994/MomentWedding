@@ -17,4 +17,11 @@
     <string name="txt_resend_sms"><u>Resend OTP Code</u></string>
     <string name="btn_submit">Submit</string>
 
+    <!--Home Page-->
+    <string name="txt_wedding_countdown">Wedding Countdown</string>
+    <string name="txt_Days">Days</string>
+    <string name="txt_Hours">Hours</string>
+    <string name="txt_Mins">Mins</string>
+    <string name="txt_Secs">Secs</string>
+
 </resources>

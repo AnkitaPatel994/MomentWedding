@@ -8,6 +8,7 @@
     android:id="@+id/lnSnackbar"
     android:orientation="vertical"
     android:gravity="center"
+    android:fitsSystemWindows="true"
     android:background="@color/background_color"
     tools:context="com.ankita.momentwedding.MainActivity">
 
