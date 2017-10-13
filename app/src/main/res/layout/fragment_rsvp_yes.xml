@@ -6,6 +6,7 @@
     tools:context="com.ankita.momentwedding.RsvpYesFragment">
 
     <ScrollView
+        android:id="@+id/Scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <LinearLayout
@@ -191,26 +192,29 @@
                     android:layout_height="wrap_content"
                     android:background="@android:drawable/editbox_background"
                     android:padding="8dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/txtArrivalDate"
                         style="@style/Rsvp_TextView"
-                        android:textSize="15dp"
-                        android:layout_weight="1"/>
+                        android:textSize="13dp" />
+
+                    <!--<view
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        />-->
 
                     <TextView
                         android:id="@+id/txtArrivalTime"
                         style="@style/Rsvp_TextView"
-                        android:textSize="15dp"
-                        android:layout_weight="3"/>
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:orientation="horizontal">
 
                     <RelativeLayout
@@ -243,6 +247,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:layout_marginLeft="2dp"
                         android:layout_weight="1">
 
                         <ImageView
@@ -268,6 +273,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:layout_marginLeft="2dp"
                         android:layout_weight="1">
 
                         <ImageView
@@ -288,12 +294,47 @@
 
                     </RelativeLayout>
 
+                    <RelativeLayout
+                        android:id="@+id/rlArrivalAirplane"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            app:srcCompat="@drawable/round" />
+
+                        <ImageView
+                            android:id="@+id/ivArrivalAirplane"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="2dp"
+                            app:srcCompat="@drawable/ic_airplane_black_24dp" />
+
+                    </RelativeLayout>
+
                 </LinearLayout>
+
+                <EditText
+                    android:id="@+id/txtPNRNoA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/hint_PNR"
+                    android:textSize="15dp"
+                    android:inputType="textMultiLine"/>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="2dp"
+                android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:layout_marginTop="10dp"
@@ -321,26 +362,24 @@
                     android:layout_height="wrap_content"
                     android:background="@android:drawable/editbox_background"
                     android:padding="8dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/txtDepartureDate"
                         style="@style/Rsvp_TextView"
-                        android:textSize="15dp"
-                        android:layout_weight="1"/>
+                        android:textSize="13dp" />
 
                     <TextView
                         android:id="@+id/txtDepartureTime"
                         style="@style/Rsvp_TextView"
-                        android:textSize="15dp"
-                        android:layout_weight="3"/>
+                        android:textSize="18dp"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:orientation="horizontal">
 
                     <RelativeLayout
@@ -373,6 +412,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:layout_marginLeft="2dp"
                         android:layout_weight="1">
 
                         <ImageView
@@ -398,6 +438,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:layout_marginLeft="2dp"
                         android:layout_weight="1">
 
                         <ImageView
@@ -417,8 +458,42 @@
                             app:srcCompat="@drawable/ic_rail_black_24dp" />
 
                     </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/rlDepartureAirplane"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            app:srcCompat="@drawable/round" />
+
+                        <ImageView
+                            android:id="@+id/ivDepartureAirplane"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="2dp"
+                            app:srcCompat="@drawable/ic_airplane_black_24dp" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
+
+                <EditText
+                    android:id="@+id/txtPNRNoD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/hint_PNR"
+                    android:textSize="15dp"
+                    android:inputType="textMultiLine"/>
 
             </LinearLayout>
 

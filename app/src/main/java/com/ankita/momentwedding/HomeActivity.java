@@ -1,9 +1,11 @@
 package com.ankita.momentwedding;
 
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -64,7 +66,6 @@ public class HomeActivity extends AppCompatActivity
 
         final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(0).setChecked(true);
 
         setTitle("Profile");
 
@@ -92,27 +93,26 @@ public class HomeActivity extends AppCompatActivity
                 if(position == 0)
                 {
                     setTitle("Profile");
-                    navigationView.getMenu().getItem(0).setChecked(true);
                 }
                 else if(position == 1)
                 {
                     setTitle("Functions");
-                    navigationView.getMenu().getItem(1).setChecked(true);
+                    navigationView.getMenu().getItem(2).setChecked(true);
                 }
                 else if(position == 2)
                 {
                     setTitle("Gallery");
-                    navigationView.getMenu().getItem(2).setChecked(true);
+                    navigationView.getMenu().getItem(3).setChecked(true);
                 }
                 else if(position == 3)
                 {
                     setTitle("Invitation");
-                    navigationView.getMenu().getItem(3).setChecked(true);
+                    navigationView.getMenu().getItem(4).setChecked(true);
                 }
                 else if(position == 4)
                 {
                     setTitle("Family Member");
-                    navigationView.getMenu().getItem(4).setChecked(true);
+                    navigationView.getMenu().getItem(5).setChecked(true);
                 }
 
             }
@@ -141,16 +141,6 @@ public class HomeActivity extends AppCompatActivity
                 startActivity(i);
             }
         });
-
-        /*---------------- LogOut ------------------*/
-        ivLogOut =(ImageView)findViewById(R.id.ivLogOut);
-        ivLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                session.logoutUser();
-            }
-        });
-
 
         /*---------------- Clock ------------------*/
         ivClock =(ImageView)findViewById(R.id.ivClock);
@@ -193,9 +183,19 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_profile)
+        if (id == R.id.nav_Groom_profile)
         {
-            vpAdminEvent.setCurrentItem(0);
+            Intent intent = new Intent(getApplicationContext(),OneProfileActivity.class);
+            intent.putExtra("profile_id",ProfileFragment.groomId);
+            intent.putExtra("GB","Groom");
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_Bride_profile)
+        {
+            Intent intent = new Intent(getApplicationContext(),OneProfileActivity.class);
+            intent.putExtra("profile_id",ProfileFragment.brideId);
+            intent.putExtra("GB","Bride");
+            startActivity(intent);
         }
         else if (id == R.id.nav_functions)
         {
@@ -213,10 +213,49 @@ public class HomeActivity extends AppCompatActivity
         {
             vpAdminEvent.setCurrentItem(4);
         }
+        else if (id == R.id.nav_share)
+        {
+            Intent i=new Intent(Intent.ACTION_SEND);
+            i.setType("text/plain");
+            String body="https://play.google.com/store/apps/details?id=com.ankita.momentwedding";
+            i.putExtra(Intent.EXTRA_SUBJECT,body);
+            i.putExtra(Intent.EXTRA_TEXT,body);
+            startActivity(Intent.createChooser(i,"Share using"));
+        }
+        else if (id == R.id.nav_rate)
+        {
+            Intent i=new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.ankita.momentwedding"));
+            if(!MyStartActivity(i))
+            {
+                i.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.ankita.momentwedding"));
+                if(!MyStartActivity(i))
+                {
+                    Log.d("Like","Could not open browser");
+                }
+            }
+        }
+        else if (id == R.id.nav_logout)
+        {
+            session.logoutUser();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private boolean MyStartActivity(Intent i) {
+
+        try
+        {
+            startActivity(i);
+            return true;
+        }
+        catch (ActivityNotFoundException e)
+        {
+            return false;
+        }
     }
 
     private void setupViewPager(ViewPager viewPager) {

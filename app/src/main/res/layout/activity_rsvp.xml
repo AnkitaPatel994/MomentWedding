@@ -1,25 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ankita.momentwedding.RSVPActivity">
+    tools:context="com.ankita.momentwedding.RSVPActivity"
+    android:background="@color/colorSelect">
 
-    <android.support.design.widget.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:background="@drawable/img">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/colorTransparentWrite">
 
-    </android.support.design.widget.AppBarLayout>
+            <TextView
+                style="@style/Rsvp_TextView"
+                android:padding="20dp"
+                android:text="@string/txt_coming"/>
 
-    <include layout="@layout/content_rsvp" />
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabRsvp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabIndicatorColor="@color/colorWrite"
+                app:tabMode="fixed"
+                app:tabTextColor="@color/colorGray"
+                app:tabTextAppearance="@style/TextAppearance.AppCompat"
+                app:tabSelectedTextColor="@color/colorWrite"
+                app:tabBackground="@drawable/background_tab"/>
 
-</android.support.design.widget.CoordinatorLayout>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vpRsvp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

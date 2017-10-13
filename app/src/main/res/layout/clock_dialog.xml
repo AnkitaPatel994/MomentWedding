@@ -39,6 +39,7 @@
 
             <TextView
                 android:id="@+id/txtDate"
+                android:textSize="20dp"
                 style="@style/clock_TextView"/>
 
             <LinearLayout
@@ -56,7 +57,7 @@
                     <TextView
                         android:id="@+id/txtDays"
                         style="@style/clock_TextView"
-                        android:layout_marginBottom="5dp"/>
+                        android:textSize="30dp" />
 
                     <TextView
                         style="@style/clock_TextView"
@@ -73,7 +74,7 @@
                     <TextView
                         android:id="@+id/txtHours"
                         style="@style/clock_TextView"
-                        android:layout_marginBottom="5dp"/>
+                        android:textSize="30dp"/>
 
                     <TextView
                         style="@style/clock_TextView"
@@ -90,7 +91,7 @@
                     <TextView
                         android:id="@+id/txtMins"
                         style="@style/clock_TextView"
-                        android:layout_marginBottom="5dp"/>
+                        android:textSize="30dp"/>
 
                     <TextView
                         style="@style/clock_TextView"
@@ -107,7 +108,7 @@
                     <TextView
                         android:id="@+id/txtSecs"
                         style="@style/clock_TextView"
-                        android:layout_marginBottom="5dp"/>
+                        android:textSize="30dp"/>
 
                     <TextView
                         style="@style/clock_TextView"

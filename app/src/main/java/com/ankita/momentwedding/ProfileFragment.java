@@ -1,6 +1,7 @@
 package com.ankita.momentwedding;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,8 +30,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileFragment extends Fragment {
 
     View view;
-    TextView txtProfileName,txtProfileOccupation,txtProfileDetails;
-    CircleImageView ivProfilePic;
+    CircleImageView ivGroomProfilePic,ivBrideProfilePic;
+    TextView txtProGroomName,txtProBrideName;
+    static String groomId,brideId;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -54,49 +56,77 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        txtProfileName = (TextView)view.findViewById(R.id.txtProfileName);
-        txtProfileOccupation = (TextView)view.findViewById(R.id.txtProfileOccupation);
-        txtProfileDetails = (TextView)view.findViewById(R.id.txtProfileDetails);
+        ivGroomProfilePic = (CircleImageView)view.findViewById(R.id.ivGroomProfilePic);
+        ivBrideProfilePic = (CircleImageView)view.findViewById(R.id.ivBrideProfilePic);
 
-        ivProfilePic = (CircleImageView)view.findViewById(R.id.ivProfilePic);
+        txtProGroomName = (TextView) view.findViewById(R.id.txtProGroomName);
+        txtProBrideName = (TextView) view.findViewById(R.id.txtProBrideName);
 
-        GetProfileList getProfileList = new GetProfileList();
-        getProfileList.execute();
+        ivGroomProfilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),OneProfileActivity.class);
+                i.putExtra("profile_id",groomId);
+                i.putExtra("GB","Groom");
+                startActivity(i);
+            }
+        });
+
+        ivBrideProfilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(getActivity(),OneProfileActivity.class);
+                i.putExtra("profile_id",brideId);
+                i.putExtra("GB","Bride");
+                startActivity(i);
+            }
+        });
+
+        GetGroomBrideProfileList getGroomBrideProfileList = new GetGroomBrideProfileList();
+        getGroomBrideProfileList.execute();
 
         return view;
     }
 
-    private class GetProfileList extends AsyncTask<String,Void,String> {
+    private class GetGroomBrideProfileList extends AsyncTask<String,Void,String> {
 
-        String status,message,profile_pic,name,occupation,profile_details;
+        String status,message,groomProfilePic,groomName,brideProfilePic,brideName;
 
         @Override
         protected String doInBackground(String... strings) {
 
-            JSONObject joProfile=new JSONObject();
+            JSONObject jojl=new JSONObject();
             try {
 
-                joProfile.put("profile_id",HomeActivity.profile_id);
+                jojl.put("wedding_id",HomeActivity.wedding_id);
                 Postdata postdata=new Postdata();
-                String pdPro=postdata.post(MainActivity.mainUrl+"getProfile",joProfile.toString());
-                JSONObject j=new JSONObject(pdPro);
+                String pdJl=postdata.post(MainActivity.mainUrl+"getWeddingProfile",jojl.toString());
+                JSONObject j=new JSONObject(pdJl);
                 status=j.getString("status");
                 if(status.equals("1"))
                 {
                     Log.d("Like","Successfully");
                     message=j.getString("message");
+                    JSONObject jo=j.getJSONObject("profiles");
 
-                    JSONObject jo=j.getJSONObject("profile_row");
+                    JSONObject jog=jo.getJSONObject("groomData");
 
-                    profile_pic =jo.getString("profile_pic");
-                    name =jo.getString("name");
-                    occupation =jo.getString("occupation");
-                    profile_details =jo.getString("profile_details");
+                    groomId =jog.getString("id");
+                    groomProfilePic =jog.getString("profile_pic");
+                    groomName =jog.getString("name");
+
+                    JSONObject job=jo.getJSONObject("brideData");
+
+                    brideId =job.getString("id");
+                    brideProfilePic =job.getString("profile_pic");
+                    brideName =job.getString("name");
                 }
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
             return null;
         }
 
@@ -105,10 +135,6 @@ public class ProfileFragment extends Fragment {
             super.onPostExecute(s);
             if(status.equals("1"))
             {
-                txtProfileName.setText(name);
-                txtProfileOccupation.setText(occupation);
-                txtProfileDetails.setText(profile_details);
-
                 DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                         .cacheOnDisc(true).cacheInMemory(true)
                         .imageScaleType(ImageScaleType.EXACTLY)
@@ -127,7 +153,12 @@ public class ProfileFragment extends Fragment {
                         .showImageForEmptyUri(fallback)
                         .showImageOnFail(fallback)
                         .showImageOnLoading(fallback).build();
-                imageLoader.displayImage(profile_pic,ivProfilePic, options);
+
+
+                imageLoader.displayImage(groomProfilePic,ivGroomProfilePic, options);
+                imageLoader.displayImage(brideProfilePic,ivBrideProfilePic, options);
+                txtProGroomName.setText(groomName);
+                txtProBrideName.setText(brideName);
             }
             else
             {
@@ -135,4 +166,6 @@ public class ProfileFragment extends Fragment {
             }
         }
     }
+
+
 }

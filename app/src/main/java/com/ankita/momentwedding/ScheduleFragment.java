@@ -99,6 +99,7 @@ public class ScheduleFragment extends Fragment {
                         String eventMonth =jo.getString("eventMonth");
                         String event_note =jo.getString("event_note");
                         String image =jo.getString("image");
+                        String date =jo.getString("date");
 
                         hashMap.put("name",name);
                         hashMap.put("time",time);
@@ -107,6 +108,7 @@ public class ScheduleFragment extends Fragment {
                         hashMap.put("eventMonth",eventMonth);
                         hashMap.put("event_note",event_note);
                         hashMap.put("image",image);
+                        hashMap.put("date",date);
 
                         scheduleListArray.add(hashMap);
                     }

@@ -1,14 +1,17 @@
 package com.ankita.momentwedding;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -29,20 +33,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class RsvpYesFragment extends Fragment implements View.OnClickListener {
 
     View v;
-    String text,departArrival,departDeparture,AttemptProgram = "Yes";
+    String text = "1",departArrival = "car",departDeparture = "car",AttemptProgram = "Yes";
     LinearLayout ll1,ll2,ll3,ll4,ll5,ll6,ll7,ll8,ll9;
     TextView txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9;
-    RelativeLayout rlArrivalCar,rlArrivalBus,rlArrivalRail,rlDepartureCar,rlDepartureBus,rlDepartureRail;
-    ImageView ivArrivalCar,ivArrivalBus,ivArrivalRail,ivDepartureCar,ivDepartureBus,ivDepartureRail;
+    RelativeLayout rlArrivalCar,rlArrivalBus,rlArrivalRail,rlArrivalAirplane,rlDepartureCar,rlDepartureBus,rlDepartureRail,rlDepartureAirplane;
+    ImageView ivArrivalCar,ivArrivalBus,ivArrivalRail,ivArrivalAirplane,ivDepartureCar,ivDepartureBus,ivDepartureRail,ivDepartureAirplane;
+    ScrollView scrollView;
 
     RadioGroup rgYesNo;
     RadioButton rbYes,rbNo;
@@ -83,9 +90,15 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         v =inflater.inflate(R.layout.fragment_rsvp_yes, container, false);
 
+        scrollView = (ScrollView)v.findViewById(R.id.Scroll);
+        scrollView.fullScroll(ScrollView.FOCUS_UP);
+
         ll1 = (LinearLayout)v.findViewById(R.id.ll1);
         txt1 = (TextView)v.findViewById(R.id.txt1);
         ll1.setOnClickListener(this);
+
+        ll1.setBackgroundResource(R.drawable.box_border_selected);
+        txt1.setTextColor(getResources().getColor(R.color.colorWrite));
 
         ll2 = (LinearLayout)v.findViewById(R.id.ll2);
         txt2 = (TextView)v.findViewById(R.id.txt2);
@@ -123,10 +136,10 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         final TextView txtArrivalDate = (TextView)v.findViewById(R.id.txtArrivalDate);
         final TextView txtArrivalTime = (TextView)v.findViewById(R.id.txtArrivalTime);
 
-        SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy");
         txtArrivalDate.setText(sdfDate.format(new Date()));
 
-        SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
+        final SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm a");
         txtArrivalTime.setText(sdfTime.format(new Date()));
 
         llArrival.setOnClickListener(new View.OnClickListener() {
@@ -137,18 +150,49 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        txtArrivalTime.setText(selectedHour + ":" + selectedMinute);
+
+                        String AM_PM ;
+                        String sHour = "00";
+                        String sMinute = "00";
+
+                        if(selectedHour < 12) {
+                            AM_PM = "AM";
+                        } else {
+                            AM_PM = "PM";
+                        }
+
+                        if(selectedHour < 10)
+                        {
+                            sHour = "0"+selectedHour;
+                        }
+                        else
+                        {
+                            sHour = String.valueOf(selectedHour);
+                        }
+
+                        if(selectedMinute < 10)
+                        {
+                            sMinute = "0"+selectedMinute;
+                        }
+                        else
+                        {
+                            sMinute = String.valueOf(selectedMinute);
+                        }
+
+                        txtArrivalTime.setText(sHour + ":" + sMinute + " "+ AM_PM);
+
                     }
-                }, hour, minute, true);//Yes 24 hour time
+                }, hour, minute, false);//Yes 24 hour time
                 mTimePicker.show();
 
                 DatePickerDialog mDatePicker;
                 mDatePicker = new DatePickerDialog(getActivity(),new DatePickerDialog.OnDateSetListener() {
                     public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
-                        // TODO Auto-generated method stub
-                    /*      Your code   to get date and time    */
+
+
                         selectedmonth = selectedmonth + 1;
-                        txtArrivalDate.setText("" + selectedday + "/" + selectedmonth + "/" + selectedyear);
+
+                        txtArrivalDate.setText(selectedday + "-" + selectedmonth + "-" + selectedyear);
                     }
                 }, mYear, mMonth, mDay);
                 mDatePicker.getDatePicker().setMinDate(c.getTimeInMillis());
@@ -159,6 +203,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         rlArrivalCar = (RelativeLayout)v.findViewById(R.id.rlArrivalCar);
         ivArrivalCar = (ImageView)v.findViewById(R.id.ivArrivalCar);
         rlArrivalCar.setOnClickListener(this);
+        ivArrivalCar.setImageResource(R.drawable.ic_car_write_24dp);
 
         rlArrivalBus = (RelativeLayout)v.findViewById(R.id.rlArrivalBus);
         ivArrivalBus = (ImageView)v.findViewById(R.id.ivArrivalBus);
@@ -167,6 +212,10 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         rlArrivalRail = (RelativeLayout)v.findViewById(R.id.rlArrivalRail);
         ivArrivalRail = (ImageView)v.findViewById(R.id.ivArrivalRail);
         rlArrivalRail.setOnClickListener(this);
+
+        rlArrivalAirplane = (RelativeLayout)v.findViewById(R.id.rlArrivalAirplane);
+        ivArrivalAirplane = (ImageView)v.findViewById(R.id.ivArrivalAirplane);
+        rlArrivalAirplane.setOnClickListener(this);
 
         LinearLayout llDeparture = (LinearLayout)v.findViewById(R.id.llDeparture);
         final TextView txtDepartureDate = (TextView)v.findViewById(R.id.txtDepartureDate);
@@ -186,7 +235,36 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        txtDepartureTime.setText(selectedHour + ":" + selectedMinute);
+
+                        String AM_PM ;
+                        String sHour = "00";
+                        String sMinute = "00";
+
+                        if(selectedHour < 12) {
+                            AM_PM = "AM";
+                        } else {
+                            AM_PM = "PM";
+                        }
+
+                        if(selectedHour < 10)
+                        {
+                            sHour = "0"+selectedHour;
+                        }
+                        else
+                        {
+                            sHour = String.valueOf(selectedHour);
+                        }
+
+                        if(selectedMinute < 10)
+                        {
+                            sMinute = "0"+selectedMinute;
+                        }
+                        else
+                        {
+                            sMinute = String.valueOf(selectedMinute);
+                        }
+
+                        txtDepartureTime.setText(sHour + ":" + sMinute + " "+ AM_PM);
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.show();
@@ -194,10 +272,9 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 DatePickerDialog mDatePicker;
                 mDatePicker = new DatePickerDialog(getActivity(),new DatePickerDialog.OnDateSetListener() {
                     public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
-                        // TODO Auto-generated method stub
-                    /*      Your code   to get date and time    */
+
                         selectedmonth = selectedmonth + 1;
-                        txtDepartureDate.setText("" + selectedday + "/" + selectedmonth + "/" + selectedyear);
+                        txtDepartureDate.setText("" + selectedday + "-" + selectedmonth + "-" + selectedyear);
                     }
                 }, mYear, mMonth, mDay);
                 mDatePicker.getDatePicker().setMinDate(c.getTimeInMillis());
@@ -208,6 +285,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         rlDepartureCar = (RelativeLayout)v.findViewById(R.id.rlDepartureCar);
         ivDepartureCar = (ImageView)v.findViewById(R.id.ivDepartureCar);
         rlDepartureCar.setOnClickListener(this);
+        ivDepartureCar.setImageResource(R.drawable.ic_car_write_24dp);
 
         rlDepartureBus = (RelativeLayout)v.findViewById(R.id.rlDepartureBus);
         ivDepartureBus = (ImageView)v.findViewById(R.id.ivDepartureBus);
@@ -217,7 +295,13 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         ivDepartureRail = (ImageView)v.findViewById(R.id.ivDepartureRail);
         rlDepartureRail.setOnClickListener(this);
 
+        rlDepartureAirplane = (RelativeLayout)v.findViewById(R.id.rlDepartureAirplane);
+        ivDepartureAirplane = (ImageView)v.findViewById(R.id.ivDepartureAirplane);
+        rlDepartureAirplane.setOnClickListener(this);
+
         final EditText txtSR = (EditText)v.findViewById(R.id.txtSR);
+        final EditText txtPNRNoA = (EditText)v.findViewById(R.id.txtPNRNoA);
+        final EditText txtPNRNoD = (EditText)v.findViewById(R.id.txtPNRNoD);
 
         rgYesNo = (RadioGroup)v.findViewById(R.id.rgYesNo);
         rbYes = (RadioButton) v.findViewById(R.id.rbYes);
@@ -273,6 +357,9 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 String DepartDeparture = departDeparture;
 
                 String SpecialRemark= txtSR.getText().toString();
+                String PNRNoArrival= txtPNRNoA.getText().toString();
+                String PNRNoDeparture= txtPNRNoD.getText().toString();
+
                 String event_access = "";
 
                 if(AttemptProgram == "Yes")
@@ -284,7 +371,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                     event_access = ProgramActivity.listString;
                 }
 
-                GetRSVPList getRSVPList = new GetRSVPList(guestList,ArrivalDateTime,DepartureDateTime,DepartArrival,DepartDeparture,SpecialRemark,event_access);
+                GetRSVPList getRSVPList = new GetRSVPList(guestList,ArrivalDateTime,DepartureDateTime,DepartArrival,DepartDeparture,SpecialRemark,event_access,PNRNoArrival,PNRNoDeparture);
                 getRSVPList.execute();
             }
         });
@@ -298,8 +385,8 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                ll1.setBackgroundResource(R.drawable.box_border);
-                txt1.setTextColor(getResources().getColor(R.color.colorPrimary));
+                /*ll1.setBackgroundResource(R.drawable.box_border);
+                txt1.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
@@ -325,6 +412,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 txt9.setTextColor(getResources().getColor(R.color.colorPrimary));
 
                 clicked=false;
+
                 text = "1";
             }
         }
@@ -332,8 +420,8 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                ll2.setBackgroundResource(R.drawable.box_border);
-                txt2.setTextColor(getResources().getColor(R.color.colorPrimary));
+                /*ll2.setBackgroundResource(R.drawable.box_border);
+                txt2.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
@@ -366,8 +454,8 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                ll3.setBackgroundResource(R.drawable.box_border);
-                txt3.setTextColor(getResources().getColor(R.color.colorPrimary));
+                /*ll3.setBackgroundResource(R.drawable.box_border);
+                txt3.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
@@ -400,8 +488,8 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                ll4.setBackgroundResource(R.drawable.box_border);
-                txt4.setTextColor(getResources().getColor(R.color.colorPrimary));
+                /*ll4.setBackgroundResource(R.drawable.box_border);
+                txt4.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
@@ -434,8 +522,8 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                ll5.setBackgroundResource(R.drawable.box_border);
-                txt5.setTextColor(getResources().getColor(R.color.colorPrimary));
+                /*ll5.setBackgroundResource(R.drawable.box_border);
+                txt5.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
@@ -468,8 +556,8 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                ll6.setBackgroundResource(R.drawable.box_border);
-                txt6.setTextColor(getResources().getColor(R.color.colorPrimary));
+                /*ll6.setBackgroundResource(R.drawable.box_border);
+                txt6.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
@@ -502,8 +590,8 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                ll7.setBackgroundResource(R.drawable.box_border);
-                txt7.setTextColor(getResources().getColor(R.color.colorPrimary));
+                /*ll7.setBackgroundResource(R.drawable.box_border);
+                txt7.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
@@ -536,8 +624,8 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                ll8.setBackgroundResource(R.drawable.box_border);
-                txt8.setTextColor(getResources().getColor(R.color.colorPrimary));
+                /*ll8.setBackgroundResource(R.drawable.box_border);
+                txt8.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
@@ -570,8 +658,8 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                ll9.setBackgroundResource(R.drawable.box_border);
-                txt9.setTextColor(getResources().getColor(R.color.colorPrimary));
+                /*ll9.setBackgroundResource(R.drawable.box_border);
+                txt9.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
@@ -605,7 +693,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                ivArrivalCar.setImageResource(R.drawable.ic_car_black_24dp);
+                /*ivArrivalCar.setImageResource(R.drawable.ic_car_black_24dp);*/
                 clicked=true;
             }
             else
@@ -613,6 +701,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 ivArrivalCar.setImageResource(R.drawable.ic_car_write_24dp);
                 ivArrivalBus.setImageResource(R.drawable.ic_bus_black_24dp);
                 ivArrivalRail.setImageResource(R.drawable.ic_rail_black_24dp);
+                ivArrivalAirplane.setImageResource(R.drawable.ic_airplane_black_24dp);
                 clicked=false;
                 departArrival = "car";
             }
@@ -621,7 +710,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                ivArrivalBus.setImageResource(R.drawable.ic_bus_black_24dp);
+                /*ivArrivalBus.setImageResource(R.drawable.ic_bus_black_24dp);*/
                 clicked=true;
             }
             else
@@ -629,6 +718,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 ivArrivalBus.setImageResource(R.drawable.ic_bus_write_24dp);
                 ivArrivalCar.setImageResource(R.drawable.ic_car_black_24dp);
                 ivArrivalRail.setImageResource(R.drawable.ic_rail_black_24dp);
+                ivArrivalAirplane.setImageResource(R.drawable.ic_airplane_black_24dp);
                 clicked=false;
                 departArrival = "bus";
             }
@@ -637,7 +727,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                ivArrivalRail.setImageResource(R.drawable.ic_rail_black_24dp);
+                /*ivArrivalRail.setImageResource(R.drawable.ic_rail_black_24dp);*/
 
                 clicked=true;
             }
@@ -646,8 +736,25 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 ivArrivalRail.setImageResource(R.drawable.ic_rail_write_24dp);
                 ivArrivalCar.setImageResource(R.drawable.ic_car_black_24dp);
                 ivArrivalBus.setImageResource(R.drawable.ic_bus_black_24dp);
+                ivArrivalAirplane.setImageResource(R.drawable.ic_airplane_black_24dp);
                 clicked=false;
-                departArrival = "rail";
+                departArrival = "train";
+            }
+        }
+        else if(v == rlArrivalAirplane)
+        {
+            if(!clicked)
+            {
+                clicked=true;
+            }
+            else
+            {
+                ivArrivalRail.setImageResource(R.drawable.ic_rail_black_24dp);
+                ivArrivalCar.setImageResource(R.drawable.ic_car_black_24dp);
+                ivArrivalBus.setImageResource(R.drawable.ic_bus_black_24dp);
+                ivArrivalAirplane.setImageResource(R.drawable.ic_airplane_write_24dp);
+                clicked=false;
+                departArrival = "flight";
             }
         }
 
@@ -655,7 +762,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                ivDepartureCar.setImageResource(R.drawable.ic_car_black_24dp);
+                /*ivDepartureCar.setImageResource(R.drawable.ic_car_black_24dp);*/
                 clicked=true;
             }
             else
@@ -663,6 +770,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 ivDepartureCar.setImageResource(R.drawable.ic_car_write_24dp);
                 ivDepartureBus.setImageResource(R.drawable.ic_bus_black_24dp);
                 ivDepartureRail.setImageResource(R.drawable.ic_rail_black_24dp);
+                ivDepartureAirplane.setImageResource(R.drawable.ic_airplane_black_24dp);
                 clicked=false;
                 departDeparture = "car";
             }
@@ -671,7 +779,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                ivDepartureBus.setImageResource(R.drawable.ic_bus_black_24dp);
+                /*ivDepartureBus.setImageResource(R.drawable.ic_bus_black_24dp);*/
                 clicked=true;
             }
             else
@@ -679,6 +787,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 ivDepartureBus.setImageResource(R.drawable.ic_bus_write_24dp);
                 ivDepartureCar.setImageResource(R.drawable.ic_car_black_24dp);
                 ivDepartureRail.setImageResource(R.drawable.ic_rail_black_24dp);
+                ivDepartureAirplane.setImageResource(R.drawable.ic_airplane_black_24dp);
                 clicked=false;
                 departDeparture = "bus";
             }
@@ -687,7 +796,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                ivDepartureRail.setImageResource(R.drawable.ic_rail_black_24dp);
+                /*ivDepartureRail.setImageResource(R.drawable.ic_rail_black_24dp);*/
                 clicked=true;
             }
             else
@@ -695,16 +804,36 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 ivDepartureRail.setImageResource(R.drawable.ic_rail_write_24dp);
                 ivDepartureCar.setImageResource(R.drawable.ic_car_black_24dp);
                 ivDepartureBus.setImageResource(R.drawable.ic_bus_black_24dp);
+                ivDepartureAirplane.setImageResource(R.drawable.ic_airplane_black_24dp);
                 clicked=false;
-                departDeparture = "rail";
+                departDeparture = "train";
+            }
+        }
+        else if(v == rlDepartureAirplane)
+        {
+            if(!clicked)
+            {
+                /*ivDepartureRail.setImageResource(R.drawable.ic_rail_black_24dp);*/
+                clicked=true;
+            }
+            else
+            {
+                ivDepartureRail.setImageResource(R.drawable.ic_rail_black_24dp);
+                ivDepartureCar.setImageResource(R.drawable.ic_car_black_24dp);
+                ivDepartureBus.setImageResource(R.drawable.ic_bus_black_24dp);
+                ivDepartureAirplane.setImageResource(R.drawable.ic_airplane_write_24dp);
+                clicked=false;
+                departDeparture = "flight";
             }
         }
     }
 
     private class GetRSVPList extends AsyncTask<String,Void,String> {
 
-        String status,message,guestList,arrivalDateTime,departureDateTime,departArrival,departDeparture,specialRemark,event_access;
-        public GetRSVPList(String guestList, String arrivalDateTime, String departureDateTime, String departArrival, String departDeparture, String specialRemark, String event_access) {
+        String status,message,guestList,arrivalDateTime,departureDateTime,departArrival,departDeparture,specialRemark,event_access,PNRNoArrival,PNRNoDeparture;
+        ProgressDialog dialog;
+
+        public GetRSVPList(String guestList, String arrivalDateTime, String departureDateTime, String departArrival, String departDeparture, String specialRemark, String event_access, String PNRNoArrival,String PNRNoDeparture) {
             this.guestList = guestList;
             this.arrivalDateTime = arrivalDateTime;
             this.departureDateTime = departureDateTime;
@@ -712,6 +841,17 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
             this.departDeparture = departDeparture;
             this.specialRemark = specialRemark;
             this.event_access = event_access;
+            this.PNRNoArrival = PNRNoArrival;
+            this.PNRNoDeparture = PNRNoDeparture;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog = new ProgressDialog(getActivity());
+            dialog.setMessage("Loading...");
+            dialog.setCancelable(true);
+            dialog.show();
         }
 
         @Override
@@ -728,6 +868,8 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 joRsvp.put("departing_by",departDeparture);
                 joRsvp.put("remarks",specialRemark);
                 joRsvp.put("event_access",event_access);
+                joRsvp.put("arriving_pnr",PNRNoArrival);
+                joRsvp.put("departing_pnr",PNRNoDeparture);
 
                 Postdata postdata=new Postdata();
                 String pdRsvp=postdata.post(MainActivity.mainUrl+"guestRsvp",joRsvp.toString());
@@ -752,11 +894,22 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            dialog.dismiss();
+
             if(status.equals("1"))
             {
-                Intent i = new Intent(getActivity(),HomeActivity.class);
-                startActivity(i);
-                getActivity().finish();
+                AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+                alert.setMessage("Thank You!");
+                alert.setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent intent = new Intent(getActivity(),HomeActivity.class);
+                                startActivity(intent);
+                                getActivity().finish();
+                            }
+                        });
+                alert.show();
             }
             else
             {
