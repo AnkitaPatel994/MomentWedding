@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="170dp"
+    android:layout_height="120dp"
     android:padding="5dp"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp">
@@ -19,14 +19,14 @@
             android:layout_height="match_parent"
             app:srcCompat="@drawable/wedding_planner_bg" />
 
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="5dp"
             android:background="@drawable/background_transparent">
 
-        </LinearLayout>
+        </LinearLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorWrite"
-                android:textSize="16dp"
+                android:textSize="12dp"
                 android:text="Sangeet"
                 android:textAllCaps="true"/>
 

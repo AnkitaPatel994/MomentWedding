@@ -1,5 +1,6 @@
 package com.ankita.momentwedding;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ public class GridGalleryActivity extends AppCompatActivity {
     RecyclerView.LayoutManager rvGalleryGridManager;
     RecyclerView.Adapter rvGalleryGridAdapter;
     ArrayList<HashMap<String,String>> galleryGridListArray=new ArrayList<>();
+    static String eventName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class GridGalleryActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        String eventName = getIntent().getExtras().getString("eventName");
+        eventName = getIntent().getExtras().getString("eventName");
         setTitle(eventName);
 
         rvGalleryGrid = (RecyclerView)findViewById(R.id.rvGalleryGrid);
@@ -59,10 +61,20 @@ public class GridGalleryActivity extends AppCompatActivity {
     private class GetGalleryGridList extends AsyncTask<String,Void,String> {
 
         String eventID,status,message;
+        ProgressDialog dialog;
 
         public GetGalleryGridList(String eventID) {
 
             this.eventID = eventID;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog = new ProgressDialog(GridGalleryActivity.this);
+            dialog.setMessage("Loading...");
+            dialog.setCancelable(true);
+            dialog.show();
         }
 
         @Override
@@ -111,6 +123,7 @@ public class GridGalleryActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            dialog.dismiss();
             if(status.equals("1"))
             {
                 rvGalleryGridAdapter=new galleryGridListAdapter(GridGalleryActivity.this,galleryGridListArray);

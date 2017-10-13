@@ -13,17 +13,6 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.ActionBar" parent="AppTheme">
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="AppTheme.ActionBar.Transparent" parent="AppTheme">
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -70,6 +59,14 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/colorWrite</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="Rsvp_TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">20dp</item>
     </style>
 

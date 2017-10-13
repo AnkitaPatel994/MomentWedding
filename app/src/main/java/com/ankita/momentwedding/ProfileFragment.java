@@ -92,7 +92,6 @@ public class ProfileFragment extends Fragment {
                     name =jo.getString("name");
                     occupation =jo.getString("occupation");
                     profile_details =jo.getString("profile_details");
-
                 }
 
             } catch (JSONException e) {
@@ -106,7 +105,6 @@ public class ProfileFragment extends Fragment {
             super.onPostExecute(s);
             if(status.equals("1"))
             {
-
                 txtProfileName.setText(name);
                 txtProfileOccupation.setText(occupation);
                 txtProfileDetails.setText(profile_details);

@@ -17,6 +17,8 @@ public class ZoomGalleryImgActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setTitle(GridGalleryActivity.eventName);
+
         if(getSupportActionBar()!= null)
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

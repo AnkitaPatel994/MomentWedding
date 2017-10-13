@@ -21,18 +21,23 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.ActionBar" />
-        <activity
-            android:name=".LoginActivity"
-            android:theme="@style/AppTheme.ActionBar.Transparent" />
-        <activity
-            android:name=".MobileNoActivity"
-            android:theme="@style/AppTheme.ActionBar.Transparent" />
-        <activity
-            android:name=".OTPCodeActivity"
-            android:theme="@style/AppTheme.ActionBar.Transparent" />
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MobileNoActivity" />
+        <activity android:name=".OTPCodeActivity" />
         <activity android:name=".GridGalleryActivity" />
-        <activity android:name=".ZoomGalleryImgActivity"></activity>
+        <activity android:name=".ZoomGalleryImgActivity" />
+
+        <activity
+            android:name=".RSVPActivity"
+            android:label="@string/title_activity_rsvp"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".ProgramActivity" />
+        <activity android:name=".GuestNameActivity"/>
+        <activity android:name=".GuestInviteIdActivity"/>
+
     </application>
 
 </manifest>

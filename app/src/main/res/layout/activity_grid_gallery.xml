@@ -6,16 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/weddingapp_bg"
+    android:background="@color/colorSelect"
     tools:context="com.ankita.momentwedding.GridGalleryActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvGalleryGrid"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/img">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvGalleryGrid"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
 
 </LinearLayout>

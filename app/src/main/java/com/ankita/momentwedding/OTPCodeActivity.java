@@ -21,11 +21,13 @@ public class OTPCodeActivity extends AppCompatActivity {
     Button btnSubmit;
     TextView txtResendSms;
     SessionManager session;
+    String statusCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp_code);
+        getSupportActionBar().hide();
 
         session = new SessionManager(getApplicationContext());
 
@@ -33,16 +35,30 @@ public class OTPCodeActivity extends AppCompatActivity {
         txtResendSms = (TextView)findViewById(R.id.txtResendSms);
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
 
+        statusCheck = getIntent().getExtras().getString("status");
+
+        final String weddingId = getIntent().getExtras().getString("wedding_id");
+        final String mobileNo = getIntent().getExtras().getString("mobileNo");
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 String OtpCode = txtOtpCode.getText().toString();
-                String weddingId = getIntent().getExtras().getString("wedding_id");
-                String mobileNo = getIntent().getExtras().getString("mobileNo");
+
 
                 GetOtpCode getOtpCode = new GetOtpCode(OtpCode,weddingId,mobileNo);
                 getOtpCode.execute();
+            }
+        });
+
+        txtResendSms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),MobileNoActivity.class);
+                i.putExtra("wedding_id",weddingId);
+                startActivity(i);
+                finish();
             }
         });
     }
@@ -107,11 +123,23 @@ public class OTPCodeActivity extends AppCompatActivity {
             dialog.dismiss();
             if(status.equals("1"))
             {
-                session.createLoginSession(id,weddingId,profileId,mobileNo);
+                if(statusCheck.equals("2"))
+                {
+                    Intent i = new Intent(getApplicationContext(),GuestNameActivity.class);
+                    i.putExtra("guest_id",id);
+                    i.putExtra("weddingId",weddingId);
+                    i.putExtra("mobileNo",mobileNo);
+                    startActivity(i);
+                    finish();
+                }
+                else
+                {
+                    session.createLoginSession(id,weddingId,profileId,mobileNo);
+                    Intent i = new Intent(getApplicationContext(),HomeActivity.class);
+                    startActivity(i);
+                    finish();
+                }
 
-                Intent i = new Intent(getApplicationContext(),HomeActivity.class);
-                startActivity(i);
-                finish();
             }
             else
             {

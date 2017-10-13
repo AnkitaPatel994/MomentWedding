@@ -23,6 +23,7 @@ public class MobileNoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mobile_no);
+        getSupportActionBar().hide();
 
         txtMobaileNo = (EditText)findViewById(R.id.txtMobaileNo);
         btnVerification = (Button)findViewById(R.id.btnVerification);
@@ -78,6 +79,11 @@ public class MobileNoActivity extends AppCompatActivity {
                     Log.d("Like","Successfully");
                     message=j.getString("message");
                 }
+                else if(status.equals("2"))
+                {
+                    Log.d("Like","Successfully");
+                    message=j.getString("message");
+                }
                 else
                 {
                     message=j.getString("message");
@@ -96,8 +102,18 @@ public class MobileNoActivity extends AppCompatActivity {
             if(status.equals("1"))
             {
                 Intent i = new Intent(getApplicationContext(),OTPCodeActivity.class);
+                i.putExtra("status",status);
                 i.putExtra("wedding_id",weddingId);
                 i.putExtra("mobileNo",mobileNo);
+                startActivity(i);
+                finish();
+            }
+            else if(status.equals("2"))
+            {
+                Intent i = new Intent(getApplicationContext(),OTPCodeActivity.class);
+                i.putExtra("wedding_id",weddingId);
+                i.putExtra("mobileNo",mobileNo);
+                i.putExtra("status",status);
                 startActivity(i);
                 finish();
             }

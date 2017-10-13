@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">MomentWedding</string>
+    <string name="app_name">Moment Wedding</string>
     <string name="title_activity_home">Moment Wedding</string>
     <string name="title_app">Moment Wedding</string>
 
@@ -17,11 +17,35 @@
     <string name="txt_resend_sms"><u>Resend OTP Code</u></string>
     <string name="btn_submit">Submit</string>
 
+    <!--Guest Name Page-->
+    <string name="txt_Name">Enter Your Name</string>
+
     <!--Home Page-->
     <string name="txt_wedding_countdown">Wedding Countdown</string>
     <string name="txt_Days">Days</string>
     <string name="txt_Hours">Hours</string>
     <string name="txt_Mins">Mins</string>
     <string name="txt_Secs">Secs</string>
+    <string name="txt_RSVP">RSVP</string>
+
+    <!--RSVP Page-->
+    <string name="title_activity_rsvp">RSVP INFO</string>
+    <string name="txt_coming">Are you coming?</string>
+    <string name="txt_guest">How Many Guests?</string>
+    <string name="txt_Arrival">Arrival</string>
+    <string name="txt_Departure">Departure</string>
+    <string name="txt_sr">Special Remarks</string>
+    <string name="txt_reason">Reason</string>
+    <string name="txt_wishes">Wishes</string>
+    <string name="txt_attend">Attending All Programs?</string>
+    <string name="txt_yes">Yes</string>
+    <string name="txt_no">No</string>
+    <string name="btn_done">Done</string>
+    <string name="title_activity_home2">Home2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 
 </resources>

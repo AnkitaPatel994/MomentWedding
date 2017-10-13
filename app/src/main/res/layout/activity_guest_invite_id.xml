@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:orientation="horizontal"
+    tools:context="com.ankita.momentwedding.GuestInviteIdActivity">
+
+    <LinearLayout
+        android:id="@+id/llGroom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivGroomPic"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:src="@drawable/red"
+            android:layout_gravity="center_horizontal"
+            app:civ_border_color="@color/colorSelect"
+            app:civ_border_width="5dp" />
+
+        <TextView
+            android:id="@+id/txtGroomName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="Viral" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llBride"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivBridePic"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:src="@drawable/red"
+            android:layout_gravity="center_horizontal"
+            app:civ_border_color="@color/colorSelect"
+            app:civ_border_width="5dp" />
+
+        <TextView
+            android:id="@+id/txtBrideName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="Julita" />
+
+    </LinearLayout>
+
+</LinearLayout>

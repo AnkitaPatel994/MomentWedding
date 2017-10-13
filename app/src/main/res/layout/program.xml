@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ivProgtamImg"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/red"
+            android:layout_gravity="center_horizontal"
+            app:civ_border_color="@color/colorSelect"
+            app:civ_border_width="5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/txtProgramName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Engagement"/>
+
+            <TextView
+                android:id="@+id/txtProgramDateTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="08-09-2017 20:00"/>
+
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/cbSelectProgram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+
+    </LinearLayout>
+</LinearLayout>
