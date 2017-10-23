@@ -33,6 +33,7 @@
     <string name="txt_coming">Are you coming?</string>
     <string name="txt_guest">How Many Guests?</string>
     <string name="txt_Arrival">Arrival</string>
+    <string name="hint_PNR">PNR No</string>
     <string name="txt_Departure">Departure</string>
     <string name="txt_sr">Special Remarks</string>
     <string name="txt_reason">Reason</string>
@@ -46,6 +47,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <!--Venue Page-->
+
 
 </resources>

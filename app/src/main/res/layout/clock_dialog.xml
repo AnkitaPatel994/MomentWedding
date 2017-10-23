@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llDialogOther"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -10,6 +11,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/llDialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
@@ -39,6 +41,7 @@
 
             <TextView
                 android:id="@+id/txtDate"
+                android:textSize="20dp"
                 style="@style/clock_TextView"/>
 
             <LinearLayout
@@ -56,7 +59,7 @@
                     <TextView
                         android:id="@+id/txtDays"
                         style="@style/clock_TextView"
-                        android:layout_marginBottom="5dp"/>
+                        android:textSize="30dp" />
 
                     <TextView
                         style="@style/clock_TextView"
@@ -73,7 +76,7 @@
                     <TextView
                         android:id="@+id/txtHours"
                         style="@style/clock_TextView"
-                        android:layout_marginBottom="5dp"/>
+                        android:textSize="30dp"/>
 
                     <TextView
                         style="@style/clock_TextView"
@@ -90,7 +93,7 @@
                     <TextView
                         android:id="@+id/txtMins"
                         style="@style/clock_TextView"
-                        android:layout_marginBottom="5dp"/>
+                        android:textSize="30dp"/>
 
                     <TextView
                         style="@style/clock_TextView"
@@ -107,7 +110,7 @@
                     <TextView
                         android:id="@+id/txtSecs"
                         style="@style/clock_TextView"
-                        android:layout_marginBottom="5dp"/>
+                        android:textSize="30dp"/>
 
                     <TextView
                         style="@style/clock_TextView"

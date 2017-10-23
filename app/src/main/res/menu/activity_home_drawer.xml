@@ -2,26 +2,55 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
+
         <item
-            android:id="@+id/nav_profile"
+            android:id="@+id/nav_Groom_profile"
             android:icon="@drawable/ic_profile_black_24dp"
-            android:title="Profile" />
+            android:title="Groom Profile" />
+
+        <item
+            android:id="@+id/nav_Bride_profile"
+            android:icon="@drawable/ic_profile_black_24dp"
+            android:title="Bride Profile" />
+
         <item
             android:id="@+id/nav_functions"
             android:icon="@drawable/schedule"
             android:title="Functions" />
+
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/gallery"
             android:title="Gallery" />
+
         <item
             android:id="@+id/nav_invitation"
             android:icon="@drawable/invite"
             android:title="Invitation" />
+
         <item
             android:id="@+id/nav_fm"
             android:icon="@drawable/members"
             android:title="Family Member" />
+
+        <item
+            android:id="@+id/nav_vendor"
+            android:icon="@drawable/vendor"
+            android:title="Vendor" />
+
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_share_black_24dp"
+            android:title="Share App"/>
+        <item
+            android:id="@+id/nav_rate"
+            android:icon="@drawable/ic_rating_black_24dp"
+            android:title="Rate App" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout_write_24dp"
+            android:title="Logout" />
     </group>
 
 </menu>

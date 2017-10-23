@@ -13,11 +13,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/ivBgImgGrid"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/wedding_planner_bg" />
+            android:background="@color/colorWrite"
+            android:padding="3dp">
+
+            <ImageView
+                android:id="@+id/ivBgImgGrid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/wedding_planner_bg" />
+
+        </LinearLayout>
+
 
     </FrameLayout>
 

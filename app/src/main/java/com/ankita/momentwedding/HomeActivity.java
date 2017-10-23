@@ -1,9 +1,11 @@
 package com.ankita.momentwedding;
 
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -26,6 +28,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,11 +48,12 @@ public class HomeActivity extends AppCompatActivity
 
     ViewPager vpAdminEvent;
     TabLayout tabAdminEventLayout;
-    ImageView ivClock,ivLogOut;
+    ImageView ivClock;
     TextView txtRsvp,txtDate,txtDays,txtHours,txtMins,txtSecs,txtGuestName;
     SessionManager session;
     Dialog dialog;
     CircleImageView ivGuestPic;
+    LinearLayout llDialogOther,llDialog;
 
     public static String wedding_id;
     public static String profile_id;
@@ -64,7 +74,14 @@ public class HomeActivity extends AppCompatActivity
 
         final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(0).setChecked(true);
+        View header=navigationView.getHeaderView(0);
+
+        /*---------------- Navigation Header ------------------*/
+        txtGuestName = (TextView)header.findViewById(R.id.txtGuestName);
+        ivGuestPic = (CircleImageView)header.findViewById(R.id.ivGuestPic);
+
+        GetGuestListone getGuestListone = new GetGuestListone();
+        getGuestListone.execute();
 
         setTitle("Profile");
 
@@ -92,27 +109,26 @@ public class HomeActivity extends AppCompatActivity
                 if(position == 0)
                 {
                     setTitle("Profile");
-                    navigationView.getMenu().getItem(0).setChecked(true);
                 }
                 else if(position == 1)
                 {
                     setTitle("Functions");
-                    navigationView.getMenu().getItem(1).setChecked(true);
+                    navigationView.getMenu().getItem(2).setChecked(true);
                 }
                 else if(position == 2)
                 {
                     setTitle("Gallery");
-                    navigationView.getMenu().getItem(2).setChecked(true);
+                    navigationView.getMenu().getItem(3).setChecked(true);
                 }
                 else if(position == 3)
                 {
                     setTitle("Invitation");
-                    navigationView.getMenu().getItem(3).setChecked(true);
+                    navigationView.getMenu().getItem(4).setChecked(true);
                 }
                 else if(position == 4)
                 {
                     setTitle("Family Member");
-                    navigationView.getMenu().getItem(4).setChecked(true);
+                    navigationView.getMenu().getItem(5).setChecked(true);
                 }
 
             }
@@ -142,16 +158,6 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        /*---------------- LogOut ------------------*/
-        ivLogOut =(ImageView)findViewById(R.id.ivLogOut);
-        ivLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                session.logoutUser();
-            }
-        });
-
-
         /*---------------- Clock ------------------*/
         ivClock =(ImageView)findViewById(R.id.ivClock);
 
@@ -168,6 +174,24 @@ public class HomeActivity extends AppCompatActivity
                 txtHours =(TextView)dialog.findViewById(R.id.txtHours);
                 txtMins =(TextView)dialog.findViewById(R.id.txtMins);
                 txtSecs =(TextView)dialog.findViewById(R.id.txtSecs);
+
+                llDialogOther = (LinearLayout)dialog.findViewById(R.id.llDialogOther);
+                llDialog = (LinearLayout)dialog.findViewById(R.id.llDialog);
+
+                llDialogOther.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                llDialog.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.show();
+                    }
+                });
+
                 dialog.show();
 
                 GetCountDown getCountDown = new  GetCountDown();
@@ -176,6 +200,9 @@ public class HomeActivity extends AppCompatActivity
 
             }
         });
+
+
+
     }
 
     @Override
@@ -193,9 +220,19 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_profile)
+        if (id == R.id.nav_Groom_profile)
         {
-            vpAdminEvent.setCurrentItem(0);
+            Intent intent = new Intent(getApplicationContext(),OneProfileActivity.class);
+            intent.putExtra("profile_id",ProfileFragment.groomId);
+            intent.putExtra("GB","Groom");
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_Bride_profile)
+        {
+            Intent intent = new Intent(getApplicationContext(),OneProfileActivity.class);
+            intent.putExtra("profile_id",ProfileFragment.brideId);
+            intent.putExtra("GB","Bride");
+            startActivity(intent);
         }
         else if (id == R.id.nav_functions)
         {
@@ -213,10 +250,54 @@ public class HomeActivity extends AppCompatActivity
         {
             vpAdminEvent.setCurrentItem(4);
         }
+        else if (id == R.id.nav_vendor)
+        {
+            Intent intent = new Intent(getApplicationContext(),VendorActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_share)
+        {
+            Intent i=new Intent(Intent.ACTION_SEND);
+            i.setType("text/plain");
+            String body="https://play.google.com/store/apps/details?id=com.ankita.momentwedding";
+            i.putExtra(Intent.EXTRA_SUBJECT,body);
+            i.putExtra(Intent.EXTRA_TEXT,body);
+            startActivity(Intent.createChooser(i,"Share using"));
+        }
+        else if (id == R.id.nav_rate)
+        {
+            Intent i=new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.ankita.momentwedding"));
+            if(!MyStartActivity(i))
+            {
+                i.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.ankita.momentwedding"));
+                if(!MyStartActivity(i))
+                {
+                    Log.d("Like","Could not open browser");
+                }
+            }
+        }
+        else if (id == R.id.nav_logout)
+        {
+            session.logoutUser();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private boolean MyStartActivity(Intent i) {
+
+        try
+        {
+            startActivity(i);
+            return true;
+        }
+        catch (ActivityNotFoundException e)
+        {
+            return false;
+        }
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -300,6 +381,77 @@ public class HomeActivity extends AppCompatActivity
                 }
             };
             timer.start();
+        }
+    }
+
+    private class GetGuestListone extends AsyncTask<String,Void,String> {
+        String status,message,name,image;
+        @Override
+        protected String doInBackground(String... strings) {
+
+            JSONObject jogl=new JSONObject();
+            try {
+
+                jogl.put("guest_id",HomeActivity.guest_id);
+                Postdata postdata=new Postdata();
+                String pdgl=postdata.post(MainActivity.mainUrl+"guestDetails",jogl.toString());
+                JSONObject j=new JSONObject(pdgl);
+                status=j.getString("status");
+                if(status.equals("1"))
+                {
+                    Log.d("Like","Successfully");
+                    message=j.getString("message");
+                    JSONObject jo=j.getJSONObject("guest");
+
+                    name =jo.getString("name");
+                    image =jo.getString("image");
+                }
+                else
+                {
+                    message=j.getString("message");
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if(status.equals("1"))
+            {
+                txtGuestName.setText(name);
+
+                DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                        .cacheOnDisc(true).cacheInMemory(true)
+                        .imageScaleType(ImageScaleType.EXACTLY)
+                        .displayer(new FadeInBitmapDisplayer(300)).build();
+                final ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(HomeActivity.this)
+                        .defaultDisplayImageOptions(defaultOptions)
+                        .memoryCache(new WeakMemoryCache())
+                        .discCacheSize(100 * 1024 * 1024).build();
+
+                ImageLoader.getInstance().init(config);
+
+                ImageLoader imageLoader = ImageLoader.getInstance();
+                int fallback = 0;
+                DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
+                        .cacheOnDisc(true).resetViewBeforeLoading(true)
+                        .showImageForEmptyUri(fallback)
+                        .showImageOnFail(fallback)
+                        .showImageOnLoading(fallback).build();
+
+
+                imageLoader.displayImage(image,ivGuestPic, options);
+
+
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

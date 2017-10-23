@@ -1,6 +1,7 @@
 package com.ankita.momentwedding;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -50,13 +51,18 @@ class scheduleListAdapter extends RecyclerView.Adapter<scheduleListAdapter.ViewH
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        String name = scheduleListArray.get(position).get("name");
-        String time = scheduleListArray.get(position).get("time");
-        String location = scheduleListArray.get(position).get("location");
+        final String name = scheduleListArray.get(position).get("name");
+        final String time = scheduleListArray.get(position).get("time");
+        final String location = scheduleListArray.get(position).get("location");
         String eventDay = scheduleListArray.get(position).get("eventDay");
         String eventMonth = scheduleListArray.get(position).get("eventMonth");
         String event_note = scheduleListArray.get(position).get("event_note");
-
+        final String date = scheduleListArray.get(position).get("date");
+        final String mapURL = scheduleListArray.get(position).get("mapURL");
+        final String venueName = scheduleListArray.get(position).get("venueName");
+        final String venuePhone = scheduleListArray.get(position).get("venuePhone");
+        final String venueEmail = scheduleListArray.get(position).get("venueEmail");
+        final String venueWeb = scheduleListArray.get(position).get("venueWeb");
 
         holder.txtScheduleEvent.setText(name);
         holder.txtScheduleTimeAddress.setText(time+" | "+location);
@@ -64,7 +70,7 @@ class scheduleListAdapter extends RecyclerView.Adapter<scheduleListAdapter.ViewH
         holder.txtScheduleDate.setText(eventDay);
         holder.txtScheduleMonth.setText(eventMonth);
 
-        String image = scheduleListArray.get(position).get("image");
+        final String image = scheduleListArray.get(position).get("image");
 
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)
@@ -85,6 +91,24 @@ class scheduleListAdapter extends RecyclerView.Adapter<scheduleListAdapter.ViewH
                 .showImageOnFail(fallback)
                 .showImageOnLoading(fallback).build();
         imageLoader.displayImage(image,holder.ivSchedulePic, options);
+
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context,VenueActivity.class);
+                i.putExtra("name",name);
+                i.putExtra("time",time);
+                i.putExtra("date",date);
+                i.putExtra("location",location);
+                i.putExtra("image",image);
+                i.putExtra("mapURL",mapURL);
+                i.putExtra("venueName",venueName);
+                i.putExtra("venuePhone",venuePhone);
+                i.putExtra("venueEmail",venueEmail);
+                i.putExtra("venueWeb",venueWeb);
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override

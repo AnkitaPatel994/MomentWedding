@@ -99,6 +99,12 @@ public class ScheduleFragment extends Fragment {
                         String eventMonth =jo.getString("eventMonth");
                         String event_note =jo.getString("event_note");
                         String image =jo.getString("image");
+                        String date =jo.getString("date");
+                        String mapURL =jo.getString("mapURL");
+                        String venueName =jo.getString("venueName");
+                        String venuePhone =jo.getString("venuePhone");
+                        String venueEmail =jo.getString("venueEmail");
+                        String venueWeb =jo.getString("venueWeb");
 
                         hashMap.put("name",name);
                         hashMap.put("time",time);
@@ -107,6 +113,12 @@ public class ScheduleFragment extends Fragment {
                         hashMap.put("eventMonth",eventMonth);
                         hashMap.put("event_note",event_note);
                         hashMap.put("image",image);
+                        hashMap.put("date",date);
+                        hashMap.put("mapURL",mapURL);
+                        hashMap.put("venueName",venueName);
+                        hashMap.put("venuePhone",venuePhone);
+                        hashMap.put("venueEmail",venueEmail);
+                        hashMap.put("venueWeb",venueWeb);
 
                         scheduleListArray.add(hashMap);
                     }

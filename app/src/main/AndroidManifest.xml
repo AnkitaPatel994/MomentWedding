@@ -3,6 +3,7 @@
     package="com.ankita.momentwedding">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +15,6 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -22,22 +22,21 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".LoginActivity" />
         <activity android:name=".MobileNoActivity" />
         <activity android:name=".OTPCodeActivity" />
         <activity android:name=".GridGalleryActivity" />
         <activity android:name=".ZoomGalleryImgActivity" />
-
         <activity
             android:name=".RSVPActivity"
             android:label="@string/title_activity_rsvp"
-            android:theme="@style/AppTheme.NoActionBar" />
-
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".ProgramActivity" />
-        <activity android:name=".GuestNameActivity"/>
-        <activity android:name=".GuestInviteIdActivity"/>
-
+        <activity android:name=".GuestNameActivity" />
+        <activity android:name=".GuestInviteIdActivity" />
+        <activity android:name=".OneProfileActivity" />
+        <activity android:name=".VenueActivity" />
+        <activity android:name=".VendorActivity"/>
     </application>
 
 </manifest>
