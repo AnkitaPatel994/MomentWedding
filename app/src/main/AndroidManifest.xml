@@ -34,12 +34,14 @@
             android:name=".RSVPActivity"
             android:label="@string/title_activity_rsvp"
             android:windowSoftInputMode="stateAlwaysHidden" />
+			
         <activity android:name=".ProgramActivity" />
         <activity android:name=".GuestNameActivity" />
         <activity android:name=".GuestInviteIdActivity" />
         <activity android:name=".OneProfileActivity" />
         <activity android:name=".VenueActivity" />
         <activity android:name=".VendorActivity"/>
+
     </application>
 
 </manifest>

@@ -74,6 +74,7 @@ public class HomeActivity extends AppCompatActivity
 
         final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
         View header=navigationView.getHeaderView(0);
 
         /*---------------- Navigation Header ------------------*/

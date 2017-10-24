@@ -87,6 +87,17 @@
 
                 <TextView
                     android:id="@+id/txtVenueTitle"
+                    android:id="@+id/txtVenueEventName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWrite"
+                    android:textSize="25dp"
+                    android:textAllCaps="true"
+                    android:gravity="center"
+                    android:text="Check in &amp; Lunch"/>
+
+                <TextView
+                    android:id="@+id/txtVenueEventDateTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorWrite"

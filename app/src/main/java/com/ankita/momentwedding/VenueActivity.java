@@ -42,12 +42,14 @@ public class VenueActivity extends AppCompatActivity {
         setContentView(R.layout.activity_venue);
         setTitle("Venue");
 
-        if (getSupportActionBar() != null) {
+        if(getSupportActionBar()!= null)
+        {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
         String VenueEventName = getIntent().getExtras().getString("name");
+
         txtVenueEventName = (TextView) findViewById(R.id.txtVenueEventName);
         txtVenueEventName.setText(VenueEventName);
 
