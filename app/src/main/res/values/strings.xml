@@ -1,8 +1,8 @@
 <resources>
 
-    <string name="app_name">Moment Wedding</string>
-    <string name="title_activity_home">Moment Wedding</string>
-    <string name="title_app">Moment Wedding</string>
+    <string name="app_name">Moments Wedding</string>
+    <string name="title_activity_home">Moments Wedding</string>
+    <string name="title_app">Moments Wedding</string>
 
     <!--Login Page-->
     <string name="txt_invite_code">Enter Your Invite Code</string>
@@ -43,6 +43,7 @@
     <string name="txt_no">No</string>
     <string name="btn_done">Done</string>
     <string name="title_activity_home2">Home2Activity</string>
+    <string name="upload_photo_id">Upload Photo Id</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

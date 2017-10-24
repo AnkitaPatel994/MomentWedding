@@ -31,11 +31,10 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 public class VenueActivity extends AppCompatActivity {
 
-    TextView txtVenueEventName, txtVenueEventDateTime, txtVenueEventAddress, txtVenueTitle;
+    TextView txtVenueEventName, txtVenueEventDateTime, txtVenueEventAddress,txtVenueTitle;
     RelativeLayout rlCall, rlInternet, rlMail;
     ImageView ivVenueImg;
     WebView webView;
-    ScrollView VenueScroll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +46,6 @@ public class VenueActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-
-        VenueScroll = (ScrollView)findViewById(R.id.VenueScroll);
-        VenueScroll.post(new Runnable() {
-            @Override
-            public void run() {
-                VenueScroll.fullScroll(ScrollView.FOCUS_UP);
-            }
-        });
 
         String VenueEventName = getIntent().getExtras().getString("name");
         txtVenueEventName = (TextView) findViewById(R.id.txtVenueEventName);

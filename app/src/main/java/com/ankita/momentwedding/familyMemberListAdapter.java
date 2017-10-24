@@ -56,7 +56,7 @@ class familyMemberListAdapter extends RecyclerView.Adapter<familyMemberListAdapt
 
         holder.txtFMName.setText(member_name);
         holder.txtFMRelation.setText(member_relation);
-        holder.txtFMDetails.setText(member_details);
+        /*holder.txtFMDetails.setText(member_details);*/
 
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)
@@ -88,7 +88,7 @@ class familyMemberListAdapter extends RecyclerView.Adapter<familyMemberListAdapt
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         CircleImageView ivFMProfile;
-        TextView txtFMName,txtFMRelation,txtFMDetails;
+        TextView txtFMName,txtFMRelation;
 
         public ViewHolder(View v) {
             super(v);
@@ -96,7 +96,7 @@ class familyMemberListAdapter extends RecyclerView.Adapter<familyMemberListAdapt
             ivFMProfile =(CircleImageView)v.findViewById(R.id.ivFMProfile);
             txtFMName =(TextView) v.findViewById(R.id.txtFMName);
             txtFMRelation =(TextView) v.findViewById(R.id.txtFMRelation);
-            txtFMDetails =(TextView) v.findViewById(R.id.txtFMDetails);
+            /*TextView txtFMDetails =(TextView) v.findViewById(R.id.txtFMDetails);*/
         }
     }
 }

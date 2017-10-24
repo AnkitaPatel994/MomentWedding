@@ -264,7 +264,7 @@ public class HomeActivity extends AppCompatActivity
             i.putExtra(Intent.EXTRA_TEXT,body);
             startActivity(Intent.createChooser(i,"Share using"));
         }
-        else if (id == R.id.nav_rate)
+        /*else if (id == R.id.nav_rate)
         {
             Intent i=new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.ankita.momentwedding"));
@@ -276,7 +276,7 @@ public class HomeActivity extends AppCompatActivity
                     Log.d("Like","Could not open browser");
                 }
             }
-        }
+        }*/
         else if (id == R.id.nav_logout)
         {
             session.logoutUser();

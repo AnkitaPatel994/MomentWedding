@@ -7,7 +7,8 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String mainUrl = "http://momentsunlimited.in/weddingWebservices/webservices/";
+    /*public static String mainUrl = "http://momentsunlimited.in/weddingWebservices/webservices/";*/
+    public static String mainUrl = "http://wedding.momentsunlimited.in/webservices/";
 
     LinearLayout lnSnackbar;
     SessionManager session;
