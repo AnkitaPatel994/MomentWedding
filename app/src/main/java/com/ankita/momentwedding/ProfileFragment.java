@@ -2,6 +2,7 @@ package com.ankita.momentwedding;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -66,7 +67,9 @@ public class ProfileFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         ivGroomProfilePic = (CircleImageView)view.findViewById(R.id.ivGroomProfilePic);
+        ivGroomProfilePic.setBorderColor(Color.parseColor(HomeActivity.selectColor));
         ivBrideProfilePic = (CircleImageView)view.findViewById(R.id.ivBrideProfilePic);
+        ivBrideProfilePic.setBorderColor(Color.parseColor(HomeActivity.selectColor));
 
         txtProGroomName = (TextView) view.findViewById(R.id.txtProGroomName);
         txtProBrideName = (TextView) view.findViewById(R.id.txtProBrideName);

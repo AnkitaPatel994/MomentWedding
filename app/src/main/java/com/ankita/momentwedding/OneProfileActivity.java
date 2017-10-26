@@ -1,10 +1,13 @@
 package com.ankita.momentwedding;
 
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,13 +42,23 @@ public class OneProfileActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
+        LinearLayout llBgTransparent = (LinearLayout)findViewById(R.id.llBgTransparent);
+        GradientDrawable shapeBg =  new GradientDrawable();
+        shapeBg.setCornerRadius(10);
+        shapeBg.setColor(Color.parseColor(HomeActivity.transparentColor));
+        llBgTransparent.setBackground(shapeBg);
+
         txtProfileName = (TextView)findViewById(R.id.txtProfileName);
+        txtProfileName.setTextColor(Color.parseColor(HomeActivity.writeColor));
+
         txtProfileOccupation = (TextView)findViewById(R.id.txtProfileOccupation);
+        txtProfileOccupation.setTextColor(Color.parseColor(HomeActivity.writeColor));
+
         txtProfileDetails = (TextView)findViewById(R.id.txtProfileDetails);
+        txtProfileDetails.setTextColor(Color.parseColor(HomeActivity.writeColor));
 
         ivProfilePic = (CircleImageView)findViewById(R.id.ivProfilePic);
-
-
+        ivProfilePic.setBorderColor(Color.parseColor(HomeActivity.selectColor));
 
         String profileId = getIntent().getExtras().getString("profile_id");
 

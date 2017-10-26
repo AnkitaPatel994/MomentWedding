@@ -2,6 +2,8 @@ package com.ankita.momentwedding;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -19,6 +23,8 @@ public class GuestNameActivity extends AppCompatActivity {
     EditText txtGuestName;
     Button btnGuestSubmit;
     String weddingId,mobileNo;
+    LinearLayout llBgGuestName;
+    TextView lableGuestName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +35,24 @@ public class GuestNameActivity extends AppCompatActivity {
         txtGuestName = (EditText)findViewById(R.id.txtGuestName);
         btnGuestSubmit = (Button)findViewById(R.id.btnGuestSubmit);
 
+        llBgGuestName = (LinearLayout)findViewById(R.id.llBgGuestName);
+        llBgGuestName.setBackgroundColor(Color.parseColor(MainActivity.primaryColor));
+
+        lableGuestName = (TextView)findViewById(R.id.lableGuestName);
+        lableGuestName.setTextColor(Color.parseColor(MainActivity.textLight));
+
         weddingId = getIntent().getExtras().getString("weddingId");
         mobileNo = getIntent().getExtras().getString("mobileNo");
         final String guest_id = getIntent().getExtras().getString("guest_id");
+
+        GradientDrawable shapeBg =  new GradientDrawable();
+        shapeBg.setStroke(3,Color.parseColor(MainActivity.editTextLoginBorderColor));
+        shapeBg.setCornerRadius(5);
+        shapeBg.setColor(Color.parseColor(MainActivity.primaryColor));
+        txtGuestName.setBackground(shapeBg);
+        txtGuestName.setTextColor(Color.parseColor(MainActivity.textLoginColor));
+
+        btnGuestSubmit.setTextColor(Color.parseColor(MainActivity.buttonTextLoginColor));
 
         btnGuestSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

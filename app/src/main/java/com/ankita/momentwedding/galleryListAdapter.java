@@ -2,12 +2,15 @@ package com.ankita.momentwedding;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,8 +56,15 @@ class galleryListAdapter extends RecyclerView.Adapter<galleryListAdapter.ViewHol
         final String name = galleryListArray.get(position).get("name");
         String photoCount = galleryListArray.get(position).get("photoCount");
 
+        GradientDrawable shapeBg =  new GradientDrawable();
+        shapeBg.setColor(Color.parseColor(HomeActivity.transparentColor));
+        holder.llGalleryBGT.setBackground(shapeBg);
+
         holder.txtEvent.setText(name);
+        holder.txtEvent.setTextColor(Color.parseColor(HomeActivity.writeColor));
+
         holder.txtImgCount.setText(photoCount + " Photos");
+        holder.txtImgCount.setTextColor(Color.parseColor(HomeActivity.writeColor));
 
         String background = galleryListArray.get(position).get("background");
 
@@ -101,6 +111,7 @@ class galleryListAdapter extends RecyclerView.Adapter<galleryListAdapter.ViewHol
 
         ImageView ivBgImg;
         TextView txtEvent,txtImgCount;
+        LinearLayout llGalleryBGT;
 
         public ViewHolder(View v) {
             super(v);
@@ -108,6 +119,7 @@ class galleryListAdapter extends RecyclerView.Adapter<galleryListAdapter.ViewHol
             ivBgImg = (ImageView)v.findViewById(R.id.ivBgImg);
             txtEvent = (TextView)v.findViewById(R.id.txtEvent);
             txtImgCount = (TextView)v.findViewById(R.id.txtImgCount);
+            llGalleryBGT = (LinearLayout)v.findViewById(R.id.llGalleryBGT);
 
         }
     }

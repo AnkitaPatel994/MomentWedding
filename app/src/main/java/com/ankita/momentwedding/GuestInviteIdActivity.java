@@ -2,6 +2,7 @@ package com.ankita.momentwedding;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ public class GuestInviteIdActivity extends AppCompatActivity {
     TextView txtGroomName,txtBrideName;
     String weddingId,mobileNo,guest_id,groomId,brideId;
     SessionManager session;
+    LinearLayout llBgGuestInviteId,llBoGuestInviteId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +46,22 @@ public class GuestInviteIdActivity extends AppCompatActivity {
         llBride = (LinearLayout)findViewById(R.id.llBride);
 
         ivGroomPic = (CircleImageView)findViewById(R.id.ivGroomPic);
+        ivGroomPic.setBorderColor(Color.parseColor(MainActivity.primaryDarkColor));
+
         ivBridePic = (CircleImageView)findViewById(R.id.ivBridePic);
+        ivBridePic.setBorderColor(Color.parseColor(MainActivity.primaryDarkColor));
 
         txtGroomName = (TextView)findViewById(R.id.txtGroomName);
+        txtGroomName.setTextColor(Color.parseColor(MainActivity.textLight));
+
         txtBrideName = (TextView)findViewById(R.id.txtBrideName);
+        txtBrideName.setTextColor(Color.parseColor(MainActivity.textLight));
+
+        llBgGuestInviteId = (LinearLayout)findViewById(R.id.llBgGuestInviteId);
+        llBgGuestInviteId.setBackgroundColor(Color.parseColor(MainActivity.primaryColor));
+
+        llBoGuestInviteId = (LinearLayout)findViewById(R.id.llBoGuestInviteId);
+        llBoGuestInviteId.setBackgroundColor(Color.parseColor(MainActivity.primaryDarkColor));
 
         weddingId = getIntent().getExtras().getString("weddingId");
         mobileNo = getIntent().getExtras().getString("mobileNo");
@@ -172,7 +186,7 @@ public class GuestInviteIdActivity extends AppCompatActivity {
     private class GetGroomBride extends AsyncTask<String,Void,String> {
 
         ProgressDialog dialog;
-        String status,message,profileId;
+        String status,message,profileId,guestName;
 
         public GetGroomBride(String profileId) {
             this.profileId = profileId;
@@ -203,6 +217,8 @@ public class GuestInviteIdActivity extends AppCompatActivity {
                 {
                     Log.d("Like","Successfully");
                     message=j.getString("message");
+                    JSONObject jo=j.getJSONObject("guest_row");
+                    guestName =jo.getString("name");
                 }
                 else
                 {

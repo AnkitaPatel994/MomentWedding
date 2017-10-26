@@ -17,9 +17,9 @@
         android:background="@drawable/img">
 
         <RelativeLayout
+            android:id="@+id/rlVendorBGT"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/background_transparent">
+            android:layout_height="match_parent">
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -90,8 +90,7 @@
                     android:textColor="@color/colorWrite"
                     android:textSize="15dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="We are an event Managment company"/>
+                    android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
@@ -109,10 +108,10 @@
                 <RatingBar
                     android:id="@+id/ratingBar"
                     android:layout_width="wrap_content"
-                    android:layout_height="45dp"
+                    android:layout_height="wrap_content"
                     android:numStars="5"
                     android:rating="0"
-                    android:stepSize="0.5" />
+                    android:stepSize="0.5"/>
 
                 <Button
                     android:id="@+id/btnSR"

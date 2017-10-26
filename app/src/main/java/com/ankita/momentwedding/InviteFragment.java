@@ -1,6 +1,8 @@
 package com.ankita.momentwedding;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,7 +60,16 @@ public class InviteFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_invite, container, false);
 
         ivProfileGroom = (CircleImageView)view.findViewById(R.id.ivProfileGroom);
+        ivProfileGroom.setBorderColor(Color.parseColor(HomeActivity.selectColor));
+
         ivProfileBride = (CircleImageView)view.findViewById(R.id.ivProfileBride);
+        ivProfileBride.setBorderColor(Color.parseColor(HomeActivity.selectColor));
+
+        LinearLayout llInviteBGT = (LinearLayout)view.findViewById(R.id.llInviteBGT);
+        GradientDrawable shapeBg =  new GradientDrawable();
+        shapeBg.setCornerRadius(10);
+        shapeBg.setColor(Color.parseColor(HomeActivity.transparentColor));
+        llInviteBGT.setBackground(shapeBg);
 
         txtInviteGroomName = (TextView)view.findViewById(R.id.txtInviteGroomName);
         txtInviteBrideName = (TextView)view.findViewById(R.id.txtInviteBrideName);

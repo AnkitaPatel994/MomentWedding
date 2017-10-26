@@ -20,24 +20,22 @@
             android:id="@+id/ivFMProfile"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/red"
+            android:src="@drawable/pic"
             android:layout_gravity="center_horizontal"
-            app:civ_border_color="@color/colorSelect"
             app:civ_border_width="2dp" />
 
         <LinearLayout
+            android:id="@+id/llMemberBgTransparent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="15dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/background_transparent">
+            android:layout_marginLeft="10dp">
 
             <TextView
                 android:id="@+id/txtFMName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorWrite"
                 android:textSize="16dp"/>
 
             <TextView
@@ -47,13 +45,13 @@
                 android:textColor="@color/colorText"
                 android:textSize="10dp"/>
 
-            <!--<TextView
+            <TextView
                 android:id="@+id/txtFMDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorWrite"
                 android:textSize="10dp"
-                android:layout_marginTop="10dp"/>-->
+                android:visibility="gone"
+                android:layout_marginTop="10dp"/>
 
         </LinearLayout>
 

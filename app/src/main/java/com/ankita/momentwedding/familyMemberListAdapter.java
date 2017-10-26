@@ -1,11 +1,14 @@
 package com.ankita.momentwedding;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
@@ -54,9 +57,21 @@ class familyMemberListAdapter extends RecyclerView.Adapter<familyMemberListAdapt
 
         String member_pic = familyMemberListArray.get(position).get("member_pic");
 
+        holder.ivFMProfile.setBorderColor(Color.parseColor(HomeActivity.selectColor));
+
+        GradientDrawable shapeBg =  new GradientDrawable();
+        shapeBg.setCornerRadius(10);
+        shapeBg.setColor(Color.parseColor(HomeActivity.transparentColor));
+        holder.llMemberBgTransparent.setBackground(shapeBg);
+
         holder.txtFMName.setText(member_name);
+        holder.txtFMName.setTextColor(Color.parseColor(HomeActivity.writeColor));
+
         holder.txtFMRelation.setText(member_relation);
-        /*holder.txtFMDetails.setText(member_details);*/
+        holder.txtFMRelation.setTextColor(Color.parseColor(HomeActivity.textColor));
+
+        holder.txtFMDetails.setText(member_details);
+        holder.txtFMDetails.setTextColor(Color.parseColor(HomeActivity.writeColor));
 
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)
@@ -88,7 +103,8 @@ class familyMemberListAdapter extends RecyclerView.Adapter<familyMemberListAdapt
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         CircleImageView ivFMProfile;
-        TextView txtFMName,txtFMRelation;
+        TextView txtFMName,txtFMRelation,txtFMDetails;
+        LinearLayout llMemberBgTransparent;
 
         public ViewHolder(View v) {
             super(v);
@@ -96,7 +112,8 @@ class familyMemberListAdapter extends RecyclerView.Adapter<familyMemberListAdapt
             ivFMProfile =(CircleImageView)v.findViewById(R.id.ivFMProfile);
             txtFMName =(TextView) v.findViewById(R.id.txtFMName);
             txtFMRelation =(TextView) v.findViewById(R.id.txtFMRelation);
-            /*TextView txtFMDetails =(TextView) v.findViewById(R.id.txtFMDetails);*/
+            llMemberBgTransparent = (LinearLayout)v.findViewById(R.id.llMemberBgTransparent);
+            txtFMDetails =(TextView) v.findViewById(R.id.txtFMDetails);
         }
     }
 }

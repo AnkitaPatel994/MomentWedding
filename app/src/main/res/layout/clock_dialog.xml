@@ -7,7 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="#80000000"
     android:orientation="vertical">
 
     <LinearLayout
@@ -18,23 +17,23 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/llTopDialog"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/top_background"
             android:orientation="vertical"
             android:padding="10dp">
 
             <TextView
+                android:id="@+id/countdown"
                 style="@style/clock_TextView"
-                android:text="@string/txt_wedding_countdown"
-                android:textColor="@color/colorPrimary" />
+                android:text="@string/txt_wedding_countdown"/>
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llBottomDialog"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bottom_background"
             android:orientation="vertical"
             android:paddingBottom="5dp"
             android:paddingTop="15dp">
@@ -62,6 +61,7 @@
                         android:textSize="30dp" />
 
                     <TextView
+                        android:id="@+id/tvDays"
                         style="@style/clock_TextView"
                         android:text="@string/txt_Days" />
 
@@ -79,6 +79,7 @@
                         android:textSize="30dp"/>
 
                     <TextView
+                        android:id="@+id/tvHours"
                         style="@style/clock_TextView"
                         android:text="@string/txt_Hours" />
 
@@ -96,6 +97,7 @@
                         android:textSize="30dp"/>
 
                     <TextView
+                        android:id="@+id/tvMins"
                         style="@style/clock_TextView"
                         android:text="@string/txt_Mins" />
 
@@ -113,6 +115,7 @@
                         android:textSize="30dp"/>
 
                     <TextView
+                        android:id="@+id/tvSecs"
                         style="@style/clock_TextView"
                         android:text="@string/txt_Secs" />
 

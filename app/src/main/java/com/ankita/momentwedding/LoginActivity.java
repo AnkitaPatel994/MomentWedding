@@ -2,6 +2,8 @@ package com.ankita.momentwedding;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -18,6 +22,8 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText txtInviteCode;
     Button btnNext;
+    LinearLayout llBgLogin;
+    TextView lableInviteCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +34,20 @@ public class LoginActivity extends AppCompatActivity {
         txtInviteCode = (EditText)findViewById(R.id.txtInviteCode);
         btnNext = (Button)findViewById(R.id.btnNext);
 
+        llBgLogin = (LinearLayout)findViewById(R.id.llBgLogin);
+        llBgLogin.setBackgroundColor(Color.parseColor(MainActivity.primaryColor));
+
+        lableInviteCode = (TextView)findViewById(R.id.lableInviteCode);
+        lableInviteCode.setTextColor(Color.parseColor(MainActivity.textLight));
+
+        GradientDrawable shapeBg =  new GradientDrawable();
+        shapeBg.setStroke(3,Color.parseColor(MainActivity.editTextLoginBorderColor));
+        shapeBg.setCornerRadius(5);
+        shapeBg.setColor(Color.parseColor(MainActivity.primaryColor));
+        txtInviteCode.setBackground(shapeBg);
+        txtInviteCode.setTextColor(Color.parseColor(MainActivity.textLoginColor));
+
+        btnNext.setTextColor(Color.parseColor(MainActivity.buttonTextLoginColor));
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

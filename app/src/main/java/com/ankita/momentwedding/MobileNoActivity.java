@@ -2,6 +2,8 @@ package com.ankita.momentwedding;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -18,6 +22,8 @@ public class MobileNoActivity extends AppCompatActivity {
 
     EditText txtMobaileNo;
     Button btnVerification;
+    LinearLayout llBGMobile;
+    TextView lableMobile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,21 @@ public class MobileNoActivity extends AppCompatActivity {
 
         txtMobaileNo = (EditText)findViewById(R.id.txtMobaileNo);
         btnVerification = (Button)findViewById(R.id.btnVerification);
+
+        llBGMobile = (LinearLayout)findViewById(R.id.llBGMobile);
+        llBGMobile.setBackgroundColor(Color.parseColor(MainActivity.primaryColor));
+
+        lableMobile = (TextView) findViewById(R.id.lableMobile);
+        lableMobile.setTextColor(Color.parseColor(MainActivity.textLight));
+
+        GradientDrawable shapeBg =  new GradientDrawable();
+        shapeBg.setStroke(3,Color.parseColor(MainActivity.editTextLoginBorderColor));
+        shapeBg.setCornerRadius(5);
+        shapeBg.setColor(Color.parseColor(MainActivity.primaryColor));
+        txtMobaileNo.setBackground(shapeBg);
+        txtMobaileNo.setTextColor(Color.parseColor(MainActivity.textLoginColor));
+
+        btnVerification.setTextColor(Color.parseColor(MainActivity.buttonTextLoginColor));
 
         btnVerification.setOnClickListener(new View.OnClickListener() {
             @Override

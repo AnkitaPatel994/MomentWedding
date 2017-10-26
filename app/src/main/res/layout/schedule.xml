@@ -16,19 +16,18 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/llRoungBG"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:orientation="vertical"
             android:layout_marginRight="10dp"
-            android:gravity="center"
-            android:background="@drawable/round">
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/txtScheduleDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/colorWrite"
                 android:textSize="22dp"/>
 
             <TextView
@@ -36,7 +35,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/colorText"
                 android:textSize="10dp"
                 android:textAllCaps="true"/>
 
@@ -59,17 +57,16 @@
                     app:srcCompat="@drawable/wedding_planner_bg" />
 
                 <LinearLayout
+                    android:id="@+id/llScheduleBGT"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="15dp"
-                    android:background="@color/colorTransparent">
+                    android:padding="15dp">
 
                     <TextView
                         android:id="@+id/txtScheduleEvent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorWrite"
                         android:textSize="16dp"
                         android:textAllCaps="true"/>
 
@@ -77,17 +74,16 @@
                         android:id="@+id/txtScheduleTimeAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorWrite"
                         android:textSize="10dp"/>
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llScheduleDetailBGT"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:padding="10dp"
-                    android:background="@color/colorTransparent"
                     android:orientation="vertical">
 
                     <TextView
@@ -95,7 +91,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/txtEventTime"
-                        android:textColor="@color/colorWrite"
                         android:textSize="10dp"
                         android:gravity="center"/>
 

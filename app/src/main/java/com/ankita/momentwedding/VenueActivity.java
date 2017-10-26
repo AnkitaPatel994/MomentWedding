@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -48,18 +50,29 @@ public class VenueActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
+        LinearLayout llBGTVenue = (LinearLayout)findViewById(R.id.llBGTVenue);
+        GradientDrawable shapeBg =  new GradientDrawable();
+        shapeBg.setColor(Color.parseColor(HomeActivity.transparentColor));
+        llBGTVenue.setBackground(shapeBg);
+
+        LinearLayout llBGTVenueBorder = (LinearLayout)findViewById(R.id.llBGTVenueBorder);
+        llBGTVenueBorder.setBackgroundColor(Color.parseColor(HomeActivity.primaryColor));
+
         String VenueEventName = getIntent().getExtras().getString("name");
 
         txtVenueEventName = (TextView) findViewById(R.id.txtVenueEventName);
+        txtVenueEventName.setTextColor(Color.parseColor(HomeActivity.writeColor));
         txtVenueEventName.setText(VenueEventName);
 
         String VenueEventTime = getIntent().getExtras().getString("time");
         String VenueEventDate = getIntent().getExtras().getString("date");
         txtVenueEventDateTime = (TextView) findViewById(R.id.txtVenueEventDateTime);
+        txtVenueEventDateTime.setTextColor(Color.parseColor(HomeActivity.writeColor));
         txtVenueEventDateTime.setText(VenueEventTime + ", " + VenueEventDate);
 
         String VenueEventAddress = getIntent().getExtras().getString("location");
         txtVenueEventAddress = (TextView) findViewById(R.id.txtVenueEventAddress);
+        txtVenueEventAddress.setTextColor(Color.parseColor(HomeActivity.writeColor));
         txtVenueEventAddress.setText(VenueEventAddress);
 
         String VenueEventImage = getIntent().getExtras().getString("image");

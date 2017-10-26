@@ -14,9 +14,9 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/llBGTGalleryGrid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorWrite"
             android:padding="3dp">
 
             <ImageView

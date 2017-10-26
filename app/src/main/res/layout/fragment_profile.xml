@@ -27,9 +27,8 @@
                 android:id="@+id/ivGroomProfilePic"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
-                android:src="@drawable/red"
+                android:src="@drawable/pic"
                 android:layout_gravity="center_horizontal"
-                app:civ_border_color="@color/colorSelect"
                 app:civ_border_width="5dp"
                 android:layout_marginLeft="30dp"/>
 
@@ -54,9 +53,8 @@
                 android:id="@+id/ivBrideProfilePic"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
-                android:src="@drawable/red"
+                android:src="@drawable/pic"
                 android:layout_gravity="center_horizontal"
-                app:civ_border_color="@color/colorSelect"
                 app:civ_border_width="5dp"
                 android:layout_marginRight="30dp"/>
 

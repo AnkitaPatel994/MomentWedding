@@ -23,9 +23,8 @@
                 android:id="@+id/ivProfileGroom"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
-                android:src="@drawable/red"
+                android:src="@drawable/pic"
                 android:layout_gravity="center_horizontal"
-                app:civ_border_color="@color/colorSelect"
                 app:civ_border_width="5dp" />
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -33,10 +32,9 @@
                 android:id="@+id/ivProfileBride"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
-                android:src="@drawable/red"
+                android:src="@drawable/pic"
                 android:layout_marginLeft="30dp"
                 android:layout_gravity="center_horizontal"
-                app:civ_border_color="@color/colorSelect"
                 app:civ_border_width="5dp" />
 
         </LinearLayout>
@@ -47,15 +45,14 @@
             android:layout_margin="20dp">
 
             <LinearLayout
+                android:id="@+id/llInviteBGT"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:paddingTop="20dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:paddingBottom="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/background_transparent">
+                android:paddingBottom="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"

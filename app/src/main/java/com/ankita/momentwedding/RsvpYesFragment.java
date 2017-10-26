@@ -12,6 +12,10 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -21,7 +25,9 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AlertDialog;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -76,7 +82,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
     String listString="";
 
     Bitmap bitmap = null;
-    String str_imgpath;
+    String str_imgpath,encodedImgpath;
     int REQUEST_CAMERA = 0, SELECT_FILE = 1;
 
     boolean clicked = true;
@@ -393,8 +399,12 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                     event_access = ProgramActivity.listString;
                 }
 
+                GetImgIdUpload imgIdUpload = new GetImgIdUpload();
+                imgIdUpload.execute();
+
                 GetRSVPList getRSVPList = new GetRSVPList(guestList,ArrivalDateTime,DepartureDateTime,DepartArrival,DepartDeparture,SpecialRemark,event_access,PNRNoArrival,PNRNoDeparture);
                 getRSVPList.execute();
+
             }
         });
 
@@ -1078,9 +1088,12 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                     e.printStackTrace();
                 }
 
-
                 Uri tempUri = getImageUri(getActivity(), bitmap);
                 str_imgpath = getRealPathFromURI(tempUri);
+
+                byte[] b = bytes.toByteArray();
+                encodedImgpath = Base64.encodeToString(b, Base64.DEFAULT);
+
                 img_photo_id.setImageBitmap(bitmap);
 
             } else if (requestCode == SELECT_FILE) {
@@ -1141,6 +1154,12 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 Uri tempUri = getImageUri(getActivity(), bitmap);
                 str_imgpath = getRealPathFromURI(tempUri);
 
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+
+                byte[] b = bytes.toByteArray();
+                encodedImgpath = Base64.encodeToString(b, Base64.DEFAULT);
+
                 img_photo_id.setImageBitmap(bitmap);
 
             }
@@ -1160,5 +1179,50 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         cursor.moveToFirst();
         int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
         return cursor.getString(idx);
+    }
+
+    private class GetImgIdUpload extends AsyncTask<String,Void,String> {
+
+        String status,message;
+        @Override
+        protected String doInBackground(String... strings) {
+
+            JSONObject joImg=new JSONObject();
+            try {
+
+                joImg.put("guest_id",HomeActivity.guest_id);
+                joImg.put("img",encodedImgpath);
+                Postdata postdata=new Postdata();
+                String pdImg=postdata.post(MainActivity.mainUrl+"guestRsvp",joImg.toString());
+                JSONObject j=new JSONObject(pdImg);
+                status=j.getString("status");
+                if(status.equals("1"))
+                {
+                    Log.d("Like","Successfully");
+                    message=j.getString("message");
+                }
+                else
+                {
+                    message=j.getString("message");
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if(status.equals("1"))
+            {
+                Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

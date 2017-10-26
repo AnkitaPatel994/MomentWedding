@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llBgGuestInviteId"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
     android:orientation="horizontal"
     tools:context="com.ankita.momentwedding.GuestInviteIdActivity">
 
@@ -21,9 +21,8 @@
             android:id="@+id/ivGroomPic"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:src="@drawable/red"
+            android:src="@drawable/pic"
             android:layout_gravity="center_horizontal"
-            app:civ_border_color="@color/colorSelect"
             app:civ_border_width="5dp" />
 
         <TextView
@@ -32,9 +31,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:textSize="20dp"
-            android:textColor="@color/colorWrite"
-            android:text="Viral" />
+            android:textSize="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llBoGuestInviteId"
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     </LinearLayout>
 
@@ -50,9 +55,8 @@
             android:id="@+id/ivBridePic"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:src="@drawable/red"
+            android:src="@drawable/pic"
             android:layout_gravity="center_horizontal"
-            app:civ_border_color="@color/colorSelect"
             app:civ_border_width="5dp" />
 
         <TextView
@@ -61,9 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:textSize="20dp"
-            android:textColor="@color/colorWrite"
-            android:text="Julita" />
+            android:textSize="20dp"/>
 
     </LinearLayout>
 

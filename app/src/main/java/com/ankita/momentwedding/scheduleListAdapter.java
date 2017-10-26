@@ -2,12 +2,15 @@ package com.ankita.momentwedding;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
@@ -65,10 +68,34 @@ class scheduleListAdapter extends RecyclerView.Adapter<scheduleListAdapter.ViewH
         final String venueWeb = scheduleListArray.get(position).get("venueWeb");
 
         holder.txtScheduleEvent.setText(name);
+        holder.txtScheduleEvent.setTextColor(Color.parseColor(HomeActivity.writeColor));
+
         holder.txtScheduleTimeAddress.setText(time+" | "+location);
+        holder.txtScheduleTimeAddress.setTextColor(Color.parseColor(HomeActivity.writeColor));
+
         holder.txtScheduleDetails.setText(event_note);
+        holder.txtScheduleDetails.setTextColor(Color.parseColor(HomeActivity.writeColor));
+
         holder.txtScheduleDate.setText(eventDay);
+        holder.txtScheduleDate.setTextColor(Color.parseColor(HomeActivity.writeColor));
+
         holder.txtScheduleMonth.setText(eventMonth);
+        holder.txtScheduleMonth.setTextColor(Color.parseColor(HomeActivity.textColor));
+
+        GradientDrawable shapeBg =  new GradientDrawable();
+        shapeBg.setColor(Color.parseColor(HomeActivity.transparentColor));
+        holder.llScheduleBGT.setBackground(shapeBg);
+
+        GradientDrawable shapeBgDe =  new GradientDrawable();
+        shapeBgDe.setColor(Color.parseColor(HomeActivity.transparentColor));
+        holder.llScheduleDetailBGT.setBackground(shapeBgDe);
+
+        GradientDrawable shapeRoundBg =  new GradientDrawable();
+        shapeRoundBg.setShape(GradientDrawable.OVAL);
+        shapeRoundBg.setStroke(3,Color.parseColor(HomeActivity.roundBorderColor));
+        shapeRoundBg.setCornerRadius(10);
+        shapeRoundBg.setColor(Color.parseColor(HomeActivity.selectColor));
+        holder.llRoungBG.setBackground(shapeRoundBg);
 
         final String image = scheduleListArray.get(position).get("image");
 
@@ -120,6 +147,7 @@ class scheduleListAdapter extends RecyclerView.Adapter<scheduleListAdapter.ViewH
 
         ImageView ivSchedulePic;
         TextView txtScheduleDate,txtScheduleMonth,txtScheduleEvent,txtScheduleTimeAddress,txtScheduleDetails;
+        LinearLayout llScheduleBGT,llScheduleDetailBGT,llRoungBG;
 
         public ViewHolder(View v) {
             super(v);
@@ -130,6 +158,9 @@ class scheduleListAdapter extends RecyclerView.Adapter<scheduleListAdapter.ViewH
             txtScheduleEvent =(TextView) v.findViewById(R.id.txtScheduleEvent);
             txtScheduleTimeAddress =(TextView) v.findViewById(R.id.txtScheduleTimeAddress);
             txtScheduleDetails =(TextView) v.findViewById(R.id.txtScheduleDetails);
+            llScheduleBGT =(LinearLayout) v.findViewById(R.id.llScheduleBGT);
+            llScheduleDetailBGT =(LinearLayout) v.findViewById(R.id.llScheduleDetailBGT);
+            llRoungBG =(LinearLayout) v.findViewById(R.id.llRoungBG);
         }
     }
 
