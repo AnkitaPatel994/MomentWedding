@@ -399,8 +399,8 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                     event_access = ProgramActivity.listString;
                 }
 
-                GetImgIdUpload imgIdUpload = new GetImgIdUpload();
-                imgIdUpload.execute();
+                /*GetImgIdUpload imgIdUpload = new GetImgIdUpload();
+                imgIdUpload.execute();*/
 
                 GetRSVPList getRSVPList = new GetRSVPList(guestList,ArrivalDateTime,DepartureDateTime,DepartArrival,DepartDeparture,SpecialRemark,event_access,PNRNoArrival,PNRNoDeparture);
                 getRSVPList.execute();
@@ -964,6 +964,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 joRsvp.put("event_access",event_access);
                 joRsvp.put("arriving_pnr",PNRNoArrival);
                 joRsvp.put("departing_pnr",PNRNoDeparture);
+                joRsvp.put("guest_image",encodedImgpath);
 
                 Postdata postdata=new Postdata();
                 String pdRsvp=postdata.post(MainActivity.mainUrl+"guestRsvp",joRsvp.toString());
@@ -1181,7 +1182,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         return cursor.getString(idx);
     }
 
-    private class GetImgIdUpload extends AsyncTask<String,Void,String> {
+    /*private class GetImgIdUpload extends AsyncTask<String,Void,String> {
 
         String status,message;
         @Override
@@ -1224,5 +1225,5 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
             }
         }
-    }
+    }*/
 }

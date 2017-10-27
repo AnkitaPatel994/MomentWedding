@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -52,10 +53,15 @@ public class VendorActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
+        LinearLayout llBgVendorColor = (LinearLayout)findViewById(R.id.llBgVendorColor);
+        llBgVendorColor.setBackgroundColor(Color.parseColor(GetTheme.backgroundColor));
+
+        LinearLayout llBgVendorImg = (LinearLayout)findViewById(R.id.llBgVendorImg);
+
         RelativeLayout rlVendorBGT = (RelativeLayout)findViewById(R.id.rlVendorBGT);
         GradientDrawable shapeBg =  new GradientDrawable();
         shapeBg.setCornerRadius(10);
-        shapeBg.setColor(Color.parseColor(HomeActivity.transparentColor));
+        shapeBg.setColor(Color.parseColor(GetTheme.transparentColor));
         rlVendorBGT.setBackground(shapeBg);
 
         ivVenderLogo = (ImageView)findViewById(R.id.ivVenderLogo);
@@ -121,12 +127,14 @@ public class VendorActivity extends AppCompatActivity {
         });
 
         txtVenderDetails = (TextView)findViewById(R.id.txtVenderDetails);
+        txtVenderDetails.setTextColor(Color.parseColor(GetTheme.textLight));
 
         GetVendorList getVendorList = new GetVendorList();
         getVendorList.execute();
 
         ratingBar = (RatingBar)findViewById(R.id.ratingBar);
         btnSR = (Button)findViewById(R.id.btnSR);
+        //btnSR.setTextColor(Color.parseColor(HomeActivity.buttonTextLoginColor));
         btnSR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

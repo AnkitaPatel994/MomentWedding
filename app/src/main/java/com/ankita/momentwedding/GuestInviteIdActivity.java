@@ -46,22 +46,16 @@ public class GuestInviteIdActivity extends AppCompatActivity {
         llBride = (LinearLayout)findViewById(R.id.llBride);
 
         ivGroomPic = (CircleImageView)findViewById(R.id.ivGroomPic);
-        ivGroomPic.setBorderColor(Color.parseColor(MainActivity.primaryDarkColor));
 
         ivBridePic = (CircleImageView)findViewById(R.id.ivBridePic);
-        ivBridePic.setBorderColor(Color.parseColor(MainActivity.primaryDarkColor));
 
         txtGroomName = (TextView)findViewById(R.id.txtGroomName);
-        txtGroomName.setTextColor(Color.parseColor(MainActivity.textLight));
 
         txtBrideName = (TextView)findViewById(R.id.txtBrideName);
-        txtBrideName.setTextColor(Color.parseColor(MainActivity.textLight));
 
         llBgGuestInviteId = (LinearLayout)findViewById(R.id.llBgGuestInviteId);
-        llBgGuestInviteId.setBackgroundColor(Color.parseColor(MainActivity.primaryColor));
 
         llBoGuestInviteId = (LinearLayout)findViewById(R.id.llBoGuestInviteId);
-        llBoGuestInviteId.setBackgroundColor(Color.parseColor(MainActivity.primaryDarkColor));
 
         weddingId = getIntent().getExtras().getString("weddingId");
         mobileNo = getIntent().getExtras().getString("mobileNo");

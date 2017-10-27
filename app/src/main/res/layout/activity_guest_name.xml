@@ -15,7 +15,6 @@
         android:layout_marginBottom="100dp"/>
 
     <TextView
-        android:id="@+id/lableGuestName"
         style="@style/TextView_style"
         android:text="@string/txt_Name" />
 

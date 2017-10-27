@@ -57,21 +57,21 @@ class familyMemberListAdapter extends RecyclerView.Adapter<familyMemberListAdapt
 
         String member_pic = familyMemberListArray.get(position).get("member_pic");
 
-        holder.ivFMProfile.setBorderColor(Color.parseColor(HomeActivity.selectColor));
+        holder.ivFMProfile.setBorderColor(Color.parseColor(GetTheme.primaryDarkColor));
 
         GradientDrawable shapeBg =  new GradientDrawable();
         shapeBg.setCornerRadius(10);
-        shapeBg.setColor(Color.parseColor(HomeActivity.transparentColor));
+        shapeBg.setColor(Color.parseColor(GetTheme.transparentColor));
         holder.llMemberBgTransparent.setBackground(shapeBg);
 
         holder.txtFMName.setText(member_name);
-        holder.txtFMName.setTextColor(Color.parseColor(HomeActivity.writeColor));
+        holder.txtFMName.setTextColor(Color.parseColor(GetTheme.textLight));
 
         holder.txtFMRelation.setText(member_relation);
-        holder.txtFMRelation.setTextColor(Color.parseColor(HomeActivity.textColor));
+        holder.txtFMRelation.setTextColor(Color.parseColor(GetTheme.lableTextColor));
 
         holder.txtFMDetails.setText(member_details);
-        holder.txtFMDetails.setTextColor(Color.parseColor(HomeActivity.writeColor));
+        holder.txtFMDetails.setTextColor(Color.parseColor(GetTheme.textLight));
 
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)

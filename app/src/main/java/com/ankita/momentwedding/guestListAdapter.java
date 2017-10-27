@@ -1,12 +1,16 @@
 package com.ankita.momentwedding;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
@@ -79,7 +83,6 @@ class guestListAdapter extends RecyclerView.Adapter<guestListAdapter.ViewHolder>
                 .showImageOnFail(fallback)
                 .showImageOnLoading(fallback).build();
 
-
         imageLoader.displayImage(image,holder.ivGlGuestPic, options);
     }
 
@@ -92,12 +95,14 @@ class guestListAdapter extends RecyclerView.Adapter<guestListAdapter.ViewHolder>
 
         CircleImageView ivGlGuestPic;
         TextView txtGlGuestName,txtGlGuestDate;
+        LinearLayout llBGGuestList;
 
         public ViewHolder(View view) {
             super(view);
             ivGlGuestPic = (CircleImageView)v.findViewById(R.id.ivGlGuestPic);
             txtGlGuestName = (TextView)v.findViewById(R.id.txtGlGuestName);
             txtGlGuestDate = (TextView)v.findViewById(R.id.txtGlGuestDate);
+            llBGGuestList = (LinearLayout) v.findViewById(R.id.llBGGuestList);
         }
     }
 }

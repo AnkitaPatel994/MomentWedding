@@ -67,12 +67,16 @@ public class ProfileFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         ivGroomProfilePic = (CircleImageView)view.findViewById(R.id.ivGroomProfilePic);
-        ivGroomProfilePic.setBorderColor(Color.parseColor(HomeActivity.selectColor));
+        //ivGroomProfilePic.setBorderColor(Color.parseColor(MainActivity.primaryDarkColor));
+
         ivBrideProfilePic = (CircleImageView)view.findViewById(R.id.ivBrideProfilePic);
-        ivBrideProfilePic.setBorderColor(Color.parseColor(HomeActivity.selectColor));
+        //ivBrideProfilePic.setBorderColor(Color.parseColor(MainActivity.primaryDarkColor));
 
         txtProGroomName = (TextView) view.findViewById(R.id.txtProGroomName);
+        //txtProBrideName.setTextColor(Color.parseColor(MainActivity.textDark));
+
         txtProBrideName = (TextView) view.findViewById(R.id.txtProBrideName);
+        //txtProBrideName.setTextColor(Color.parseColor(MainActivity.textDark));
 
         rvGuestList = (RecyclerView) view.findViewById(R.id.rvGuestList);
         rvGuestList.setHasFixedSize(true);

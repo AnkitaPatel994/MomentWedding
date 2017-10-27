@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,8 +23,6 @@ public class MobileNoActivity extends AppCompatActivity {
 
     EditText txtMobaileNo;
     Button btnVerification;
-    LinearLayout llBGMobile;
-    TextView lableMobile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,20 +33,11 @@ public class MobileNoActivity extends AppCompatActivity {
         txtMobaileNo = (EditText)findViewById(R.id.txtMobaileNo);
         btnVerification = (Button)findViewById(R.id.btnVerification);
 
-        llBGMobile = (LinearLayout)findViewById(R.id.llBGMobile);
-        llBGMobile.setBackgroundColor(Color.parseColor(MainActivity.primaryColor));
-
-        lableMobile = (TextView) findViewById(R.id.lableMobile);
-        lableMobile.setTextColor(Color.parseColor(MainActivity.textLight));
-
         GradientDrawable shapeBg =  new GradientDrawable();
-        shapeBg.setStroke(3,Color.parseColor(MainActivity.editTextLoginBorderColor));
+        shapeBg.setStroke(3, ContextCompat.getColor(MobileNoActivity.this,R.color.colorYellow));
         shapeBg.setCornerRadius(5);
-        shapeBg.setColor(Color.parseColor(MainActivity.primaryColor));
+        shapeBg.setColor(ContextCompat.getColor(MobileNoActivity.this,R.color.colorPrimary));
         txtMobaileNo.setBackground(shapeBg);
-        txtMobaileNo.setTextColor(Color.parseColor(MainActivity.textLoginColor));
-
-        btnVerification.setTextColor(Color.parseColor(MainActivity.buttonTextLoginColor));
 
         btnVerification.setOnClickListener(new View.OnClickListener() {
             @Override

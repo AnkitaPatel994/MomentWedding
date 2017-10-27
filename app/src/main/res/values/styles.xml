@@ -26,6 +26,7 @@
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textColor">@color/colorYellow</item>
     </style>
 
     <style name="TextView_style">
@@ -34,12 +35,14 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">15dp</item>
         <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textColor">@color/colorWrite</item>
     </style>
 
     <style name="Button_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">5dp</item>
+        <item name="android:textColor">@color/colorYellow</item>
     </style>
 
     <style name="LinearLayout_style">
@@ -47,6 +50,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:orientation">vertical</item>
         <item name="android:padding">50dp</item>
+        <item name="android:background">@color/colorPrimary</item>
     </style>
 
     <style name="clock_TextView">

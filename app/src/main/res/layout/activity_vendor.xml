@@ -3,18 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llBgVendorColor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorSelect"
     tools:context="com.ankita.momentwedding.VendorActivity">
 
     <LinearLayout
+        android:id="@+id/llBgVendorImg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="20dp"
-        android:background="@drawable/img">
+        android:padding="20dp">
 
         <RelativeLayout
             android:id="@+id/rlVendorBGT"
@@ -87,7 +87,6 @@
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
-                    android:textColor="@color/colorWrite"
                     android:textSize="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -111,7 +110,9 @@
                     android:layout_height="wrap_content"
                     android:numStars="5"
                     android:rating="0"
-                    android:stepSize="0.5"/>
+                    android:stepSize="0.5"
+                    android:progressBackgroundTint="#FFF"
+                    android:progressTint="@color/colorGray"/>
 
                 <Button
                     android:id="@+id/btnSR"

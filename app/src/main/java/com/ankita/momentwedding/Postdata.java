@@ -39,8 +39,8 @@ public class Postdata {
 
     public String post(String url, String json) {
 
-        client.setConnectTimeout(300, TimeUnit.SECONDS); // connect timeout
-        client.setReadTimeout(300, TimeUnit.SECONDS);    // socket timeout
+        client.setConnectTimeout(1000, TimeUnit.SECONDS); // connect timeout
+        client.setReadTimeout(1000, TimeUnit.SECONDS);    // socket timeout
 
         body = RequestBody.create(JSON, json);
 

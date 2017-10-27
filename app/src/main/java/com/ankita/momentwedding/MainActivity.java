@@ -18,9 +18,9 @@ public class MainActivity extends AppCompatActivity {
     SessionManager session;
     int flag = 0;
 
-    public static String primaryColor,primaryDarkColor,textLight,textDark;
+    //public static String primaryColor,primaryDarkColor,backgroundColor,backgroundImg,galleryImgBG,transparentColor,textLight,textDark,textTitleColor,lableTextColor,clockTopBgColor;
 
-    public static String editTextLoginBorderColor,textLoginColor,buttonTextLoginColor;
+    //public static String editTextLoginBorderColor,textLoginColor,buttonTextLoginColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,27 +28,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
-        /*---------------- Theme ------------------*/
-
-        primaryColor = "#790c17";
-        primaryDarkColor = "#6e0a14";
-        textLight = "#ffffff";
-        textDark = "#b9b2b0";
-
-        /*------ Login Page ------*/
-        editTextLoginBorderColor = "#e2a237";
-        textLoginColor = "#e2a237";
-        buttonTextLoginColor = "#e2a237";
-
-
-
-        /*---------------- Theme ------------------*/
-
         session = new SessionManager(getApplicationContext());
         flag = session.checkLogin();
 
         lnSnackbar = (LinearLayout)findViewById(R.id.lnSnackbar);
-        lnSnackbar.setBackgroundColor(Color.parseColor(primaryColor));
 
         ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(this.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo=connectivityManager.getActiveNetworkInfo();

@@ -17,6 +17,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,23 +43,29 @@ public class OneProfileActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
+        LinearLayout llBgOPColor = (LinearLayout)findViewById(R.id.llBgOPColor);
+        llBgOPColor.setBackgroundColor(Color.parseColor(GetTheme.backgroundColor));
+
+        LinearLayout llBgOPImg = (LinearLayout)findViewById(R.id.llBgOPImg);
+
+
         LinearLayout llBgTransparent = (LinearLayout)findViewById(R.id.llBgTransparent);
         GradientDrawable shapeBg =  new GradientDrawable();
         shapeBg.setCornerRadius(10);
-        shapeBg.setColor(Color.parseColor(HomeActivity.transparentColor));
+        shapeBg.setColor(Color.parseColor(GetTheme.transparentColor));
         llBgTransparent.setBackground(shapeBg);
 
         txtProfileName = (TextView)findViewById(R.id.txtProfileName);
-        txtProfileName.setTextColor(Color.parseColor(HomeActivity.writeColor));
+        txtProfileName.setTextColor(Color.parseColor(GetTheme.textLight));
 
         txtProfileOccupation = (TextView)findViewById(R.id.txtProfileOccupation);
-        txtProfileOccupation.setTextColor(Color.parseColor(HomeActivity.writeColor));
+        txtProfileOccupation.setTextColor(Color.parseColor(GetTheme.textLight));
 
         txtProfileDetails = (TextView)findViewById(R.id.txtProfileDetails);
-        txtProfileDetails.setTextColor(Color.parseColor(HomeActivity.writeColor));
+        txtProfileDetails.setTextColor(Color.parseColor(GetTheme.textLight));
 
         ivProfilePic = (CircleImageView)findViewById(R.id.ivProfilePic);
-        ivProfilePic.setBorderColor(Color.parseColor(HomeActivity.selectColor));
+        ivProfilePic.setBorderColor(Color.parseColor(GetTheme.primaryDarkColor));
 
         String profileId = getIntent().getExtras().getString("profile_id");
 

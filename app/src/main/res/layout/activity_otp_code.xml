@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/llBgOtp"
     style="@style/LinearLayout_style"
     tools:context="com.ankita.momentwedding.OTPCodeActivity">
 
@@ -15,7 +14,6 @@
         android:layout_marginBottom="100dp"/>
 
     <TextView
-        android:id="@+id/lableOpt"
         style="@style/TextView_style"
         android:text="@string/txt_otp_code" />
 

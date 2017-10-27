@@ -68,33 +68,33 @@ class scheduleListAdapter extends RecyclerView.Adapter<scheduleListAdapter.ViewH
         final String venueWeb = scheduleListArray.get(position).get("venueWeb");
 
         holder.txtScheduleEvent.setText(name);
-        holder.txtScheduleEvent.setTextColor(Color.parseColor(HomeActivity.writeColor));
+        holder.txtScheduleEvent.setTextColor(Color.parseColor(GetTheme.textTitleColor));
 
         holder.txtScheduleTimeAddress.setText(time+" | "+location);
-        holder.txtScheduleTimeAddress.setTextColor(Color.parseColor(HomeActivity.writeColor));
+        holder.txtScheduleTimeAddress.setTextColor(Color.parseColor(GetTheme.textLight));
 
         holder.txtScheduleDetails.setText(event_note);
-        holder.txtScheduleDetails.setTextColor(Color.parseColor(HomeActivity.writeColor));
+        holder.txtScheduleDetails.setTextColor(Color.parseColor(GetTheme.textLight));
 
         holder.txtScheduleDate.setText(eventDay);
-        holder.txtScheduleDate.setTextColor(Color.parseColor(HomeActivity.writeColor));
+        holder.txtScheduleDate.setTextColor(Color.parseColor(GetTheme.textLight));
 
         holder.txtScheduleMonth.setText(eventMonth);
-        holder.txtScheduleMonth.setTextColor(Color.parseColor(HomeActivity.textColor));
+        holder.txtScheduleMonth.setTextColor(Color.parseColor(GetTheme.lableTextColor));
 
         GradientDrawable shapeBg =  new GradientDrawable();
-        shapeBg.setColor(Color.parseColor(HomeActivity.transparentColor));
+        shapeBg.setColor(Color.parseColor(GetTheme.transparentColor));
         holder.llScheduleBGT.setBackground(shapeBg);
 
         GradientDrawable shapeBgDe =  new GradientDrawable();
-        shapeBgDe.setColor(Color.parseColor(HomeActivity.transparentColor));
+        shapeBgDe.setColor(Color.parseColor(GetTheme.transparentColor));
         holder.llScheduleDetailBGT.setBackground(shapeBgDe);
 
         GradientDrawable shapeRoundBg =  new GradientDrawable();
         shapeRoundBg.setShape(GradientDrawable.OVAL);
-        shapeRoundBg.setStroke(3,Color.parseColor(HomeActivity.roundBorderColor));
+        shapeRoundBg.setStroke(3,Color.parseColor(GetTheme.lableTextColor));
         shapeRoundBg.setCornerRadius(10);
-        shapeRoundBg.setColor(Color.parseColor(HomeActivity.selectColor));
+        shapeRoundBg.setColor(Color.parseColor(GetTheme.primaryDarkColor));
         holder.llRoungBG.setBackground(shapeRoundBg);
 
         final String image = scheduleListArray.get(position).get("image");
