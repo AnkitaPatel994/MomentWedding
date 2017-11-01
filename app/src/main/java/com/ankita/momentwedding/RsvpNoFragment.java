@@ -1,17 +1,23 @@
 package com.ankita.momentwedding;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -48,8 +54,18 @@ public class RsvpNoFragment extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_rsvp_no, container, false);
 
+        TextView tvReason = (TextView)v.findViewById(R.id.tvReason);
+        tvReason.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+
+        TextView tvWishes = (TextView)v.findViewById(R.id.tvWishes);
+        tvWishes.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+
         txtReason = (EditText)v.findViewById(R.id.txtReason);
+        txtReason.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+
         txtWishes = (EditText)v.findViewById(R.id.txtWishes);
+        txtWishes.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+
         btnSRNo = (Button) v.findViewById(R.id.btnSRNo);
 
         btnSRNo.setOnClickListener(new View.OnClickListener() {
@@ -70,12 +86,22 @@ public class RsvpNoFragment extends Fragment {
     private class GetRSVPListNo extends AsyncTask<String,Void,String> {
 
         String reason,wishes,status,message;
+        ProgressDialog dialog;
 
         public GetRSVPListNo(String reason, String wishes) {
 
             this.reason = reason;
             this.wishes = wishes;
 
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog = new ProgressDialog(getActivity());
+            dialog.setMessage("Loading...");
+            dialog.setCancelable(true);
+            dialog.show();
         }
 
         @Override
@@ -112,11 +138,21 @@ public class RsvpNoFragment extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            dialog.dismiss();
             if(status.equals("1"))
             {
-                Intent i = new Intent(getActivity(),HomeActivity.class);
-                startActivity(i);
-                getActivity().finish();
+                AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+                alert.setMessage("Thank You!");
+                alert.setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent intent = new Intent(getActivity(),HomeActivity.class);
+                                startActivity(intent);
+                                getActivity().finish();
+                            }
+                        });
+                alert.show();
             }
             else
             {

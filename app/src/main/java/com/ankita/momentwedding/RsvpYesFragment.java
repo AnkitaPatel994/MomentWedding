@@ -93,6 +93,8 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
     int hour = c.get(Calendar.HOUR_OF_DAY);
     int minute = c.get(Calendar.MINUTE);
 
+    GradientDrawable shapeBgSelect,shapeBg;
+
     public RsvpYesFragment() {
         // Required empty public constructor
     }
@@ -115,8 +117,20 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         v =inflater.inflate(R.layout.fragment_rsvp_yes, container, false);
+
+        TextView tvGuest = (TextView)v.findViewById(R.id.tvGuest);
+        tvGuest.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+
+        TextView tvArrival = (TextView)v.findViewById(R.id.tvArrival);
+        tvArrival.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+
+        TextView tvDeparture = (TextView)v.findViewById(R.id.tvDeparture);
+        tvDeparture.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+
+        LinearLayout llBgBorsvp = (LinearLayout)v.findViewById(R.id.llBgBorsvp);
+        llBgBorsvp.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
         scrollView = (ScrollView)v.findViewById(R.id.Scroll);
         scrollView.fullScroll(ScrollView.FOCUS_UP);
@@ -125,44 +139,77 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         txt1 = (TextView)v.findViewById(R.id.txt1);
         ll1.setOnClickListener(this);
 
-        ll1.setBackgroundResource(R.drawable.box_border_selected);
-        txt1.setTextColor(getResources().getColor(R.color.colorWrite));
+        shapeBgSelect =  new GradientDrawable();
+        shapeBgSelect.setStroke(4,ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+        shapeBgSelect.setCornerRadius(3);
+        shapeBgSelect.setColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        ll1.setBackground(shapeBgSelect);
+
+        txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
 
         ll2 = (LinearLayout)v.findViewById(R.id.ll2);
         txt2 = (TextView)v.findViewById(R.id.txt2);
         ll2.setOnClickListener(this);
 
+        shapeBg =  new GradientDrawable();
+        shapeBg.setStroke(4,ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        shapeBg.setCornerRadius(3);
+        shapeBg.setColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+        ll2.setBackground(shapeBg);
+        txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+
         ll3 = (LinearLayout)v.findViewById(R.id.ll3);
         txt3 = (TextView)v.findViewById(R.id.txt3);
         ll3.setOnClickListener(this);
+        ll3.setBackground(shapeBg);
+        txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
         ll4 = (LinearLayout)v.findViewById(R.id.ll4);
         txt4 = (TextView)v.findViewById(R.id.txt4);
         ll4.setOnClickListener(this);
+        ll4.setBackground(shapeBg);
+        txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
         ll5 = (LinearLayout)v.findViewById(R.id.ll5);
         txt5 = (TextView)v.findViewById(R.id.txt5);
         ll5.setOnClickListener(this);
+        ll5.setBackground(shapeBg);
+        txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
         ll6 = (LinearLayout)v.findViewById(R.id.ll6);
         txt6 = (TextView)v.findViewById(R.id.txt6);
         ll6.setOnClickListener(this);
+        ll6.setBackground(shapeBg);
+        txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
         ll7 = (LinearLayout)v.findViewById(R.id.ll7);
         txt7 = (TextView)v.findViewById(R.id.txt7);
         ll7.setOnClickListener(this);
+        ll7.setBackground(shapeBg);
+        txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
         ll8 = (LinearLayout)v.findViewById(R.id.ll8);
         txt8 = (TextView)v.findViewById(R.id.txt8);
         ll8.setOnClickListener(this);
+        ll8.setBackground(shapeBg);
+        txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
         ll9 = (LinearLayout)v.findViewById(R.id.ll9);
         txt9 = (TextView)v.findViewById(R.id.txt9);
         ll9.setOnClickListener(this);
+        ll9.setBackground(shapeBg);
+        txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
         LinearLayout llArrival = (LinearLayout)v.findViewById(R.id.llArrival);
+        GradientDrawable shapeBgDT =  new GradientDrawable();
+        shapeBgDT.setCornerRadius(10);
+        shapeBgDT.setColor(ContextCompat.getColor(getActivity(),R.color.colorClockTopBg));
+        llArrival.setBackground(shapeBgDT);
+
         final TextView txtArrivalDate = (TextView)v.findViewById(R.id.txtArrivalDate);
+        txtArrivalDate.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
         final TextView txtArrivalTime = (TextView)v.findViewById(R.id.txtArrivalTime);
+        txtArrivalTime.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
 
         SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy");
         txtArrivalDate.setText(sdfDate.format(new Date()));
@@ -228,6 +275,25 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+        GradientDrawable shapeRoundBg =  new GradientDrawable();
+        shapeRoundBg.setShape(GradientDrawable.OVAL);
+        shapeRoundBg.setSize(120,120);
+        shapeRoundBg.setStroke(1,ContextCompat.getColor(getActivity(),R.color.colorLableText));
+        shapeRoundBg.setCornerRadius(10);
+        shapeRoundBg.setColor(ContextCompat.getColor(getActivity(),R.color.colorPrimaryDark));
+
+        ImageView ivACRound = (ImageView)v.findViewById(R.id.ivACRound);
+        ivACRound.setBackground(shapeRoundBg);
+
+        ImageView ivABRound = (ImageView)v.findViewById(R.id.ivABRound);
+        ivABRound.setBackground(shapeRoundBg);
+
+        ImageView ivARRound = (ImageView)v.findViewById(R.id.ivARRound);
+        ivARRound.setBackground(shapeRoundBg);
+
+        ImageView ivAARound = (ImageView)v.findViewById(R.id.ivAARound);
+        ivAARound.setBackground(shapeRoundBg);
+
         rlArrivalCar = (RelativeLayout)v.findViewById(R.id.rlArrivalCar);
         ivArrivalCar = (ImageView)v.findViewById(R.id.ivArrivalCar);
         rlArrivalCar.setOnClickListener(this);
@@ -246,8 +312,12 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         rlArrivalAirplane.setOnClickListener(this);
 
         LinearLayout llDeparture = (LinearLayout)v.findViewById(R.id.llDeparture);
+        llDeparture.setBackground(shapeBgDT);
+
         final TextView txtDepartureDate = (TextView)v.findViewById(R.id.txtDepartureDate);
+        txtDepartureDate.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
         final TextView txtDepartureTime = (TextView)v.findViewById(R.id.txtDepartureTime);
+        txtDepartureTime.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
 
         SimpleDateFormat sdfDate1 = new SimpleDateFormat("dd/MM/yyyy");
         txtDepartureDate.setText(sdfDate.format(new Date()));
@@ -310,6 +380,18 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+        ImageView ivDCRound = (ImageView)v.findViewById(R.id.ivDCRound);
+        ivDCRound.setBackground(shapeRoundBg);
+
+        ImageView ivDBRound = (ImageView)v.findViewById(R.id.ivDBRound);
+        ivDBRound.setBackground(shapeRoundBg);
+
+        ImageView ivDRRound = (ImageView)v.findViewById(R.id.ivDRRound);
+        ivDRRound.setBackground(shapeRoundBg);
+
+        ImageView ivDARound = (ImageView)v.findViewById(R.id.ivDARound);
+        ivDARound.setBackground(shapeRoundBg);
+
         rlDepartureCar = (RelativeLayout)v.findViewById(R.id.rlDepartureCar);
         ivDepartureCar = (ImageView)v.findViewById(R.id.ivDepartureCar);
         rlDepartureCar.setOnClickListener(this);
@@ -327,17 +409,34 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         ivDepartureAirplane = (ImageView)v.findViewById(R.id.ivDepartureAirplane);
         rlDepartureAirplane.setOnClickListener(this);
 
+        TextView tvSR = (TextView)v.findViewById(R.id.tvSR);
+        tvSR.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+
+        TextView tvAllProgram = (TextView)v.findViewById(R.id.tvAllProgram);
+        tvAllProgram.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+
+        TextView tvUpload = (TextView)v.findViewById(R.id.tvUpload);
+        tvUpload.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+
         final EditText txtSR = (EditText)v.findViewById(R.id.txtSR);
+        txtSR.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+
         final EditText txtPNRNoA = (EditText)v.findViewById(R.id.txtPNRNoA);
+        txtPNRNoA.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+
         final EditText txtPNRNoD = (EditText)v.findViewById(R.id.txtPNRNoD);
+        txtPNRNoD.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
 
         rgYesNo = (RadioGroup)v.findViewById(R.id.rgYesNo);
         rbYes = (RadioButton) v.findViewById(R.id.rbYes);
+        rbYes.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
         rbYes.setChecked(true);
         GetProgramId getProgramId = new GetProgramId();
         getProgramId.execute();
 
         rbNo = (RadioButton) v.findViewById(R.id.rbNo);
+        rbNo.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+
         /*int selectedId = rgYesNo.getCheckedRadioButtonId();
         rbYesNo = (RadioButton)v.findViewById(selectedId);*/
         rgYesNo.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -398,9 +497,6 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 {
                     event_access = ProgramActivity.listString;
                 }
-
-                /*GetImgIdUpload imgIdUpload = new GetImgIdUpload();
-                imgIdUpload.execute();*/
 
                 GetRSVPList getRSVPList = new GetRSVPList(guestList,ArrivalDateTime,DepartureDateTime,DepartArrival,DepartDeparture,SpecialRemark,event_access,PNRNoArrival,PNRNoDeparture);
                 getRSVPList.execute();
@@ -479,31 +575,29 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ll1.setBackgroundResource(R.drawable.box_border);
-                txt1.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
             {
-                ll1.setBackgroundResource(R.drawable.box_border_selected);
-                ll2.setBackgroundResource(R.drawable.box_border);
-                ll3.setBackgroundResource(R.drawable.box_border);
-                ll4.setBackgroundResource(R.drawable.box_border);
-                ll5.setBackgroundResource(R.drawable.box_border);
-                ll6.setBackgroundResource(R.drawable.box_border);
-                ll7.setBackgroundResource(R.drawable.box_border);
-                ll8.setBackgroundResource(R.drawable.box_border);
-                ll9.setBackgroundResource(R.drawable.box_border);
+                ll1.setBackground(shapeBgSelect);
+                ll2.setBackground(shapeBg);
+                ll3.setBackground(shapeBg);
+                ll4.setBackground(shapeBg);
+                ll5.setBackground(shapeBg);
+                ll6.setBackground(shapeBg);
+                ll7.setBackground(shapeBg);
+                ll8.setBackground(shapeBg);
+                ll9.setBackground(shapeBg);
 
-                txt1.setTextColor(getResources().getColor(R.color.colorWrite));
-                txt2.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt3.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt4.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt5.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt6.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt7.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt8.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt9.setTextColor(getResources().getColor(R.color.colorPrimary));
+                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
                 clicked=false;
 
@@ -514,31 +608,29 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ll2.setBackgroundResource(R.drawable.box_border);
-                txt2.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
             {
-                ll2.setBackgroundResource(R.drawable.box_border_selected);
-                ll1.setBackgroundResource(R.drawable.box_border);
-                ll3.setBackgroundResource(R.drawable.box_border);
-                ll4.setBackgroundResource(R.drawable.box_border);
-                ll5.setBackgroundResource(R.drawable.box_border);
-                ll6.setBackgroundResource(R.drawable.box_border);
-                ll7.setBackgroundResource(R.drawable.box_border);
-                ll8.setBackgroundResource(R.drawable.box_border);
-                ll9.setBackgroundResource(R.drawable.box_border);
+                ll2.setBackground(shapeBgSelect);
+                ll1.setBackground(shapeBg);
+                ll3.setBackground(shapeBg);
+                ll4.setBackground(shapeBg);
+                ll5.setBackground(shapeBg);
+                ll6.setBackground(shapeBg);
+                ll7.setBackground(shapeBg);
+                ll8.setBackground(shapeBg);
+                ll9.setBackground(shapeBg);
 
-                txt2.setTextColor(getResources().getColor(R.color.colorWrite));
-                txt1.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt3.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt4.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt5.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt6.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt7.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt8.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt9.setTextColor(getResources().getColor(R.color.colorPrimary));
+                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
                 clicked=false;
                 text = "2";
@@ -548,31 +640,29 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ll3.setBackgroundResource(R.drawable.box_border);
-                txt3.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
             {
-                ll3.setBackgroundResource(R.drawable.box_border_selected);
-                ll2.setBackgroundResource(R.drawable.box_border);
-                ll1.setBackgroundResource(R.drawable.box_border);
-                ll4.setBackgroundResource(R.drawable.box_border);
-                ll5.setBackgroundResource(R.drawable.box_border);
-                ll6.setBackgroundResource(R.drawable.box_border);
-                ll7.setBackgroundResource(R.drawable.box_border);
-                ll8.setBackgroundResource(R.drawable.box_border);
-                ll9.setBackgroundResource(R.drawable.box_border);
+                ll3.setBackground(shapeBgSelect);
+                ll2.setBackground(shapeBg);
+                ll1.setBackground(shapeBg);
+                ll4.setBackground(shapeBg);
+                ll5.setBackground(shapeBg);
+                ll6.setBackground(shapeBg);
+                ll7.setBackground(shapeBg);
+                ll8.setBackground(shapeBg);
+                ll9.setBackground(shapeBg);
 
-                txt3.setTextColor(getResources().getColor(R.color.colorWrite));
-                txt2.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt1.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt4.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt5.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt6.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt7.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt8.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt9.setTextColor(getResources().getColor(R.color.colorPrimary));
+                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
                 clicked=false;
                 text = "3";
@@ -582,31 +672,29 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ll4.setBackgroundResource(R.drawable.box_border);
-                txt4.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
             {
-                ll4.setBackgroundResource(R.drawable.box_border_selected);
-                ll2.setBackgroundResource(R.drawable.box_border);
-                ll3.setBackgroundResource(R.drawable.box_border);
-                ll1.setBackgroundResource(R.drawable.box_border);
-                ll5.setBackgroundResource(R.drawable.box_border);
-                ll6.setBackgroundResource(R.drawable.box_border);
-                ll7.setBackgroundResource(R.drawable.box_border);
-                ll8.setBackgroundResource(R.drawable.box_border);
-                ll9.setBackgroundResource(R.drawable.box_border);
+                ll4.setBackground(shapeBgSelect);
+                ll2.setBackground(shapeBg);
+                ll3.setBackground(shapeBg);
+                ll1.setBackground(shapeBg);
+                ll5.setBackground(shapeBg);
+                ll6.setBackground(shapeBg);
+                ll7.setBackground(shapeBg);
+                ll8.setBackground(shapeBg);
+                ll9.setBackground(shapeBg);
 
-                txt4.setTextColor(getResources().getColor(R.color.colorWrite));
-                txt2.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt3.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt1.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt5.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt6.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt7.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt8.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt9.setTextColor(getResources().getColor(R.color.colorPrimary));
+                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
                 clicked=false;
                 text = "4";
@@ -616,31 +704,29 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ll5.setBackgroundResource(R.drawable.box_border);
-                txt5.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
             {
-                ll5.setBackgroundResource(R.drawable.box_border_selected);
-                ll2.setBackgroundResource(R.drawable.box_border);
-                ll3.setBackgroundResource(R.drawable.box_border);
-                ll4.setBackgroundResource(R.drawable.box_border);
-                ll1.setBackgroundResource(R.drawable.box_border);
-                ll6.setBackgroundResource(R.drawable.box_border);
-                ll7.setBackgroundResource(R.drawable.box_border);
-                ll8.setBackgroundResource(R.drawable.box_border);
-                ll9.setBackgroundResource(R.drawable.box_border);
+                ll5.setBackground(shapeBgSelect);
+                ll2.setBackground(shapeBg);
+                ll3.setBackground(shapeBg);
+                ll4.setBackground(shapeBg);
+                ll1.setBackground(shapeBg);
+                ll6.setBackground(shapeBg);
+                ll7.setBackground(shapeBg);
+                ll8.setBackground(shapeBg);
+                ll9.setBackground(shapeBg);
 
-                txt5.setTextColor(getResources().getColor(R.color.colorWrite));
-                txt2.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt3.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt4.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt1.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt6.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt7.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt8.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt9.setTextColor(getResources().getColor(R.color.colorPrimary));
+                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
                 clicked=false;
                 text = "5";
@@ -650,31 +736,29 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ll6.setBackgroundResource(R.drawable.box_border);
-                txt6.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
             {
-                ll6.setBackgroundResource(R.drawable.box_border_selected);
-                ll2.setBackgroundResource(R.drawable.box_border);
-                ll3.setBackgroundResource(R.drawable.box_border);
-                ll4.setBackgroundResource(R.drawable.box_border);
-                ll5.setBackgroundResource(R.drawable.box_border);
-                ll1.setBackgroundResource(R.drawable.box_border);
-                ll7.setBackgroundResource(R.drawable.box_border);
-                ll8.setBackgroundResource(R.drawable.box_border);
-                ll9.setBackgroundResource(R.drawable.box_border);
+                ll6.setBackground(shapeBgSelect);
+                ll2.setBackground(shapeBg);
+                ll3.setBackground(shapeBg);
+                ll4.setBackground(shapeBg);
+                ll5.setBackground(shapeBg);
+                ll1.setBackground(shapeBg);
+                ll7.setBackground(shapeBg);
+                ll8.setBackground(shapeBg);
+                ll9.setBackground(shapeBg);
 
-                txt6.setTextColor(getResources().getColor(R.color.colorWrite));
-                txt2.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt3.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt4.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt5.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt1.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt7.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt8.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt9.setTextColor(getResources().getColor(R.color.colorPrimary));
+                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
                 clicked=false;
                 text = "6";
@@ -684,31 +768,29 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ll7.setBackgroundResource(R.drawable.box_border);
-                txt7.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
             {
-                ll7.setBackgroundResource(R.drawable.box_border_selected);
-                ll2.setBackgroundResource(R.drawable.box_border);
-                ll3.setBackgroundResource(R.drawable.box_border);
-                ll4.setBackgroundResource(R.drawable.box_border);
-                ll5.setBackgroundResource(R.drawable.box_border);
-                ll6.setBackgroundResource(R.drawable.box_border);
-                ll1.setBackgroundResource(R.drawable.box_border);
-                ll8.setBackgroundResource(R.drawable.box_border);
-                ll9.setBackgroundResource(R.drawable.box_border);
+                ll7.setBackground(shapeBgSelect);
+                ll2.setBackground(shapeBg);
+                ll3.setBackground(shapeBg);
+                ll4.setBackground(shapeBg);
+                ll5.setBackground(shapeBg);
+                ll6.setBackground(shapeBg);
+                ll1.setBackground(shapeBg);
+                ll8.setBackground(shapeBg);
+                ll9.setBackground(shapeBg);
 
-                txt7.setTextColor(getResources().getColor(R.color.colorWrite));
-                txt2.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt3.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt4.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt5.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt6.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt1.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt8.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt9.setTextColor(getResources().getColor(R.color.colorPrimary));
+                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
                 clicked=false;
                 text = "7";
@@ -718,31 +800,29 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ll8.setBackgroundResource(R.drawable.box_border);
-                txt8.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
             {
-                ll8.setBackgroundResource(R.drawable.box_border_selected);
-                ll2.setBackgroundResource(R.drawable.box_border);
-                ll3.setBackgroundResource(R.drawable.box_border);
-                ll4.setBackgroundResource(R.drawable.box_border);
-                ll5.setBackgroundResource(R.drawable.box_border);
-                ll6.setBackgroundResource(R.drawable.box_border);
-                ll7.setBackgroundResource(R.drawable.box_border);
-                ll1.setBackgroundResource(R.drawable.box_border);
-                ll9.setBackgroundResource(R.drawable.box_border);
+                ll8.setBackground(shapeBgSelect);
+                ll2.setBackground(shapeBg);
+                ll3.setBackground(shapeBg);
+                ll4.setBackground(shapeBg);
+                ll5.setBackground(shapeBg);
+                ll6.setBackground(shapeBg);
+                ll7.setBackground(shapeBg);
+                ll1.setBackground(shapeBg);
+                ll9.setBackground(shapeBg);
 
-                txt8.setTextColor(getResources().getColor(R.color.colorWrite));
-                txt2.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt3.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt4.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt5.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt6.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt7.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt1.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt9.setTextColor(getResources().getColor(R.color.colorPrimary));
+                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
                 clicked=false;
                 text = "8";
@@ -752,31 +832,29 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ll9.setBackgroundResource(R.drawable.box_border);
-                txt9.setTextColor(getResources().getColor(R.color.colorPrimary));*/
                 clicked=true;
             }
             else
             {
-                ll9.setBackgroundResource(R.drawable.box_border_selected);
-                ll2.setBackgroundResource(R.drawable.box_border);
-                ll3.setBackgroundResource(R.drawable.box_border);
-                ll4.setBackgroundResource(R.drawable.box_border);
-                ll5.setBackgroundResource(R.drawable.box_border);
-                ll6.setBackgroundResource(R.drawable.box_border);
-                ll7.setBackgroundResource(R.drawable.box_border);
-                ll8.setBackgroundResource(R.drawable.box_border);
-                ll1.setBackgroundResource(R.drawable.box_border);
+                ll9.setBackground(shapeBgSelect);
+                ll2.setBackground(shapeBg);
+                ll3.setBackground(shapeBg);
+                ll4.setBackground(shapeBg);
+                ll5.setBackground(shapeBg);
+                ll6.setBackground(shapeBg);
+                ll7.setBackground(shapeBg);
+                ll8.setBackground(shapeBg);
+                ll1.setBackground(shapeBg);
 
-                txt9.setTextColor(getResources().getColor(R.color.colorWrite));
-                txt2.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt3.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt4.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt5.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt6.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt7.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt8.setTextColor(getResources().getColor(R.color.colorPrimary));
-                txt1.setTextColor(getResources().getColor(R.color.colorPrimary));
+                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
 
                 clicked=false;
                 text = "9";
@@ -1181,49 +1259,4 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
         return cursor.getString(idx);
     }
-
-    /*private class GetImgIdUpload extends AsyncTask<String,Void,String> {
-
-        String status,message;
-        @Override
-        protected String doInBackground(String... strings) {
-
-            JSONObject joImg=new JSONObject();
-            try {
-
-                joImg.put("guest_id",HomeActivity.guest_id);
-                joImg.put("img",encodedImgpath);
-                Postdata postdata=new Postdata();
-                String pdImg=postdata.post(MainActivity.mainUrl+"guestRsvp",joImg.toString());
-                JSONObject j=new JSONObject(pdImg);
-                status=j.getString("status");
-                if(status.equals("1"))
-                {
-                    Log.d("Like","Successfully");
-                    message=j.getString("message");
-                }
-                else
-                {
-                    message=j.getString("message");
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            if(status.equals("1"))
-            {
-                Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
-                Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
-            }
-        }
-    }*/
 }

@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,50 +57,50 @@ public class InviteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         view = inflater.inflate(R.layout.fragment_invite, container, false);
 
         ivProfileGroom = (CircleImageView)view.findViewById(R.id.ivProfileGroom);
-        ivProfileGroom.setBorderColor(Color.parseColor(GetTheme.primaryDarkColor));
+        ivProfileGroom.setBorderColor(ContextCompat.getColor(getActivity(),R.color.colorPrimaryDark));
 
         ivProfileBride = (CircleImageView)view.findViewById(R.id.ivProfileBride);
-        ivProfileBride.setBorderColor(Color.parseColor(GetTheme.primaryDarkColor));
+        ivProfileBride.setBorderColor(ContextCompat.getColor(getActivity(),R.color.colorPrimaryDark));
 
         LinearLayout llInviteBGT = (LinearLayout)view.findViewById(R.id.llInviteBGT);
         GradientDrawable shapeBg =  new GradientDrawable();
         shapeBg.setCornerRadius(10);
-        shapeBg.setColor(Color.parseColor(GetTheme.transparentColor));
+        shapeBg.setColor(ContextCompat.getColor(getActivity(),R.color.colorTransparentWrite));
         llInviteBGT.setBackground(shapeBg);
 
         txtInviteGroomName = (TextView)view.findViewById(R.id.txtInviteGroomName);
-        txtInviteGroomName.setTextColor(Color.parseColor(GetTheme.textLight));
+        txtInviteGroomName.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
 
         txtInviteBrideName = (TextView)view.findViewById(R.id.txtInviteBrideName);
-        txtInviteBrideName.setTextColor(Color.parseColor(GetTheme.textLight));
+        txtInviteBrideName.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
 
         txtInviteName = (TextView)view.findViewById(R.id.txtInviteName);
-        txtInviteName.setTextColor(Color.parseColor(GetTheme.textLight));
+        txtInviteName.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
 
         txtInviteDetails = (TextView)view.findViewById(R.id.txtInviteDetails);
-        txtInviteDetails.setTextColor(Color.parseColor(GetTheme.textLight));
+        txtInviteDetails.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
 
         TextView lableInviteGroom = (TextView)view.findViewById(R.id.lableInviteGroom);
-        lableInviteGroom.setTextColor(Color.parseColor(GetTheme.lableTextColor));
+        lableInviteGroom.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorLableText));
 
         LinearLayout llInviteBorder = (LinearLayout)view.findViewById(R.id.llInviteBorder);
-        llInviteBorder.setBackgroundColor(Color.parseColor(GetTheme.lableTextColor));
+        llInviteBorder.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.colorLableText));
 
         TextView lableInviteWeds = (TextView)view.findViewById(R.id.lableInviteWeds);
-        lableInviteWeds.setTextColor(Color.parseColor(GetTheme.lableTextColor));
+        lableInviteWeds.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorLableText));
 
         LinearLayout llInviteBo = (LinearLayout)view.findViewById(R.id.llInviteBo);
-        llInviteBo.setBackgroundColor(Color.parseColor(GetTheme.lableTextColor));
+        llInviteBo.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.colorLableText));
 
         TextView lableInviteBride = (TextView)view.findViewById(R.id.lableInviteBride);
-        lableInviteBride.setTextColor(Color.parseColor(GetTheme.lableTextColor));
+        lableInviteBride.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorLableText));
 
         TextView lableHello = (TextView)view.findViewById(R.id.lableHello);
-        lableHello.setTextColor(Color.parseColor(GetTheme.lableTextColor));
+        lableHello.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorLableText));
 
         GetInviteCard getInviteCard = new GetInviteCard();
         getInviteCard.execute();

@@ -3,18 +3,34 @@
     <color name="colorPrimary">#790c17</color>
     <color name="colorPrimaryDark">#6e0a14</color>
     <color name="colorAccent">#790c17</color>
+
+    <color name="colorBg">#6e0a14</color>
+    <color name="colorTextLight">#ffffff</color>
+    <color name="colorTextTitle">#ffffff</color>
+    <color name="colorGalleryImgBG">#ffffff</color>
+    <color name="backgroundColor">#6e0a14</color>
+    <color name="colorTransparentDark">#80000000</color>
+    <color name="colorTransparentLight">#95ffffff</color>
+    <color name="colorLableText">#505050</color>
+    <color name="colorTextDark">#574144</color>
+    <color name="colorClockTopBg">#ffffff</color>
+
+
     <color name="colorSelect">#6e0a14</color>
     <color name="colorTrasport">#ba6870</color>
     <color name="colorWrite">#ffffff</color>
     <color name="colorGray">#b9b2b0</color>
+    <color name="colorGra">#9e9d9d</color>
     <color name="colorBlack">#000000</color>
     <color name="colorText">#94837f</color>
     <color name="colorTransparent">#80000000</color>
     <color name="colorTransparentBlack">#c1000000</color>
-    <color name="colorTransparentWrite">#80ffffff</color>
+    <color name="colorTransparentWrite">#95ffffff</color>
     <color name="sw_color">#e6e6e6</color>
     <color name="background_color">#790c17</color>
-    <color name="background">#d1aaae</color>
+    <color name="background">#c0a6a5</color>
     <color name="colorYellow">#e2a237</color>
+
+    <color name="lableColor">#505050</color>
 
 </resources>

@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llBGGridGallery"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorSelect"
     tools:context="com.ankita.momentwedding.GridGalleryActivity">
 
     <LinearLayout
@@ -17,10 +17,6 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvGalleryGrid"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

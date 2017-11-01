@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@drawable/img"
         android:padding="20dp">
 
         <RelativeLayout
@@ -77,7 +78,7 @@
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@color/sw_color">
+                    android:background="@color/colorGra">
 
                 </LinearLayout>
 
@@ -110,9 +111,7 @@
                     android:layout_height="wrap_content"
                     android:numStars="5"
                     android:rating="0"
-                    android:stepSize="0.5"
-                    android:progressBackgroundTint="#FFF"
-                    android:progressTint="@color/colorGray"/>
+                    android:stepSize="0.5"/>
 
                 <Button
                     android:id="@+id/btnSR"

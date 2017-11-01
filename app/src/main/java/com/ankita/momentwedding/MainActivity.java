@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
 
     /*public static String mainUrl = "http://momentsunlimited.in/weddingWebservices/webservices/";*/
@@ -18,10 +20,6 @@ public class MainActivity extends AppCompatActivity {
     SessionManager session;
     int flag = 0;
 
-    //public static String primaryColor,primaryDarkColor,backgroundColor,backgroundImg,galleryImgBG,transparentColor,textLight,textDark,textTitleColor,lableTextColor,clockTopBgColor;
-
-    //public static String editTextLoginBorderColor,textLoginColor,buttonTextLoginColor;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
 
         session = new SessionManager(getApplicationContext());
         flag = session.checkLogin();
+
+        /*HashMap<String, String> user = session.getUserDetails();
+
+        String guest_id = user.get(SessionManager.guest_id);
+        String wedding_id = user.get(SessionManager.wedding_id);
+
+        GetTheme getTheme = new GetTheme(guest_id,wedding_id);
+        getTheme.execute();*/
 
         lnSnackbar = (LinearLayout)findViewById(R.id.lnSnackbar);
 

@@ -1,6 +1,8 @@
 package com.ankita.momentwedding;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,7 +61,9 @@ class attProgramListAdapter extends RecyclerView.Adapter<attProgramListAdapter.V
         String date = attProgramListArray.get(position).get("date");
 
         holder.txtProgramName.setText(name);
+        holder.txtProgramName.setTextColor(ContextCompat.getColor(context,R.color.colorTextDark));
         holder.txtProgramDateTime.setText(date+" "+time);
+        holder.txtProgramDateTime.setTextColor(ContextCompat.getColor(context,R.color.colorTextDark));
 
         positions.clear();
 
@@ -112,6 +116,7 @@ class attProgramListAdapter extends RecyclerView.Adapter<attProgramListAdapter.V
                 .showImageOnFail(fallback)
                 .showImageOnLoading(fallback).build();
         imageLoader.displayImage(image,holder.ivProgtamImg, options);
+        holder.ivProgtamImg.setBorderColor(ContextCompat.getColor(context,R.color.colorPrimaryDark));
     }
 
     @Override

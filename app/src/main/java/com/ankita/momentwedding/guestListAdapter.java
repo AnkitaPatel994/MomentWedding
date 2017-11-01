@@ -60,9 +60,17 @@ class guestListAdapter extends RecyclerView.Adapter<guestListAdapter.ViewHolder>
         String image = guestListArray.get(position).get("image");
 
         holder.txtGlGuestName .setText(GuestName);
+        holder.txtGlGuestName.setTextColor(ContextCompat.getColor(context,R.color.colorTextDark));
+
         String GuestDt = "Arriving at <b>"+ Guesttime + "</b> on <b>" + Guestdate + "</b> by <b>" + Guestby + "</b> with <b>" + Guest + " guests </b>";
 
         holder.txtGlGuestDate.setText(Html.fromHtml(GuestDt));
+        holder.txtGlGuestDate.setTextColor(ContextCompat.getColor(context,R.color.colorTextDark));
+
+        GradientDrawable shapeBg =  new GradientDrawable();
+        shapeBg.setCornerRadius(10);
+        shapeBg.setColor(ContextCompat.getColor(context,R.color.colorTransparentLight));
+        holder.llBGGuestList.setBackground(shapeBg);
 
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)
@@ -84,6 +92,7 @@ class guestListAdapter extends RecyclerView.Adapter<guestListAdapter.ViewHolder>
                 .showImageOnLoading(fallback).build();
 
         imageLoader.displayImage(image,holder.ivGlGuestPic, options);
+        holder.ivGlGuestPic.setBorderColor(ContextCompat.getColor(context,R.color.colorPrimaryDark));
     }
 
     @Override

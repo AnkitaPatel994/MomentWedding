@@ -11,7 +11,6 @@
     tools:showIn="@layout/app_bar_home">
 
     <RelativeLayout
-        android:id="@+id/rlBgImg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/img">
@@ -26,14 +25,13 @@
         android:id="@+id/tabAdminEventLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabIndicatorColor="@color/colorSelect"
         app:tabMode="fixed"
+        app:tabIndicatorColor="@color/colorPrimaryDark"
         app:tabTextAppearance="@style/TextAppearance.AppCompat"
-        app:tabSelectedTextColor="@color/colorWrite"
         app:tabBackground="@drawable/background_tab"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
 

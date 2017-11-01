@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -67,16 +68,19 @@ public class ProfileFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         ivGroomProfilePic = (CircleImageView)view.findViewById(R.id.ivGroomProfilePic);
-        //ivGroomProfilePic.setBorderColor(Color.parseColor(MainActivity.primaryDarkColor));
+        ivGroomProfilePic.setBorderColor(ContextCompat.getColor(getActivity(),R.color.colorPrimaryDark));
 
         ivBrideProfilePic = (CircleImageView)view.findViewById(R.id.ivBrideProfilePic);
-        //ivBrideProfilePic.setBorderColor(Color.parseColor(MainActivity.primaryDarkColor));
+        ivBrideProfilePic.setBorderColor(ContextCompat.getColor(getActivity(),R.color.colorPrimaryDark));
 
         txtProGroomName = (TextView) view.findViewById(R.id.txtProGroomName);
-        //txtProBrideName.setTextColor(Color.parseColor(MainActivity.textDark));
+        /*Log.i("color","\""+GetTheme.colorTextLight+"\"");
+        String color1="#FFFFFF";
+        //txtProBrideName.setTextColor(Color.parseColor("\""+GetTheme.colorTextLight+"\""));
+        txtProBrideName.setTextColor(Color.parseColor(color1));*/
 
         txtProBrideName = (TextView) view.findViewById(R.id.txtProBrideName);
-        //txtProBrideName.setTextColor(Color.parseColor(MainActivity.textDark));
+        //txtProBrideName.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         rvGuestList = (RecyclerView) view.findViewById(R.id.rvGuestList);
         rvGuestList.setHasFixedSize(true);

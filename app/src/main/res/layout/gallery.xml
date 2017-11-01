@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/wedding_planner_bg" />
+            app:srcCompat="@drawable/pic" />
 
         <LinearLayout
             android:id="@+id/llGalleryBGT"

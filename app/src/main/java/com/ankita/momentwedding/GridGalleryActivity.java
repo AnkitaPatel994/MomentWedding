@@ -1,13 +1,16 @@
 package com.ankita.momentwedding;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -38,6 +41,9 @@ public class GridGalleryActivity extends AppCompatActivity {
 
         eventName = getIntent().getExtras().getString("eventName");
         setTitle(eventName);
+
+        LinearLayout llBGGridGallery = (LinearLayout)findViewById(R.id.llBGGridGallery);
+        llBGGridGallery.setBackgroundColor(ContextCompat.getColor(GridGalleryActivity.this,R.color.colorBg));
 
         rvGalleryGrid = (RecyclerView)findViewById(R.id.rvGalleryGrid);
         rvGalleryGrid.setHasFixedSize(true);

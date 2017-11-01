@@ -2,14 +2,20 @@ package com.ankita.momentwedding;
 
 import android.Manifest;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -54,19 +60,20 @@ public class VendorActivity extends AppCompatActivity {
         }
 
         LinearLayout llBgVendorColor = (LinearLayout)findViewById(R.id.llBgVendorColor);
-        llBgVendorColor.setBackgroundColor(Color.parseColor(GetTheme.backgroundColor));
-
-        LinearLayout llBgVendorImg = (LinearLayout)findViewById(R.id.llBgVendorImg);
+        llBgVendorColor.setBackgroundColor(ContextCompat.getColor(VendorActivity.this,R.color.colorBg));
 
         RelativeLayout rlVendorBGT = (RelativeLayout)findViewById(R.id.rlVendorBGT);
         GradientDrawable shapeBg =  new GradientDrawable();
         shapeBg.setCornerRadius(10);
-        shapeBg.setColor(Color.parseColor(GetTheme.transparentColor));
+        shapeBg.setColor(ContextCompat.getColor(VendorActivity.this,R.color.colorTransparentLight));
         rlVendorBGT.setBackground(shapeBg);
 
         ivVenderLogo = (ImageView)findViewById(R.id.ivVenderLogo);
 
         ivCall = (ImageView)findViewById(R.id.ivCall);
+
+        //ivCall.setColorFilter(ContextCompat.getColor(VendorActivity.this,R.color.colorIcon), PorterDuff.Mode.SRC_IN);
+
         ivCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,6 +101,7 @@ public class VendorActivity extends AppCompatActivity {
         });
 
         ivInternet = (ImageView)findViewById(R.id.ivInternet);
+        //ivInternet.setColorFilter(Color.parseColor(GetTheme.colorIcon), PorterDuff.Mode.SRC_IN);
         ivInternet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,6 +121,7 @@ public class VendorActivity extends AppCompatActivity {
         });
 
         ivMail = (ImageView)findViewById(R.id.ivMail);
+        //ivMail.setColorFilter(Color.parseColor(GetTheme.colorIcon), PorterDuff.Mode.SRC_IN);
         ivMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,20 +136,26 @@ public class VendorActivity extends AppCompatActivity {
         });
 
         txtVenderDetails = (TextView)findViewById(R.id.txtVenderDetails);
-        txtVenderDetails.setTextColor(Color.parseColor(GetTheme.textLight));
+        txtVenderDetails.setTextColor(ContextCompat.getColor(VendorActivity.this,R.color.colorTextDark));
 
         GetVendorList getVendorList = new GetVendorList();
         getVendorList.execute();
 
         ratingBar = (RatingBar)findViewById(R.id.ratingBar);
+
+        GetRatingView getRatingView = new GetRatingView();
+        getRatingView.execute();
+
         btnSR = (Button)findViewById(R.id.btnSR);
-        //btnSR.setTextColor(Color.parseColor(HomeActivity.buttonTextLoginColor));
+
         btnSR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String rating=String.valueOf(ratingBar.getRating());
-                Toast.makeText(getApplicationContext(), rating, Toast.LENGTH_LONG).show();
+
+                GetRating getRating = new GetRating(rating);
+                getRating.execute();
 
             }
         });
@@ -233,6 +248,116 @@ public class VendorActivity extends AppCompatActivity {
                 imageLoader.displayImage(logo, ivVenderLogo, options);
 
                 txtVenderDetails.setText(description);
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private class GetRating extends AsyncTask<String,Void,String> {
+
+        String rating,status,message;
+
+        public GetRating(String rating) {
+            this.rating = rating;
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            JSONObject joRat=new JSONObject();
+            try {
+
+                joRat.put("guest_id",HomeActivity.guest_id);
+                joRat.put("rating",rating);
+                Postdata postdata=new Postdata();
+                String pdRat=postdata.post(MainActivity.mainUrl+"vendorRatingUpdate",joRat.toString());
+                JSONObject j=new JSONObject(pdRat);
+                status=j.getString("status");
+                if(status.equals("1"))
+                {
+                    Log.d("Like","Successfully");
+                    message=j.getString("message");
+                }
+                else
+                {
+                    message=j.getString("message");
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if(status.equals("1"))
+            {
+                AlertDialog.Builder alert = new AlertDialog.Builder(VendorActivity.this);
+                alert.setMessage("Thank You!");
+                alert.setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent intent = new Intent(VendorActivity.this,HomeActivity.class);
+                                startActivity(intent);
+                                VendorActivity.this.finish();
+                            }
+                        });
+                alert.show();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private class GetRatingView extends AsyncTask<String,Void,String> {
+
+        String status,message,vendor_rating;
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            JSONObject joRatView = new JSONObject();
+            try {
+
+                joRatView.put("guest_id",HomeActivity.guest_id);
+                Postdata postdata=new Postdata();
+                String pdRat=postdata.post(MainActivity.mainUrl+"guestDetails",joRatView.toString());
+                JSONObject j=new JSONObject(pdRat);
+                status=j.getString("status");
+                if(status.equals("1"))
+                {
+                    Log.d("Like","Successfully");
+                    message=j.getString("message");
+                    JSONObject jo=j.getJSONObject("guest");
+
+                    vendor_rating =jo.getString("vendor_rating");
+                }
+                else
+                {
+                    message=j.getString("message");
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if(status.equals("1"))
+            {
+                ratingBar.setRating(Float.parseFloat(vendor_rating));
             }
             else
             {

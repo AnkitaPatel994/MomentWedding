@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,21 +58,21 @@ class familyMemberListAdapter extends RecyclerView.Adapter<familyMemberListAdapt
 
         String member_pic = familyMemberListArray.get(position).get("member_pic");
 
-        holder.ivFMProfile.setBorderColor(Color.parseColor(GetTheme.primaryDarkColor));
+        holder.ivFMProfile.setBorderColor(ContextCompat.getColor(context,R.color.colorPrimaryDark));
 
         GradientDrawable shapeBg =  new GradientDrawable();
         shapeBg.setCornerRadius(10);
-        shapeBg.setColor(Color.parseColor(GetTheme.transparentColor));
+        shapeBg.setColor(ContextCompat.getColor(context,R.color.colorTransparentLight));
         holder.llMemberBgTransparent.setBackground(shapeBg);
 
         holder.txtFMName.setText(member_name);
-        holder.txtFMName.setTextColor(Color.parseColor(GetTheme.textLight));
+        holder.txtFMName.setTextColor(ContextCompat.getColor(context,R.color.colorTextDark));
 
         holder.txtFMRelation.setText(member_relation);
-        holder.txtFMRelation.setTextColor(Color.parseColor(GetTheme.lableTextColor));
+        holder.txtFMRelation.setTextColor(ContextCompat.getColor(context,R.color.colorLableText));
 
         holder.txtFMDetails.setText(member_details);
-        holder.txtFMDetails.setTextColor(Color.parseColor(GetTheme.textLight));
+        holder.txtFMDetails.setTextColor(ContextCompat.getColor(context,R.color.colorTextDark));
 
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)
@@ -92,7 +93,6 @@ class familyMemberListAdapter extends RecyclerView.Adapter<familyMemberListAdapt
                 .showImageOnFail(fallback)
                 .showImageOnLoading(fallback).build();
         imageLoader.displayImage(member_pic,holder.ivFMProfile, options);
-
     }
 
     @Override

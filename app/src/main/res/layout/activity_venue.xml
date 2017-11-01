@@ -20,7 +20,7 @@
                 android:id="@+id/ivVenueImg"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                app:srcCompat="@drawable/wedding_planner_bg"
+                app:srcCompat="@drawable/pic"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"/>
 
@@ -61,7 +61,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="@color/colorPrimary">
+            android:background="@color/colorPrimary"
+            android:visibility="gone">
 
         </LinearLayout>
         <LinearLayout
@@ -100,11 +101,11 @@
                     android:layout_gravity="center">
 
                     <ImageView
+                        android:id="@+id/ivPhoneRound"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        app:srcCompat="@drawable/round_transparent" />
+                        android:layout_centerVertical="true" />
 
                     <ImageView
                         android:layout_width="20dp"
@@ -124,11 +125,11 @@
                     android:layout_gravity="center">
 
                     <ImageView
+                        android:id="@+id/ivEarthRound"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        app:srcCompat="@drawable/round_transparent" />
+                        android:layout_centerVertical="true" />
 
                     <ImageView
                         android:layout_width="20dp"
@@ -149,11 +150,11 @@
                     android:layout_gravity="center">
 
                     <ImageView
+                        android:id="@+id/ivEmailRound"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        app:srcCompat="@drawable/round_transparent" />
+                        android:layout_centerVertical="true" />
 
                     <ImageView
                         android:layout_width="20dp"

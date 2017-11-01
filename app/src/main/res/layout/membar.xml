@@ -42,7 +42,6 @@
                 android:id="@+id/txtFMRelation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorText"
                 android:textSize="10dp"/>
 
             <TextView

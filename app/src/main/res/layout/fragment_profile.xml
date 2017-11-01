@@ -10,39 +10,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivGroomProfilePic"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:src="@drawable/pic"
-                android:layout_gravity="center_horizontal"
-                app:civ_border_width="5dp"
-                app:civ_border_color="@color/colorPrimary"
-                android:layout_marginLeft="30dp"/>
-
-            <TextView
-                android:id="@+id/txtProGroomName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="right"
-                android:textSize="20dp"
-                android:paddingRight="30dp"/>
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,17 +29,44 @@
                 android:src="@drawable/pic"
                 android:layout_gravity="center_horizontal"
                 app:civ_border_width="5dp"
-                app:civ_border_color="@color/colorPrimary"
-                android:layout_marginRight="30dp"/>
+                android:layout_marginLeft="30dp"/>
 
             <TextView
                 android:id="@+id/txtProBrideName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:gravity="right"
+                android:textSize="20dp"
+                android:textColor="@color/colorWrite"
+                android:paddingRight="40dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivGroomProfilePic"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:src="@drawable/pic"
+                android:layout_gravity="center_horizontal"
+                app:civ_border_width="5dp"
+                android:layout_marginRight="30dp"/>
+
+            <TextView
+                android:id="@+id/txtProGroomName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:gravity="left"
                 android:textSize="20dp"
-                android:paddingLeft="40dp"/>
+                android:textColor="@color/colorWrite"
+                android:paddingLeft="30dp"/>
 
         </LinearLayout>
 

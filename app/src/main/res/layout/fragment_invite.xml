@@ -19,7 +19,7 @@
             android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivProfileGroom"
+                android:id="@+id/ivProfileBride"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:src="@drawable/pic"
@@ -27,7 +27,7 @@
                 app:civ_border_width="5dp" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivProfileBride"
+                android:id="@+id/ivProfileGroom"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:src="@drawable/pic"
@@ -70,10 +70,10 @@
                             android:layout_height="wrap_content"
                             android:textSize="10dp"
                             android:gravity="right"
-                            android:text="Groom"/>
+                            android:text="Bride"/>
 
                         <TextView
-                            android:id="@+id/txtInviteGroomName"
+                            android:id="@+id/txtInviteBrideName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="18dp"
@@ -116,10 +116,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="10dp"
-                            android:text="Bride"/>
+                            android:text="Groom"/>
 
                         <TextView
-                            android:id="@+id/txtInviteBrideName"
+                            android:id="@+id/txtInviteGroomName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="18dp"/>

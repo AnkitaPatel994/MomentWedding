@@ -78,7 +78,6 @@ public class HomeActivity extends AppCompatActivity
     SessionManager session;
     Dialog dialog;
     CircleImageView ivGuestPic;
-    RelativeLayout rlBgColor,rlBgImg;
 
     Bitmap bitmap = null;
     String str_imgpath,encodedImgpath;
@@ -104,11 +103,6 @@ public class HomeActivity extends AppCompatActivity
 
         View header=navigationView.getHeaderView(0);
 
-        /*---------------- Theme ------------------*/
-        GetTheme theme = new GetTheme(guest_id,wedding_id);
-        theme.execute();
-        /*---------------- Theme ------------------*/
-
         setTitle("Profile");
 
         session = new SessionManager(getApplicationContext());
@@ -120,11 +114,17 @@ public class HomeActivity extends AppCompatActivity
         wedding_id = user.get(SessionManager.wedding_id);
         profile_id = user.get(SessionManager.profile_id);
 
-        /*---------------- Navigation Header ------------------*/
+        /*------------------ Navigation Header ------------------*/
+
+        LinearLayout llBGHeaderColor = (LinearLayout)header.findViewById(R.id.llBGHeaderColor);
+        llBGHeaderColor.setBackgroundColor(ContextCompat.getColor(HomeActivity.this,R.color.colorPrimary));
+        //llBGHeaderColor.setBackgroundColor(Color.parseColor(GetTheme.colorPrimary));
 
         txtGuestName = (TextView)header.findViewById(R.id.txtGuestName);
+        //txtGuestName.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         ivGuestPic = (CircleImageView)header.findViewById(R.id.ivGuestPic);
+        //ivGuestPic.setBorderColor(Color.parseColor(GetTheme.colorPrimaryDark));
 
         GetGuestListone getGuestListone = new GetGuestListone();
         getGuestListone.execute();
@@ -155,15 +155,13 @@ public class HomeActivity extends AppCompatActivity
                     selectImage();
                 }
 
-                /*GetImgPicUpload imgPicUpload = new GetImgPicUpload();
-                imgPicUpload.execute();*/
-
                 return false;
             }
         });
 
-        rlBgColor = (RelativeLayout)header.findViewById(R.id.rlBgColor);
-        rlBgImg = (RelativeLayout)header.findViewById(R.id.rlBgImg);
+        RelativeLayout rlBgColor = (RelativeLayout)findViewById(R.id.rlBgColor);
+        rlBgColor.setBackgroundColor(ContextCompat.getColor(HomeActivity.this,R.color.colorPrimaryDark));
+        //rlBgColor.setBackgroundColor(Color.parseColor(GetTheme.colorPrimaryDark));
 
         vpAdminEvent = (ViewPager)findViewById(R.id.vpAdminEvent);
         setupViewPager(vpAdminEvent);
@@ -211,6 +209,7 @@ public class HomeActivity extends AppCompatActivity
         });
 
         tabAdminEventLayout =(TabLayout)findViewById(R.id.tabAdminEventLayout);
+
         tabAdminEventLayout.setupWithViewPager(vpAdminEvent);
 
         tabAdminEventLayout.getTabAt(0).setIcon(R.drawable.ic_profile_black_24dp);
@@ -242,49 +241,49 @@ public class HomeActivity extends AppCompatActivity
                 dialog.setCancelable(true);
 
                 TextView countdown = (TextView)dialog.findViewById(R.id.countdown);
-                countdown.setTextColor(Color.parseColor(GetTheme.primaryColor));
+                countdown.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorPrimary));
 
                 txtDate =(TextView)dialog.findViewById(R.id.txtDate);
-                txtDate.setTextColor(Color.parseColor(GetTheme.textLight));
+                txtDate.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
 
                 txtDays =(TextView)dialog.findViewById(R.id.txtDays);
-                txtDays.setTextColor(Color.parseColor(GetTheme.textLight));
+                txtDays.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
 
                 txtHours =(TextView)dialog.findViewById(R.id.txtHours);
-                txtHours.setTextColor(Color.parseColor(GetTheme.textLight));
+                txtHours.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
 
                 txtMins =(TextView)dialog.findViewById(R.id.txtMins);
-                txtMins.setTextColor(Color.parseColor(GetTheme.textLight));
+                txtMins.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
 
                 txtSecs =(TextView)dialog.findViewById(R.id.txtSecs);
-                txtSecs.setTextColor(Color.parseColor(GetTheme.textLight));
+                txtSecs.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
 
                 TextView tvDays =(TextView)dialog.findViewById(R.id.tvDays);
-                tvDays.setTextColor(Color.parseColor(GetTheme.textLight));
+                tvDays.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
 
                 TextView tvHours =(TextView)dialog.findViewById(R.id.tvHours);
-                tvHours.setTextColor(Color.parseColor(GetTheme.textLight));
+                tvHours.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
 
                 TextView tvMins =(TextView)dialog.findViewById(R.id.tvMins);
-                tvMins.setTextColor(Color.parseColor(GetTheme.textLight));
+                tvMins.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
 
                 TextView tvSecs =(TextView)dialog.findViewById(R.id.tvSecs);
-                tvSecs.setTextColor(Color.parseColor(GetTheme.textLight));
+                tvSecs.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
 
                 LinearLayout llDialogOther = (LinearLayout)dialog.findViewById(R.id.llDialogOther);
-                llDialogOther.setBackgroundColor(Color.parseColor(GetTheme.transparentColor));
+                llDialogOther.setBackgroundColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTransparentDark));
 
                 LinearLayout llTopDialog = (LinearLayout)dialog.findViewById(R.id.llTopDialog);
 
                 GradientDrawable shapeTop =  new GradientDrawable();
                 shapeTop.setCornerRadii(new float[] { 18, 18, 18, 18, 0, 0, 0, 0 });
-                shapeTop.setColor(Color.parseColor(GetTheme.clockTopBgColor));
+                shapeTop.setColor(ContextCompat.getColor(HomeActivity.this,R.color.colorClockTopBg));
                 llTopDialog.setBackground(shapeTop);
 
                 LinearLayout llBottomDialog = (LinearLayout)dialog.findViewById(R.id.llBottomDialog);
                 GradientDrawable shapeBottom =  new GradientDrawable();
                 shapeBottom.setCornerRadii(new float[] { 0, 0, 0, 0, 18, 18, 18, 18 });
-                shapeBottom.setColor(Color.parseColor(GetTheme.primaryColor));
+                shapeBottom.setColor(ContextCompat.getColor(HomeActivity.this,R.color.colorPrimary));
                 llBottomDialog.setBackground(shapeBottom);
 
                 LinearLayout llDialog = (LinearLayout)dialog.findViewById(R.id.llDialog);
@@ -754,50 +753,4 @@ public class HomeActivity extends AppCompatActivity
             }
         }
     }
-
-    /*private class GetTheme extends AsyncTask<String,Void,String> {
-
-        String status,message;
-        @Override
-        protected String doInBackground(String... strings) {
-
-            JSONObject joTheme=new JSONObject();
-            try {
-
-                joTheme.put("guest_id",HomeActivity.guest_id);
-                joTheme.put("wedding_id",HomeActivity.wedding_id);
-                Postdata postdata=new Postdata();
-                String pdInt=postdata.post(MainActivity.mainUrl+"getTheme",joTheme.toString());
-                JSONObject j=new JSONObject(pdInt);
-                status=j.getString("status");
-                if(status.equals("1"))
-                {
-                    Log.d("Like","Successfully");
-                    message=j.getString("message");
-                    JSONObject jo=j.getJSONObject("theme");
-
-                    primaryColor = jo.getString("primaryColor");
-                    primaryDarkColor = jo.getString("primaryDarkColor");
-                    transparentColor = jo.getString("transparentColor");
-                    textLight = jo.getString("textLight");
-                    textDark = jo.getString("textDark");
-                    lableTextColor = jo.getString("lableTextColor");
-                    textTitleColor = jo.getString("textTitleColor");
-                    clockTopBgColor = jo.getString("clockTopBgColor");
-                    backgroundColor = jo.getString("backgroundColor");
-                    backgroundImg = jo.getString("backgroundImg");
-                    galleryImgBG = jo.getString("galleryImgBG");
-
-                }
-                else
-                {
-                    message=j.getString("message");
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-    }*/
 }

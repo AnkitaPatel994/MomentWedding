@@ -3,24 +3,27 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llBGRsvpColor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ankita.momentwedding.RSVPActivity"
-    android:background="@color/colorSelect">
+    tools:context="com.ankita.momentwedding.RSVPActivity">
 
     <LinearLayout
+        android:id="@+id/llBgImgRsvp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="20dp"
         android:background="@drawable/img">
 
         <LinearLayout
+            android:id="@+id/llBGTRSVPTransparent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="@color/colorTransparentWrite">
 
             <TextView
+                android:id="@+id/tvAreComing"
                 style="@style/Rsvp_TextView"
                 android:padding="20dp"
                 android:text="@string/txt_coming"/>

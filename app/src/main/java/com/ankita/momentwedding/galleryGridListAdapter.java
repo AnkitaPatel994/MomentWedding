@@ -3,6 +3,7 @@ package com.ankita.momentwedding;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,7 @@ class galleryGridListAdapter extends RecyclerView.Adapter<galleryGridListAdapter
 
         final String gallery_pic = galleryGridListArray.get(position).get("gallery_pic");
 
-        holder.llBGTGalleryGrid.setBackgroundColor(Color.parseColor(GetTheme.galleryImgBG));
+        holder.llBGTGalleryGrid.setBackgroundColor(ContextCompat.getColor(context,R.color.colorGalleryImgBG));
 
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)

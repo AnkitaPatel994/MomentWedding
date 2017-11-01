@@ -15,6 +15,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tvGuest"
             style="@style/Rsvp_TextView"
             android:padding="20dp"
             android:text="@string/txt_guest" />
@@ -31,7 +32,6 @@
                 android:id="@+id/ll1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/box_border"
                 android:padding="3dp"
                 android:layout_weight="1">
 
@@ -46,7 +46,6 @@
                 android:id="@+id/ll2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/box_border"
                 android:padding="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="1">
@@ -62,7 +61,6 @@
                 android:id="@+id/ll3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/box_border"
                 android:padding="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="1">
@@ -78,7 +76,6 @@
                 android:id="@+id/ll4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/box_border"
                 android:padding="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="1">
@@ -94,7 +91,6 @@
                 android:id="@+id/ll5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/box_border"
                 android:padding="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="1">
@@ -109,7 +105,6 @@
                 android:id="@+id/ll6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/box_border"
                 android:padding="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="1">
@@ -124,7 +119,6 @@
                 android:id="@+id/ll7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/box_border"
                 android:padding="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="1">
@@ -139,7 +133,6 @@
                 android:id="@+id/ll8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/box_border"
                 android:padding="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="1">
@@ -154,7 +147,6 @@
                 android:id="@+id/ll9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/box_border"
                 android:padding="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="1">
@@ -182,6 +174,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tvArrival"
                     style="@style/Rsvp_TextView"
                     android:padding="10dp"
                     android:text="@string/txt_Arrival" />
@@ -190,7 +183,7 @@
                     android:id="@+id/llArrival"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:drawable/editbox_background"
+                    android:layout_margin="5dp"
                     android:padding="8dp"
                     android:orientation="vertical">
 
@@ -198,11 +191,6 @@
                         android:id="@+id/txtArrivalDate"
                         style="@style/Rsvp_TextView"
                         android:textSize="13dp" />
-
-                    <!--<view
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        />-->
 
                     <TextView
                         android:id="@+id/txtArrivalTime"
@@ -225,11 +213,11 @@
                         android:layout_weight="1">
 
                         <ImageView
+                            android:id="@+id/ivACRound"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            app:srcCompat="@drawable/round" />
+                            android:layout_centerVertical="true"/>
 
                         <ImageView
                             android:id="@+id/ivArrivalCar"
@@ -251,11 +239,11 @@
                         android:layout_weight="1">
 
                         <ImageView
+                            android:id="@+id/ivABRound"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            app:srcCompat="@drawable/round" />
+                            android:layout_centerVertical="true" />
 
                         <ImageView
                             android:id="@+id/ivArrivalBus"
@@ -277,11 +265,11 @@
                         android:layout_weight="1">
 
                         <ImageView
+                            android:id="@+id/ivARRound"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            app:srcCompat="@drawable/round" />
+                            android:layout_centerVertical="true" />
 
                         <ImageView
                             android:id="@+id/ivArrivalRail"
@@ -303,11 +291,11 @@
                         android:layout_weight="1">
 
                         <ImageView
+                            android:id="@+id/ivAARound"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            app:srcCompat="@drawable/round" />
+                            android:layout_centerVertical="true" />
 
                         <ImageView
                             android:id="@+id/ivArrivalAirplane"
@@ -334,12 +322,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llBgBorsvp"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@color/colorPrimary"
                 android:orientation="vertical">
 
             </LinearLayout>
@@ -352,6 +340,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tvDeparture"
                     style="@style/Rsvp_TextView"
                     android:padding="10dp"
                     android:text="@string/txt_Departure" />
@@ -360,7 +349,7 @@
                     android:id="@+id/llDeparture"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:drawable/editbox_background"
+                    android:layout_margin="5dp"
                     android:padding="8dp"
                     android:orientation="vertical">
 
@@ -390,11 +379,11 @@
                         android:layout_weight="1">
 
                         <ImageView
+                            android:id="@+id/ivDCRound"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            app:srcCompat="@drawable/round" />
+                            android:layout_centerVertical="true" />
 
                         <ImageView
                             android:id="@+id/ivDepartureCar"
@@ -416,11 +405,11 @@
                         android:layout_weight="1">
 
                         <ImageView
+                            android:id="@+id/ivDBRound"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            app:srcCompat="@drawable/round" />
+                            android:layout_centerVertical="true"/>
 
                         <ImageView
                             android:id="@+id/ivDepartureBus"
@@ -442,11 +431,11 @@
                         android:layout_weight="1">
 
                         <ImageView
+                            android:id="@+id/ivDRRound"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            app:srcCompat="@drawable/round" />
+                            android:layout_centerVertical="true"/>
 
                         <ImageView
                             android:id="@+id/ivDepartureRail"
@@ -467,11 +456,11 @@
                         android:layout_weight="1">
 
                         <ImageView
+                            android:id="@+id/ivDARound"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            app:srcCompat="@drawable/round" />
+                            android:layout_centerVertical="true"/>
 
                         <ImageView
                             android:id="@+id/ivDepartureAirplane"
@@ -500,6 +489,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tvSR"
             style="@style/Rsvp_TextView"
             android:paddingTop="20dp"
             android:paddingBottom="10dp"
@@ -515,6 +505,7 @@
             android:inputType="textMultiLine"/>
 
         <TextView
+            android:id="@+id/tvAllProgram"
             style="@style/Rsvp_TextView"
             android:paddingTop="10dp"
             android:paddingBottom="5dp"
@@ -544,6 +535,7 @@
         </RadioGroup>
 
         <TextView
+            android:id="@+id/tvUpload"
             style="@style/Rsvp_TextView"
             android:paddingBottom="5dp"
             android:paddingTop="10dp"
@@ -552,11 +544,12 @@
 
         <ImageView
             android:id="@+id/img_photo_id"
-            android:layout_width="230dp"
+            android:layout_width="200dp"
             android:layout_height="120dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:focusableInTouchMode="true"
+            android:scaleType="centerCrop"
             android:src="@drawable/add_img" />
 
         <Button

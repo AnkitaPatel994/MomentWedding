@@ -3,6 +3,7 @@ package com.ankita.momentwedding;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,28 +45,27 @@ public class OneProfileActivity extends AppCompatActivity {
         }
 
         LinearLayout llBgOPColor = (LinearLayout)findViewById(R.id.llBgOPColor);
-        llBgOPColor.setBackgroundColor(Color.parseColor(GetTheme.backgroundColor));
+        llBgOPColor.setBackgroundColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorBg));
 
         LinearLayout llBgOPImg = (LinearLayout)findViewById(R.id.llBgOPImg);
-
 
         LinearLayout llBgTransparent = (LinearLayout)findViewById(R.id.llBgTransparent);
         GradientDrawable shapeBg =  new GradientDrawable();
         shapeBg.setCornerRadius(10);
-        shapeBg.setColor(Color.parseColor(GetTheme.transparentColor));
+        shapeBg.setColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTransparentLight));
         llBgTransparent.setBackground(shapeBg);
 
         txtProfileName = (TextView)findViewById(R.id.txtProfileName);
-        txtProfileName.setTextColor(Color.parseColor(GetTheme.textLight));
+        txtProfileName.setTextColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTextDark));
 
         txtProfileOccupation = (TextView)findViewById(R.id.txtProfileOccupation);
-        txtProfileOccupation.setTextColor(Color.parseColor(GetTheme.textLight));
+        txtProfileOccupation.setTextColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTextDark));
 
         txtProfileDetails = (TextView)findViewById(R.id.txtProfileDetails);
-        txtProfileDetails.setTextColor(Color.parseColor(GetTheme.textLight));
+        txtProfileDetails.setTextColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTextDark));
 
         ivProfilePic = (CircleImageView)findViewById(R.id.ivProfilePic);
-        ivProfilePic.setBorderColor(Color.parseColor(GetTheme.primaryDarkColor));
+        ivProfilePic.setBorderColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorPrimaryDark));
 
         String profileId = getIntent().getExtras().getString("profile_id");
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,14 +58,14 @@ class galleryListAdapter extends RecyclerView.Adapter<galleryListAdapter.ViewHol
         String photoCount = galleryListArray.get(position).get("photoCount");
 
         GradientDrawable shapeBg =  new GradientDrawable();
-        shapeBg.setColor(Color.parseColor(GetTheme.transparentColor));
+        shapeBg.setColor(ContextCompat.getColor(context,R.color.colorTransparentDark));
         holder.llGalleryBGT.setBackground(shapeBg);
 
         holder.txtEvent.setText(name);
-        holder.txtEvent.setTextColor(Color.parseColor(GetTheme.textTitleColor));
+        holder.txtEvent.setTextColor(ContextCompat.getColor(context,R.color.colorTextTitle));
 
         holder.txtImgCount.setText(photoCount + " Photos");
-        holder.txtImgCount.setTextColor(Color.parseColor(GetTheme.textLight));
+        holder.txtImgCount.setTextColor(ContextCompat.getColor(context,R.color.colorTextLight));
 
         String background = galleryListArray.get(position).get("background");
 
