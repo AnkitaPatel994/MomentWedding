@@ -11,7 +11,7 @@
     <color name="backgroundColor">#6e0a14</color>
     <color name="colorTransparentDark">#80000000</color>
     <color name="colorTransparentLight">#95ffffff</color>
-    <color name="colorLableText">#505050</color>
+    <color name="colorLableText">#94837f</color>
     <color name="colorTextDark">#574144</color>
     <color name="colorClockTopBg">#ffffff</color>
 
@@ -32,5 +32,8 @@
     <color name="colorYellow">#e2a237</color>
 
     <color name="lableColor">#505050</color>
+
+    <color name="button_pressed">#6e0a14</color>
+    <color name="button_focused">#6e0a14</color>
 
 </resources>

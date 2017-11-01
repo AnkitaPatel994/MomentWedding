@@ -39,9 +39,12 @@
             android:inputType="textMultiLine"/>
 
         <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/btnSRNo"
             android:layout_marginTop="10dp"
-            style="@style/Button_style"
+            android:background="@drawable/button_background"
+            android:textColor="@color/colorTextLight"
             android:text="@string/btn_submit" />
 
     </LinearLayout>

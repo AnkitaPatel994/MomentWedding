@@ -38,7 +38,6 @@
                 android:layout_marginTop="10dp"
                 android:gravity="right"
                 android:textSize="20dp"
-                android:textColor="@color/colorWrite"
                 android:paddingRight="40dp"/>
 
         </LinearLayout>
@@ -65,7 +64,6 @@
                 android:layout_marginTop="10dp"
                 android:gravity="left"
                 android:textSize="20dp"
-                android:textColor="@color/colorWrite"
                 android:paddingLeft="30dp"/>
 
         </LinearLayout>

@@ -52,17 +52,17 @@ public class OneProfileActivity extends AppCompatActivity {
         LinearLayout llBgTransparent = (LinearLayout)findViewById(R.id.llBgTransparent);
         GradientDrawable shapeBg =  new GradientDrawable();
         shapeBg.setCornerRadius(10);
-        shapeBg.setColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTransparentLight));
+        shapeBg.setColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTransparentDark));
         llBgTransparent.setBackground(shapeBg);
 
         txtProfileName = (TextView)findViewById(R.id.txtProfileName);
-        txtProfileName.setTextColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTextDark));
+        txtProfileName.setTextColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTextLight));
 
         txtProfileOccupation = (TextView)findViewById(R.id.txtProfileOccupation);
-        txtProfileOccupation.setTextColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTextDark));
+        txtProfileOccupation.setTextColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTextLight));
 
         txtProfileDetails = (TextView)findViewById(R.id.txtProfileDetails);
-        txtProfileDetails.setTextColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTextDark));
+        txtProfileDetails.setTextColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTextLight));
 
         ivProfilePic = (CircleImageView)findViewById(R.id.ivProfilePic);
         ivProfilePic.setBorderColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorPrimaryDark));

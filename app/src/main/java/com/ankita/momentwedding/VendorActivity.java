@@ -65,7 +65,7 @@ public class VendorActivity extends AppCompatActivity {
         RelativeLayout rlVendorBGT = (RelativeLayout)findViewById(R.id.rlVendorBGT);
         GradientDrawable shapeBg =  new GradientDrawable();
         shapeBg.setCornerRadius(10);
-        shapeBg.setColor(ContextCompat.getColor(VendorActivity.this,R.color.colorTransparentLight));
+        shapeBg.setColor(ContextCompat.getColor(VendorActivity.this,R.color.colorTransparentDark));
         rlVendorBGT.setBackground(shapeBg);
 
         ivVenderLogo = (ImageView)findViewById(R.id.ivVenderLogo);
@@ -136,7 +136,7 @@ public class VendorActivity extends AppCompatActivity {
         });
 
         txtVenderDetails = (TextView)findViewById(R.id.txtVenderDetails);
-        txtVenderDetails.setTextColor(ContextCompat.getColor(VendorActivity.this,R.color.colorTextDark));
+        txtVenderDetails.setTextColor(ContextCompat.getColor(VendorActivity.this,R.color.colorTextLight));
 
         GetVendorList getVendorList = new GetVendorList();
         getVendorList.execute();

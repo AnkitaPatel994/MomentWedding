@@ -554,11 +554,14 @@
 
         <Button
             android:id="@+id/btnSR"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            style="@style/Button_style"
+            android:background="@drawable/button_background"
+            android:textColor="@color/colorTextLight"
             android:text="@string/btn_submit" />
 
     </LinearLayout>

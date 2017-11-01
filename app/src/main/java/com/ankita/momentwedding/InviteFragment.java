@@ -69,20 +69,20 @@ public class InviteFragment extends Fragment {
         LinearLayout llInviteBGT = (LinearLayout)view.findViewById(R.id.llInviteBGT);
         GradientDrawable shapeBg =  new GradientDrawable();
         shapeBg.setCornerRadius(10);
-        shapeBg.setColor(ContextCompat.getColor(getActivity(),R.color.colorTransparentWrite));
+        shapeBg.setColor(ContextCompat.getColor(getActivity(),R.color.colorTransparentDark));
         llInviteBGT.setBackground(shapeBg);
 
         txtInviteGroomName = (TextView)view.findViewById(R.id.txtInviteGroomName);
-        txtInviteGroomName.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        txtInviteGroomName.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
 
         txtInviteBrideName = (TextView)view.findViewById(R.id.txtInviteBrideName);
-        txtInviteBrideName.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        txtInviteBrideName.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
 
         txtInviteName = (TextView)view.findViewById(R.id.txtInviteName);
-        txtInviteName.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        txtInviteName.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
 
         txtInviteDetails = (TextView)view.findViewById(R.id.txtInviteDetails);
-        txtInviteDetails.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        txtInviteDetails.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
 
         TextView lableInviteGroom = (TextView)view.findViewById(R.id.lableInviteGroom);
         lableInviteGroom.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorLableText));
