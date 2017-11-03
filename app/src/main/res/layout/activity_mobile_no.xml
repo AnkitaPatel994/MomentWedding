@@ -20,9 +20,11 @@
     <EditText
         android:id="@+id/txtMobaileNo"
         style="@style/EditText_style"
-        android:inputType="phone"
+        android:inputType="number"
         android:digits="0123456789."
-        android:maxLength="10"/>
+        android:hint="XXXXXXXXXXXX"
+        android:textColorHint="@color/colorGrLight"
+        android:maxLength="12"/>
 
     <Button
         android:id="@+id/btnVerification"

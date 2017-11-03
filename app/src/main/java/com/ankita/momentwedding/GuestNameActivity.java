@@ -47,10 +47,18 @@ public class GuestNameActivity extends AppCompatActivity {
         btnGuestSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String GuestName = txtGuestName.getText().toString();
 
-                GetGuestName getGuestName = new GetGuestName(guest_id,GuestName);
-                getGuestName.execute();
+                if(txtGuestName.getText().toString().equals(""))
+                {
+                    Toast.makeText(GuestNameActivity.this,"Please Not Empty!",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    String GuestName = txtGuestName.getText().toString();
+
+                    GetGuestName getGuestName = new GetGuestName(guest_id,GuestName);
+                    getGuestName.execute();
+                }
             }
         });
     }

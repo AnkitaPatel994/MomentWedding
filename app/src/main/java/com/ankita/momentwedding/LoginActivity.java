@@ -43,10 +43,18 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String InviteCode = txtInviteCode.getText().toString();
+                if(txtInviteCode.getText().toString().equals(""))
+                {
+                    Toast.makeText(LoginActivity.this,"Please Not Empty!",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    String InviteCode = txtInviteCode.getText().toString();
 
-                GetInviteCode getInviteCode = new GetInviteCode(InviteCode);
-                getInviteCode.execute();
+                    GetInviteCode getInviteCode = new GetInviteCode(InviteCode);
+                    getInviteCode.execute();
+                }
+
             }
         });
     }

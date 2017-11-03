@@ -43,11 +43,18 @@ public class MobileNoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String mobileNo = txtMobaileNo.getText().toString();
-                String weddingId = getIntent().getExtras().getString("wedding_id");
+                if(txtMobaileNo.getText().toString().length() < 12)
+                {
+                    Toast.makeText(MobileNoActivity.this,"Please Valid Mobile!",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    String mobileNo = txtMobaileNo.getText().toString();
+                    String weddingId = getIntent().getExtras().getString("wedding_id");
 
-                GetMobaileNo getMobaileNo = new GetMobaileNo(weddingId,mobileNo);
-                getMobaileNo.execute();
+                    GetMobaileNo getMobaileNo = new GetMobaileNo(weddingId, mobileNo);
+                    getMobaileNo.execute();
+                }
             }
         });
     }

@@ -77,6 +77,7 @@ public class RsvpNoFragment extends Fragment {
 
                 GetRSVPListNo getRSVPListNo = new GetRSVPListNo(Reason,Wishes);
                 getRSVPListNo.execute();
+
             }
         });
 

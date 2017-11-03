@@ -54,11 +54,17 @@ public class OTPCodeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String OtpCode = txtOtpCode.getText().toString();
+                if(txtOtpCode.getText().toString().equals(""))
+                {
+                    Toast.makeText(OTPCodeActivity.this,"Please Not Empty!",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    String OtpCode = txtOtpCode.getText().toString();
 
-
-                GetOtpCode getOtpCode = new GetOtpCode(OtpCode,weddingId,mobileNo);
-                getOtpCode.execute();
+                    GetOtpCode getOtpCode = new GetOtpCode(OtpCode,weddingId,mobileNo);
+                    getOtpCode.execute();
+                }
             }
         });
 

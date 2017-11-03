@@ -82,7 +82,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
     String listString="";
 
     Bitmap bitmap = null;
-    String str_imgpath,encodedImgpath;
+    String str_imgpath,encodedImgpath="";
     int REQUEST_CAMERA = 0, SELECT_FILE = 1;
 
     boolean clicked = true;
@@ -470,36 +470,38 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
 
-                String guestList = text;
 
-                String ArrivalDate= txtArrivalDate.getText().toString();
-                String ArrivalTime= txtArrivalTime.getText().toString();
-                String ArrivalDateTime = ArrivalDate+","+ArrivalTime;
+                    String guestList = text;
 
-                String DepartureDate= txtDepartureDate.getText().toString();
-                String DepartureTime= txtDepartureTime.getText().toString();
-                String DepartureDateTime = DepartureDate+","+DepartureTime;
+                    String ArrivalDate= txtArrivalDate.getText().toString();
+                    String ArrivalTime= txtArrivalTime.getText().toString();
+                    String ArrivalDateTime = ArrivalDate+","+ArrivalTime;
 
-                String DepartArrival = departArrival;
-                String DepartDeparture = departDeparture;
+                    String DepartureDate= txtDepartureDate.getText().toString();
+                    String DepartureTime= txtDepartureTime.getText().toString();
+                    String DepartureDateTime = DepartureDate+","+DepartureTime;
 
-                String SpecialRemark= txtSR.getText().toString();
-                String PNRNoArrival= txtPNRNoA.getText().toString();
-                String PNRNoDeparture= txtPNRNoD.getText().toString();
+                    String DepartArrival = departArrival;
+                    String DepartDeparture = departDeparture;
 
-                String event_access = "";
+                    String SpecialRemark= txtSR.getText().toString();
+                    String PNRNoArrival= txtPNRNoA.getText().toString();
+                    String PNRNoDeparture= txtPNRNoD.getText().toString();
 
-                if(AttemptProgram == "Yes")
-                {
-                    event_access = listString;
-                }
-                else if(AttemptProgram == "No")
-                {
-                    event_access = ProgramActivity.listString;
-                }
+                    String event_access = "";
 
-                GetRSVPList getRSVPList = new GetRSVPList(guestList,ArrivalDateTime,DepartureDateTime,DepartArrival,DepartDeparture,SpecialRemark,event_access,PNRNoArrival,PNRNoDeparture);
-                getRSVPList.execute();
+                    if(AttemptProgram == "Yes")
+                    {
+                        event_access = listString;
+                    }
+                    else if(AttemptProgram == "No")
+                    {
+                        event_access = ProgramActivity.listString;
+                    }
+
+                    GetRSVPList getRSVPList = new GetRSVPList(guestList,ArrivalDateTime,DepartureDateTime,DepartArrival,DepartDeparture,SpecialRemark,event_access,PNRNoArrival,PNRNoDeparture);
+                    getRSVPList.execute();
+
 
             }
         });
@@ -1068,7 +1070,6 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             dialog.dismiss();
-
             if(status.equals("1"))
             {
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());

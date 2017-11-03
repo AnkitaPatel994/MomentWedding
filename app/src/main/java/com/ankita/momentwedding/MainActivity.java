@@ -29,14 +29,6 @@ public class MainActivity extends AppCompatActivity {
         session = new SessionManager(getApplicationContext());
         flag = session.checkLogin();
 
-        /*HashMap<String, String> user = session.getUserDetails();
-
-        String guest_id = user.get(SessionManager.guest_id);
-        String wedding_id = user.get(SessionManager.wedding_id);
-
-        GetTheme getTheme = new GetTheme(guest_id,wedding_id);
-        getTheme.execute();*/
-
         lnSnackbar = (LinearLayout)findViewById(R.id.lnSnackbar);
 
         ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(this.CONNECTIVITY_SERVICE);
