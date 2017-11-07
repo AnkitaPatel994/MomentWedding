@@ -65,6 +65,11 @@ public class OneProfileActivity extends AppCompatActivity {
         LinearLayout llBgOPColor = (LinearLayout)findViewById(R.id.llBgOPColor);
         llBgOPColor.setBackgroundColor(Color.parseColor(GetTheme.colorBg));
 
+        LinearLayout llBgOPImg = (LinearLayout)findViewById(R.id.llBgOPImg);
+
+        GetImageFromServer getImageFromServer = new GetImageFromServer(llBgOPImg);
+        getImageFromServer.execute();
+
         LinearLayout llBgTransparent = (LinearLayout)findViewById(R.id.llBgTransparent);
         GradientDrawable shapeBg =  new GradientDrawable();
         shapeBg.setCornerRadius(10);
@@ -88,10 +93,6 @@ public class OneProfileActivity extends AppCompatActivity {
         GetProfileList getProfileList = new GetProfileList(profileId);
         getProfileList.execute();
 
-        LinearLayout llBgOPImg = (LinearLayout)findViewById(R.id.llBgOPImg);
-        llBgOPImg.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.imgi));
-
-        //new GetImageFromServer(llBgOPImg).execute(GetTheme.imgBg);
     }
 
     @Override
@@ -172,46 +173,6 @@ public class OneProfileActivity extends AppCompatActivity {
             {
                 Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
             }
-        }
-    }
-
-    private class GetImageFromServer extends AsyncTask<String, Void, Bitmap> {
-
-        private Bitmap image;
-        LinearLayout llBgOPImg;
-
-        public GetImageFromServer(LinearLayout llBgOPImg) {
-            this.llBgOPImg = llBgOPImg;
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... strings) {
-
-            try {
-
-                URL urli = new URL(strings[0].trim());
-                URLConnection ucon = urli.openConnection();
-                BitmapFactory.Options options = new BitmapFactory.Options();
-                options.inSampleSize = 2;
-
-                image = BitmapFactory.decodeStream(ucon.getInputStream(),null,options);
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap result){
-
-            Drawable dr = new BitmapDrawable(result);
-            llBgOPImg.setBackgroundDrawable(dr);
-            //llBgOPImg.setBackgroundDrawable(result);
-
         }
     }
 }

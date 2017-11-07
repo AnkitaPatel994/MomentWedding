@@ -21,7 +21,7 @@
         android:id="@+id/txtMobaileNo"
         style="@style/EditText_style"
         android:inputType="number"
-        android:digits="0123456789."
+        android:digits="0123456789"
         android:maxLength="12"/>
 
     <Button

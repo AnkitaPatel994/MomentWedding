@@ -4,14 +4,14 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_Groom_profile"
-            android:icon="@drawable/ic_profile_black_24dp"
-            android:title="Groom Profile" />
-
-        <item
             android:id="@+id/nav_Bride_profile"
             android:icon="@drawable/ic_profile_black_24dp"
             android:title="Bride Profile" />
+
+        <item
+            android:id="@+id/nav_Groom_profile"
+            android:icon="@drawable/ic_profile_black_24dp"
+            android:title="Groom Profile" />
 
         <item
             android:id="@+id/nav_functions"

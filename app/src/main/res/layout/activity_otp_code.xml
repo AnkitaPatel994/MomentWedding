@@ -20,8 +20,8 @@
     <EditText
         android:id="@+id/txtOtpCode"
         style="@style/EditText_style"
-        android:inputType="phone"
-        android:digits="0123456789."
+        android:inputType="number"
+        android:digits="0123456789"
         android:maxLength="10"/>
 
     <Button

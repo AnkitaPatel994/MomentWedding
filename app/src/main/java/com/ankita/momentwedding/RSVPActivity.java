@@ -47,7 +47,9 @@ public class RSVPActivity extends AppCompatActivity {
         llBGRsvpColor.setBackgroundColor(Color.parseColor(GetTheme.colorBg));
 
         LinearLayout llBgImgRsvp = (LinearLayout)findViewById(R.id.llBgImgRsvp);
-        llBgImgRsvp.setBackground(ContextCompat.getDrawable(RSVPActivity.this,R.drawable.imgi));
+
+        GetImageFromServer getImageFromServer = new GetImageFromServer(llBgImgRsvp);
+        getImageFromServer.execute();
 
         LinearLayout llBGTRSVPTransparent = (LinearLayout)findViewById(R.id.llBGTRSVPTransparent);
         GradientDrawable shapeBg =  new GradientDrawable();

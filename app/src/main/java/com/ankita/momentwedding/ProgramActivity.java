@@ -48,7 +48,9 @@ public class ProgramActivity extends AppCompatActivity {
         llBGProgram.setBackgroundColor(Color.parseColor(GetTheme.colorBg));
 
         LinearLayout llBGProgramImg = (LinearLayout)findViewById(R.id.llBGProgramImg);
-        llBGProgramImg.setBackground(ContextCompat.getDrawable(ProgramActivity.this,R.drawable.imgi));
+
+        GetImageFromServer getImageFromServer = new GetImageFromServer(llBGProgramImg);
+        getImageFromServer.execute();
 
         LinearLayout llBGTProgram = (LinearLayout)findViewById(R.id.llBGTProgram);
         GradientDrawable shapeBg =  new GradientDrawable();

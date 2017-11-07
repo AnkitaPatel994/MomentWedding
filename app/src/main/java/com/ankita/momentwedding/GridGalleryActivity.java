@@ -50,7 +50,9 @@ public class GridGalleryActivity extends AppCompatActivity {
         llBGGridGallery.setBackgroundColor(Color.parseColor(GetTheme.colorBg));
 
         LinearLayout llBGGridGalleryImg = (LinearLayout)findViewById(R.id.llBGGridGalleryImg);
-        llBGGridGalleryImg.setBackground(ContextCompat.getDrawable(GridGalleryActivity.this,R.drawable.imgi));
+
+        GetImageFromServer getImageFromServer = new GetImageFromServer(llBGGridGalleryImg);
+        getImageFromServer.execute();
 
         rvGalleryGrid = (RecyclerView)findViewById(R.id.rvGalleryGrid);
         rvGalleryGrid.setHasFixedSize(true);

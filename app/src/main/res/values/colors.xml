@@ -2,12 +2,8 @@
 <resources>
     <color name="colorPrimary">#790c17</color>
     <color name="colorPrimaryDark">#6e0a14</color>
-    <color name="colorAccent">#e2a237</color>
-
+    <color name="colorAccent">#80000000</color>
     <color name="colorWrite">#ffffff</color>
-
     <color name="colorYellow">#e2a237</color>
-    <color name="button_pressed">#6e0a14</color>
-    <color name="button_focused">#6e0a14</color>
 
 </resources>

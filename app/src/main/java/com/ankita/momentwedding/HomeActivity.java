@@ -9,12 +9,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -68,6 +70,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
@@ -172,7 +177,10 @@ public class HomeActivity extends AppCompatActivity
         rlBgColor.setBackgroundColor(Color.parseColor(GetTheme.colorBg));
 
         RelativeLayout rlBgImgHome = (RelativeLayout)findViewById(R.id.rlBgImgHome);
-        rlBgImgHome.setBackground(ContextCompat.getDrawable(HomeActivity.this,R.drawable.imgi));
+        //rlBgImgHome.setBackground(ContextCompat.getDrawable(HomeActivity.this,R.drawable.imgi));
+
+        GetImagetoServer getImagetoServer = new GetImagetoServer(rlBgImgHome);
+        getImagetoServer.execute();
 
         vpAdminEvent = (ViewPager)findViewById(R.id.vpAdminEvent);
         setupViewPager(vpAdminEvent);
@@ -182,6 +190,9 @@ public class HomeActivity extends AppCompatActivity
         tabAdminEventLayout.setBackgroundColor(Color.parseColor(GetTheme.colorPrimary));
 
         tabAdminEventLayout.setupWithViewPager(vpAdminEvent);
+
+        navigationView.setItemTextColor(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+        navigationView.setItemIconTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
 
         vpAdminEvent.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -797,6 +808,44 @@ public class HomeActivity extends AppCompatActivity
             {
                 Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    private class GetImagetoServer extends AsyncTask<String,Void,String> {
+
+        Bitmap image;
+        RelativeLayout rlBgImgHome;
+
+        public GetImagetoServer(RelativeLayout rlBgImgHome) {
+            this.rlBgImgHome = rlBgImgHome;
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            try {
+
+                URL urli = new URL(GetTheme.imgBg);
+                URLConnection ucon = urli.openConnection();
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inSampleSize = 2;
+
+                image = BitmapFactory.decodeStream(ucon.getInputStream(),null,options);
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            Drawable dr = new BitmapDrawable(image);
+            rlBgImgHome.setBackgroundDrawable(dr);
         }
     }
 }

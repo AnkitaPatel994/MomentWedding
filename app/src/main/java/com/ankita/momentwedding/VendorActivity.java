@@ -67,7 +67,9 @@ public class VendorActivity extends AppCompatActivity {
         llBgVendorColor.setBackgroundColor(Color.parseColor(GetTheme.colorBg));
 
         LinearLayout llBgVendorImg = (LinearLayout)findViewById(R.id.llBgVendorImg);
-        llBgVendorImg.setBackground(ContextCompat.getDrawable(VendorActivity.this,R.drawable.imgi));
+
+        GetImageFromServer getImageFromServer = new GetImageFromServer(llBgVendorImg);
+        getImageFromServer.execute();
 
         LinearLayout llBoVendorColor = (LinearLayout)findViewById(R.id.llBoVendorColor);
         llBoVendorColor.setBackgroundColor(Color.parseColor(GetTheme.colorIcon));
