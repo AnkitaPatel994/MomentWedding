@@ -25,6 +25,7 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".LoginActivity" />
         <activity android:name=".MobileNoActivity" />
         <activity android:name=".OTPCodeActivity" />
@@ -38,7 +39,8 @@
         <activity android:name=".ProgramActivity" />
         <activity android:name=".GuestNameActivity" />
         <activity android:name=".GuestInviteIdActivity" />
-        <activity android:name=".OneProfileActivity" />
+        <activity android:name=".OneProfileActivity"/>
+
         <activity android:name=".VenueActivity" />
         <activity android:name=".VendorActivity"/>
 

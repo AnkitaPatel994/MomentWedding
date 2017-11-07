@@ -61,6 +61,9 @@ public class GuestInviteIdActivity extends AppCompatActivity {
         mobileNo = getIntent().getExtras().getString("mobileNo");
         guest_id = getIntent().getExtras().getString("guest_id");
 
+        GetTheme getTheme = new GetTheme(guest_id,weddingId);
+        getTheme.execute();
+
         GetJodiList getJodiList = new GetJodiList(weddingId);
         getJodiList.execute();
 

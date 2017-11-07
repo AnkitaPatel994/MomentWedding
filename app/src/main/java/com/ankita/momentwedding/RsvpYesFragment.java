@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -121,16 +122,16 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         v =inflater.inflate(R.layout.fragment_rsvp_yes, container, false);
 
         TextView tvGuest = (TextView)v.findViewById(R.id.tvGuest);
-        tvGuest.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        tvGuest.setTextColor(Color.parseColor(GetTheme.colorTextDark));
 
         TextView tvArrival = (TextView)v.findViewById(R.id.tvArrival);
-        tvArrival.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        tvArrival.setTextColor(Color.parseColor(GetTheme.colorTextDark));
 
         TextView tvDeparture = (TextView)v.findViewById(R.id.tvDeparture);
-        tvDeparture.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        tvDeparture.setTextColor(Color.parseColor(GetTheme.colorTextDark));
 
         LinearLayout llBgBorsvp = (LinearLayout)v.findViewById(R.id.llBgBorsvp);
-        llBgBorsvp.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        llBgBorsvp.setBackgroundColor(Color.parseColor(GetTheme.colorPrimary));
 
         scrollView = (ScrollView)v.findViewById(R.id.Scroll);
         scrollView.fullScroll(ScrollView.FOCUS_UP);
@@ -140,76 +141,76 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         ll1.setOnClickListener(this);
 
         shapeBgSelect =  new GradientDrawable();
-        shapeBgSelect.setStroke(4,ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+        shapeBgSelect.setStroke(4,Color.parseColor(GetTheme.colorTextLight));
         shapeBgSelect.setCornerRadius(3);
-        shapeBgSelect.setColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        shapeBgSelect.setColor(Color.parseColor(GetTheme.colorPrimary));
         ll1.setBackground(shapeBgSelect);
 
-        txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+        txt1.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         ll2 = (LinearLayout)v.findViewById(R.id.ll2);
         txt2 = (TextView)v.findViewById(R.id.txt2);
         ll2.setOnClickListener(this);
 
         shapeBg =  new GradientDrawable();
-        shapeBg.setStroke(4,ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        shapeBg.setStroke(4,Color.parseColor(GetTheme.colorPrimary));
         shapeBg.setCornerRadius(3);
-        shapeBg.setColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+        shapeBg.setColor(Color.parseColor(GetTheme.colorTextLight));
         ll2.setBackground(shapeBg);
-        txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        txt2.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
         ll3 = (LinearLayout)v.findViewById(R.id.ll3);
         txt3 = (TextView)v.findViewById(R.id.txt3);
         ll3.setOnClickListener(this);
         ll3.setBackground(shapeBg);
-        txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        txt3.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
         ll4 = (LinearLayout)v.findViewById(R.id.ll4);
         txt4 = (TextView)v.findViewById(R.id.txt4);
         ll4.setOnClickListener(this);
         ll4.setBackground(shapeBg);
-        txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        txt4.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
         ll5 = (LinearLayout)v.findViewById(R.id.ll5);
         txt5 = (TextView)v.findViewById(R.id.txt5);
         ll5.setOnClickListener(this);
         ll5.setBackground(shapeBg);
-        txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        txt5.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
         ll6 = (LinearLayout)v.findViewById(R.id.ll6);
         txt6 = (TextView)v.findViewById(R.id.txt6);
         ll6.setOnClickListener(this);
         ll6.setBackground(shapeBg);
-        txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        txt6.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
         ll7 = (LinearLayout)v.findViewById(R.id.ll7);
         txt7 = (TextView)v.findViewById(R.id.txt7);
         ll7.setOnClickListener(this);
         ll7.setBackground(shapeBg);
-        txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        txt7.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
         ll8 = (LinearLayout)v.findViewById(R.id.ll8);
         txt8 = (TextView)v.findViewById(R.id.txt8);
         ll8.setOnClickListener(this);
         ll8.setBackground(shapeBg);
-        txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        txt8.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
         ll9 = (LinearLayout)v.findViewById(R.id.ll9);
         txt9 = (TextView)v.findViewById(R.id.txt9);
         ll9.setOnClickListener(this);
         ll9.setBackground(shapeBg);
-        txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        txt9.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
         LinearLayout llArrival = (LinearLayout)v.findViewById(R.id.llArrival);
         GradientDrawable shapeBgDT =  new GradientDrawable();
         shapeBgDT.setCornerRadius(10);
-        shapeBgDT.setColor(ContextCompat.getColor(getActivity(),R.color.colorClockTopBg));
+        shapeBgDT.setColor(Color.parseColor(GetTheme.colorClockTopBg));
         llArrival.setBackground(shapeBgDT);
 
         final TextView txtArrivalDate = (TextView)v.findViewById(R.id.txtArrivalDate);
-        txtArrivalDate.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        txtArrivalDate.setTextColor(Color.parseColor(GetTheme.colorTextDark));
         final TextView txtArrivalTime = (TextView)v.findViewById(R.id.txtArrivalTime);
-        txtArrivalTime.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        txtArrivalTime.setTextColor(Color.parseColor(GetTheme.colorTextDark));
 
         SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy");
         txtArrivalDate.setText(sdfDate.format(new Date()));
@@ -278,9 +279,9 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         GradientDrawable shapeRoundBg =  new GradientDrawable();
         shapeRoundBg.setShape(GradientDrawable.OVAL);
         shapeRoundBg.setSize(120,120);
-        shapeRoundBg.setStroke(1,ContextCompat.getColor(getActivity(),R.color.colorLableText));
+        shapeRoundBg.setStroke(1,Color.parseColor(GetTheme.colorLableText));
         shapeRoundBg.setCornerRadius(10);
-        shapeRoundBg.setColor(ContextCompat.getColor(getActivity(),R.color.colorPrimaryDark));
+        shapeRoundBg.setColor(Color.parseColor(GetTheme.colorPrimaryDark));
 
         ImageView ivACRound = (ImageView)v.findViewById(R.id.ivACRound);
         ivACRound.setBackground(shapeRoundBg);
@@ -297,27 +298,30 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         rlArrivalCar = (RelativeLayout)v.findViewById(R.id.rlArrivalCar);
         ivArrivalCar = (ImageView)v.findViewById(R.id.ivArrivalCar);
         rlArrivalCar.setOnClickListener(this);
-        ivArrivalCar.setImageResource(R.drawable.ic_car_write_24dp);
+        ivArrivalCar.setColorFilter(Color.parseColor(GetTheme.colorIconLight), PorterDuff.Mode.SRC_IN);
 
         rlArrivalBus = (RelativeLayout)v.findViewById(R.id.rlArrivalBus);
         ivArrivalBus = (ImageView)v.findViewById(R.id.ivArrivalBus);
         rlArrivalBus.setOnClickListener(this);
+        ivArrivalBus.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
 
         rlArrivalRail = (RelativeLayout)v.findViewById(R.id.rlArrivalRail);
         ivArrivalRail = (ImageView)v.findViewById(R.id.ivArrivalRail);
         rlArrivalRail.setOnClickListener(this);
+        ivArrivalRail.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
 
         rlArrivalAirplane = (RelativeLayout)v.findViewById(R.id.rlArrivalAirplane);
         ivArrivalAirplane = (ImageView)v.findViewById(R.id.ivArrivalAirplane);
         rlArrivalAirplane.setOnClickListener(this);
+        ivArrivalAirplane.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
 
         LinearLayout llDeparture = (LinearLayout)v.findViewById(R.id.llDeparture);
         llDeparture.setBackground(shapeBgDT);
 
         final TextView txtDepartureDate = (TextView)v.findViewById(R.id.txtDepartureDate);
-        txtDepartureDate.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        txtDepartureDate.setTextColor(Color.parseColor(GetTheme.colorTextDark));
         final TextView txtDepartureTime = (TextView)v.findViewById(R.id.txtDepartureTime);
-        txtDepartureTime.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        txtDepartureTime.setTextColor(Color.parseColor(GetTheme.colorTextDark));
 
         SimpleDateFormat sdfDate1 = new SimpleDateFormat("dd/MM/yyyy");
         txtDepartureDate.setText(sdfDate.format(new Date()));
@@ -395,47 +399,56 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         rlDepartureCar = (RelativeLayout)v.findViewById(R.id.rlDepartureCar);
         ivDepartureCar = (ImageView)v.findViewById(R.id.ivDepartureCar);
         rlDepartureCar.setOnClickListener(this);
-        ivDepartureCar.setImageResource(R.drawable.ic_car_write_24dp);
+        ivDepartureCar.setColorFilter(Color.parseColor(GetTheme.colorIconLight), PorterDuff.Mode.SRC_IN);
 
         rlDepartureBus = (RelativeLayout)v.findViewById(R.id.rlDepartureBus);
         ivDepartureBus = (ImageView)v.findViewById(R.id.ivDepartureBus);
         rlDepartureBus.setOnClickListener(this);
+        ivDepartureBus.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
 
         rlDepartureRail = (RelativeLayout)v.findViewById(R.id.rlDepartureRail);
         ivDepartureRail = (ImageView)v.findViewById(R.id.ivDepartureRail);
         rlDepartureRail.setOnClickListener(this);
+        ivDepartureRail.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
 
         rlDepartureAirplane = (RelativeLayout)v.findViewById(R.id.rlDepartureAirplane);
         ivDepartureAirplane = (ImageView)v.findViewById(R.id.ivDepartureAirplane);
         rlDepartureAirplane.setOnClickListener(this);
+        ivDepartureAirplane.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
 
         TextView tvSR = (TextView)v.findViewById(R.id.tvSR);
-        tvSR.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        tvSR.setTextColor(Color.parseColor(GetTheme.colorTextDark));
 
         TextView tvAllProgram = (TextView)v.findViewById(R.id.tvAllProgram);
-        tvAllProgram.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        tvAllProgram.setTextColor(Color.parseColor(GetTheme.colorTextDark));
 
         TextView tvUpload = (TextView)v.findViewById(R.id.tvUpload);
-        tvUpload.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        tvUpload.setTextColor(Color.parseColor(GetTheme.colorTextDark));
 
         final EditText txtSR = (EditText)v.findViewById(R.id.txtSR);
-        txtSR.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        txtSR.setTextColor(Color.parseColor(GetTheme.colorTextDark));
+        txtSR.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
 
         final EditText txtPNRNoA = (EditText)v.findViewById(R.id.txtPNRNoA);
-        txtPNRNoA.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        txtPNRNoA.setTextColor(Color.parseColor(GetTheme.colorTextDark));
+        txtPNRNoA.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
 
         final EditText txtPNRNoD = (EditText)v.findViewById(R.id.txtPNRNoD);
-        txtPNRNoD.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        txtPNRNoD.setTextColor(Color.parseColor(GetTheme.colorTextDark));
+        txtPNRNoD.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
 
         rgYesNo = (RadioGroup)v.findViewById(R.id.rgYesNo);
         rbYes = (RadioButton) v.findViewById(R.id.rbYes);
-        rbYes.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+
+        rbYes.setButtonTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+        rbYes.setTextColor(Color.parseColor(GetTheme.colorTextDark));
         rbYes.setChecked(true);
         GetProgramId getProgramId = new GetProgramId();
         getProgramId.execute();
 
         rbNo = (RadioButton) v.findViewById(R.id.rbNo);
-        rbNo.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        rbNo.setTextColor(Color.parseColor(GetTheme.colorTextDark));
+        rbNo.setButtonTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
 
         /*int selectedId = rgYesNo.getCheckedRadioButtonId();
         rbYesNo = (RadioButton)v.findViewById(selectedId);*/
@@ -465,6 +478,12 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         });
 
         Button btnSR = (Button)v.findViewById(R.id.btnSR);
+        btnSR.setTextColor(Color.parseColor(GetTheme.colorTextLight));
+
+        GradientDrawable shapeBtn =  new GradientDrawable();
+        shapeBtn.setCornerRadius(10);
+        shapeBtn.setColor(Color.parseColor(GetTheme.colorPrimary));
+        btnSR.setBackground(shapeBtn);
 
         btnSR.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -591,15 +610,15 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 ll8.setBackground(shapeBg);
                 ll9.setBackground(shapeBg);
 
-                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
-                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt1.setTextColor(Color.parseColor(GetTheme.colorTextLight));
+                txt2.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt3.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt4.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt5.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt6.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt7.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt8.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt9.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
                 clicked=false;
 
@@ -624,15 +643,15 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 ll8.setBackground(shapeBg);
                 ll9.setBackground(shapeBg);
 
-                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
-                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt2.setTextColor(Color.parseColor(GetTheme.colorTextLight));
+                txt1.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt3.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt4.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt5.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt6.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt7.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt8.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt9.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
                 clicked=false;
                 text = "2";
@@ -656,15 +675,15 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 ll8.setBackground(shapeBg);
                 ll9.setBackground(shapeBg);
 
-                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
-                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt3.setTextColor(Color.parseColor(GetTheme.colorTextLight));
+                txt2.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt1.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt4.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt5.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt6.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt7.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt8.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt9.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
                 clicked=false;
                 text = "3";
@@ -688,15 +707,15 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 ll8.setBackground(shapeBg);
                 ll9.setBackground(shapeBg);
 
-                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
-                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt4.setTextColor(Color.parseColor(GetTheme.colorTextLight));
+                txt2.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt3.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt1.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt5.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt6.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt7.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt8.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt9.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
                 clicked=false;
                 text = "4";
@@ -720,15 +739,15 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 ll8.setBackground(shapeBg);
                 ll9.setBackground(shapeBg);
 
-                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
-                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt5.setTextColor(Color.parseColor(GetTheme.colorTextLight));
+                txt2.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt3.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt4.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt1.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt6.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt7.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt8.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt9.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
                 clicked=false;
                 text = "5";
@@ -752,15 +771,15 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 ll8.setBackground(shapeBg);
                 ll9.setBackground(shapeBg);
 
-                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
-                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt6.setTextColor(Color.parseColor(GetTheme.colorTextLight));
+                txt2.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt3.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt4.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt5.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt1.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt7.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt8.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt9.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
                 clicked=false;
                 text = "6";
@@ -784,15 +803,15 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 ll8.setBackground(shapeBg);
                 ll9.setBackground(shapeBg);
 
-                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
-                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt7.setTextColor(Color.parseColor(GetTheme.colorTextLight));
+                txt2.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt3.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt4.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt5.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt6.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt1.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt8.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt9.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
                 clicked=false;
                 text = "7";
@@ -816,15 +835,15 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 ll1.setBackground(shapeBg);
                 ll9.setBackground(shapeBg);
 
-                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
-                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt8.setTextColor(Color.parseColor(GetTheme.colorTextLight));
+                txt2.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt3.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt4.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt5.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt6.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt7.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt1.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt9.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
                 clicked=false;
                 text = "8";
@@ -848,15 +867,15 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                 ll8.setBackground(shapeBg);
                 ll1.setBackground(shapeBg);
 
-                txt9.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
-                txt2.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt3.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt4.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt5.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt6.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt7.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt8.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-                txt1.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+                txt9.setTextColor(Color.parseColor(GetTheme.colorTextLight));
+                txt2.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt3.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt4.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt5.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt6.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt7.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt8.setTextColor(Color.parseColor(GetTheme.colorPrimary));
+                txt1.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
                 clicked=false;
                 text = "9";
@@ -867,15 +886,14 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ivArrivalCar.setImageResource(R.drawable.ic_car_black_24dp);*/
                 clicked=true;
             }
             else
             {
-                ivArrivalCar.setImageResource(R.drawable.ic_car_write_24dp);
-                ivArrivalBus.setImageResource(R.drawable.ic_bus_black_24dp);
-                ivArrivalRail.setImageResource(R.drawable.ic_rail_black_24dp);
-                ivArrivalAirplane.setImageResource(R.drawable.ic_airplane_black_24dp);
+                ivArrivalCar.setColorFilter(Color.parseColor(GetTheme.colorIconLight), PorterDuff.Mode.SRC_IN);
+                ivArrivalBus.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivArrivalRail.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivArrivalAirplane.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
                 clicked=false;
                 departArrival = "car";
             }
@@ -884,15 +902,14 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ivArrivalBus.setImageResource(R.drawable.ic_bus_black_24dp);*/
                 clicked=true;
             }
             else
             {
-                ivArrivalBus.setImageResource(R.drawable.ic_bus_write_24dp);
-                ivArrivalCar.setImageResource(R.drawable.ic_car_black_24dp);
-                ivArrivalRail.setImageResource(R.drawable.ic_rail_black_24dp);
-                ivArrivalAirplane.setImageResource(R.drawable.ic_airplane_black_24dp);
+                ivArrivalBus.setColorFilter(Color.parseColor(GetTheme.colorIconLight), PorterDuff.Mode.SRC_IN);
+                ivArrivalCar.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivArrivalRail.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivArrivalAirplane.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
                 clicked=false;
                 departArrival = "bus";
             }
@@ -901,16 +918,14 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ivArrivalRail.setImageResource(R.drawable.ic_rail_black_24dp);*/
-
                 clicked=true;
             }
             else
             {
-                ivArrivalRail.setImageResource(R.drawable.ic_rail_write_24dp);
-                ivArrivalCar.setImageResource(R.drawable.ic_car_black_24dp);
-                ivArrivalBus.setImageResource(R.drawable.ic_bus_black_24dp);
-                ivArrivalAirplane.setImageResource(R.drawable.ic_airplane_black_24dp);
+                ivArrivalRail.setColorFilter(Color.parseColor(GetTheme.colorIconLight), PorterDuff.Mode.SRC_IN);
+                ivArrivalCar.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivArrivalBus.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivArrivalAirplane.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
                 clicked=false;
                 departArrival = "train";
             }
@@ -923,10 +938,10 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
             }
             else
             {
-                ivArrivalRail.setImageResource(R.drawable.ic_rail_black_24dp);
-                ivArrivalCar.setImageResource(R.drawable.ic_car_black_24dp);
-                ivArrivalBus.setImageResource(R.drawable.ic_bus_black_24dp);
-                ivArrivalAirplane.setImageResource(R.drawable.ic_airplane_write_24dp);
+                ivArrivalRail.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivArrivalCar.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivArrivalBus.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivArrivalAirplane.setColorFilter(Color.parseColor(GetTheme.colorIconLight), PorterDuff.Mode.SRC_IN);
                 clicked=false;
                 departArrival = "flight";
             }
@@ -936,15 +951,14 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ivDepartureCar.setImageResource(R.drawable.ic_car_black_24dp);*/
                 clicked=true;
             }
             else
             {
-                ivDepartureCar.setImageResource(R.drawable.ic_car_write_24dp);
-                ivDepartureBus.setImageResource(R.drawable.ic_bus_black_24dp);
-                ivDepartureRail.setImageResource(R.drawable.ic_rail_black_24dp);
-                ivDepartureAirplane.setImageResource(R.drawable.ic_airplane_black_24dp);
+                ivDepartureCar.setColorFilter(Color.parseColor(GetTheme.colorIconLight), PorterDuff.Mode.SRC_IN);
+                ivDepartureBus.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivDepartureRail.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivDepartureAirplane.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
                 clicked=false;
                 departDeparture = "car";
             }
@@ -953,15 +967,14 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ivDepartureBus.setImageResource(R.drawable.ic_bus_black_24dp);*/
                 clicked=true;
             }
             else
             {
-                ivDepartureBus.setImageResource(R.drawable.ic_bus_write_24dp);
-                ivDepartureCar.setImageResource(R.drawable.ic_car_black_24dp);
-                ivDepartureRail.setImageResource(R.drawable.ic_rail_black_24dp);
-                ivDepartureAirplane.setImageResource(R.drawable.ic_airplane_black_24dp);
+                ivDepartureBus.setColorFilter(Color.parseColor(GetTheme.colorIconLight), PorterDuff.Mode.SRC_IN);
+                ivDepartureCar.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivDepartureRail.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivDepartureAirplane.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
                 clicked=false;
                 departDeparture = "bus";
             }
@@ -970,15 +983,14 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ivDepartureRail.setImageResource(R.drawable.ic_rail_black_24dp);*/
                 clicked=true;
             }
             else
             {
-                ivDepartureRail.setImageResource(R.drawable.ic_rail_write_24dp);
-                ivDepartureCar.setImageResource(R.drawable.ic_car_black_24dp);
-                ivDepartureBus.setImageResource(R.drawable.ic_bus_black_24dp);
-                ivDepartureAirplane.setImageResource(R.drawable.ic_airplane_black_24dp);
+                ivDepartureRail.setColorFilter(Color.parseColor(GetTheme.colorIconLight), PorterDuff.Mode.SRC_IN);
+                ivDepartureCar.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivDepartureBus.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivDepartureAirplane.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
                 clicked=false;
                 departDeparture = "train";
             }
@@ -987,15 +999,14 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
         {
             if(!clicked)
             {
-                /*ivDepartureRail.setImageResource(R.drawable.ic_rail_black_24dp);*/
                 clicked=true;
             }
             else
             {
-                ivDepartureRail.setImageResource(R.drawable.ic_rail_black_24dp);
-                ivDepartureCar.setImageResource(R.drawable.ic_car_black_24dp);
-                ivDepartureBus.setImageResource(R.drawable.ic_bus_black_24dp);
-                ivDepartureAirplane.setImageResource(R.drawable.ic_airplane_write_24dp);
+                ivDepartureRail.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivDepartureCar.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivDepartureBus.setColorFilter(Color.parseColor(GetTheme.colorIconDark), PorterDuff.Mode.SRC_IN);
+                ivDepartureAirplane.setColorFilter(Color.parseColor(GetTheme.colorIconLight), PorterDuff.Mode.SRC_IN);
                 clicked=false;
                 departDeparture = "flight";
             }

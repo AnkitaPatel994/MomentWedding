@@ -2,6 +2,7 @@ package com.ankita.momentwedding;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -39,11 +40,17 @@ public class GridGalleryActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
+        getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor(GetTheme.colorPrimary)));
+
         eventName = getIntent().getExtras().getString("eventName");
         setTitle(eventName);
 
         LinearLayout llBGGridGallery = (LinearLayout)findViewById(R.id.llBGGridGallery);
-        llBGGridGallery.setBackgroundColor(ContextCompat.getColor(GridGalleryActivity.this,R.color.colorBg));
+        llBGGridGallery.setBackgroundColor(Color.parseColor(GetTheme.colorBg));
+
+        LinearLayout llBGGridGalleryImg = (LinearLayout)findViewById(R.id.llBGGridGalleryImg);
+        llBGGridGalleryImg.setBackground(ContextCompat.getDrawable(GridGalleryActivity.this,R.drawable.imgi));
 
         rvGalleryGrid = (RecyclerView)findViewById(R.id.rvGalleryGrid);
         rvGalleryGrid.setHasFixedSize(true);

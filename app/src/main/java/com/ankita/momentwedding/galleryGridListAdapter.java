@@ -51,7 +51,7 @@ class galleryGridListAdapter extends RecyclerView.Adapter<galleryGridListAdapter
 
         final String gallery_pic = galleryGridListArray.get(position).get("gallery_pic");
 
-        holder.llBGTGalleryGrid.setBackgroundColor(ContextCompat.getColor(context,R.color.colorGalleryImgBG));
+        holder.llBGTGalleryGrid.setBackgroundColor(Color.parseColor(GetTheme.colorGalleryImgBG));
 
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)

@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/img"
         android:padding="20dp">
 
         <RelativeLayout
@@ -72,13 +71,14 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llBoVendorColor"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@color/colorGra">
+                    android:orientation="vertical">
 
                 </LinearLayout>
 
@@ -115,8 +115,9 @@
 
                 <Button
                     android:id="@+id/btnSR"
-                    style="@style/Button_style"
-                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="80dp"
                     android:layout_marginRight="80dp"
                     android:layout_marginTop="5dp"

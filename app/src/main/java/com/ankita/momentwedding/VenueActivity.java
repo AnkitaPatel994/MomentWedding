@@ -6,6 +6,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
@@ -50,20 +51,23 @@ public class VenueActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
+        getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor(GetTheme.colorPrimary)));
+
         LinearLayout llBGTVenue = (LinearLayout)findViewById(R.id.llBGTVenue);
         GradientDrawable shapeBg =  new GradientDrawable();
-        shapeBg.setColor(ContextCompat.getColor(VenueActivity.this,R.color.colorTransparentDark));
+        shapeBg.setColor(Color.parseColor(GetTheme.colorTransparentDark));
         llBGTVenue.setBackground(shapeBg);
 
         LinearLayout llBGTVenueBorder = (LinearLayout)findViewById(R.id.llBGTVenueBorder);
-        llBGTVenueBorder.setBackgroundColor(ContextCompat.getColor(VenueActivity.this,R.color.colorPrimary));
+        llBGTVenueBorder.setBackgroundColor(Color.parseColor(GetTheme.colorPrimary));
 
         String VenueEventName = getIntent().getExtras().getString("name");
 
         GradientDrawable shapeRoundBg =  new GradientDrawable();
         shapeRoundBg.setShape(GradientDrawable.OVAL);
         shapeRoundBg.setSize(120,120);
-        shapeRoundBg.setStroke(1,ContextCompat.getColor(VenueActivity.this,R.color.colorLableText));
+        shapeRoundBg.setStroke(1,Color.parseColor(GetTheme.colorLableText));
         shapeRoundBg.setCornerRadius(10);
 
         ImageView ivEarthRound = (ImageView)findViewById(R.id.ivEarthRound);
@@ -76,18 +80,18 @@ public class VenueActivity extends AppCompatActivity {
         ivEmailRound.setBackground(shapeRoundBg);
 
         txtVenueEventName = (TextView) findViewById(R.id.txtVenueEventName);
-        txtVenueEventName.setTextColor(ContextCompat.getColor(VenueActivity.this,R.color.colorTextTitle));
+        txtVenueEventName.setTextColor(Color.parseColor(GetTheme.colorTextTitle));
         txtVenueEventName.setText(VenueEventName);
 
         String VenueEventTime = getIntent().getExtras().getString("time");
         String VenueEventDate = getIntent().getExtras().getString("date");
         txtVenueEventDateTime = (TextView) findViewById(R.id.txtVenueEventDateTime);
-        txtVenueEventDateTime.setTextColor(ContextCompat.getColor(VenueActivity.this,R.color.colorTextLight));
+        txtVenueEventDateTime.setTextColor(Color.parseColor(GetTheme.colorTextLight));
         txtVenueEventDateTime.setText(VenueEventTime + ", " + VenueEventDate);
 
         String VenueEventAddress = getIntent().getExtras().getString("location");
         txtVenueEventAddress = (TextView) findViewById(R.id.txtVenueEventAddress);
-        txtVenueEventAddress.setTextColor(ContextCompat.getColor(VenueActivity.this,R.color.colorTextLight));
+        txtVenueEventAddress.setTextColor(Color.parseColor(GetTheme.colorTextLight));
         txtVenueEventAddress.setText(VenueEventAddress);
 
         String VenueEventImage = getIntent().getExtras().getString("image");

@@ -4,7 +4,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -55,18 +59,26 @@ public class RsvpNoFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_rsvp_no, container, false);
 
         TextView tvReason = (TextView)v.findViewById(R.id.tvReason);
-        tvReason.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        tvReason.setTextColor(Color.parseColor(GetTheme.colorTextDark));
 
         TextView tvWishes = (TextView)v.findViewById(R.id.tvWishes);
-        tvWishes.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        tvWishes.setTextColor(Color.parseColor(GetTheme.colorTextDark));
 
         txtReason = (EditText)v.findViewById(R.id.txtReason);
-        txtReason.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        txtReason.setTextColor(Color.parseColor(GetTheme.colorTextDark));
+        txtReason.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
 
         txtWishes = (EditText)v.findViewById(R.id.txtWishes);
-        txtWishes.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextDark));
+        txtWishes.setTextColor(Color.parseColor(GetTheme.colorTextDark));
+        txtWishes.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
 
         btnSRNo = (Button) v.findViewById(R.id.btnSRNo);
+        btnSRNo.setTextColor(Color.parseColor(GetTheme.colorTextLight));
+
+        GradientDrawable shapeBtn =  new GradientDrawable();
+        shapeBtn.setCornerRadius(10);
+        shapeBtn.setColor(Color.parseColor(GetTheme.colorPrimary));
+        btnSRNo.setBackground(shapeBtn);
 
         btnSRNo.setOnClickListener(new View.OnClickListener() {
             @Override

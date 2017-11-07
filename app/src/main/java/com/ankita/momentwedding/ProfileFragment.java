@@ -68,19 +68,17 @@ public class ProfileFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         ivGroomProfilePic = (CircleImageView)view.findViewById(R.id.ivGroomProfilePic);
-        ivGroomProfilePic.setBorderColor(ContextCompat.getColor(getActivity(),R.color.colorPrimaryDark));
+        ivGroomProfilePic.setBorderColor(Color.parseColor(GetTheme.colorPrimaryDark));
 
         ivBrideProfilePic = (CircleImageView)view.findViewById(R.id.ivBrideProfilePic);
-        ivBrideProfilePic.setBorderColor(ContextCompat.getColor(getActivity(),R.color.colorPrimaryDark));
+        ivBrideProfilePic.setBorderColor(Color.parseColor(GetTheme.colorPrimaryDark));
 
         txtProGroomName = (TextView) view.findViewById(R.id.txtProGroomName);
-        /*Log.i("color","\""+GetTheme.colorTextLight+"\"");
-        String color1="#FFFFFF";
-        //txtProBrideName.setTextColor(Color.parseColor("\""+GetTheme.colorTextLight+"\""));
-        txtProBrideName.setTextColor(Color.parseColor(color1));*/
+        txtProGroomName.setTextColor(Color.parseColor(GetTheme.colorTextDark));
+
 
         txtProBrideName = (TextView) view.findViewById(R.id.txtProBrideName);
-        //txtProBrideName.setTextColor(Color.parseColor(GetTheme.colorTextLight));
+        txtProBrideName.setTextColor(Color.parseColor(GetTheme.colorTextDark));
 
         rvGuestList = (RecyclerView) view.findViewById(R.id.rvGuestList);
         rvGuestList.setHasFixedSize(true);

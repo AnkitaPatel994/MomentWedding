@@ -58,14 +58,14 @@ class galleryListAdapter extends RecyclerView.Adapter<galleryListAdapter.ViewHol
         String photoCount = galleryListArray.get(position).get("photoCount");
 
         GradientDrawable shapeBg =  new GradientDrawable();
-        shapeBg.setColor(ContextCompat.getColor(context,R.color.colorTransparentDark));
+        shapeBg.setColor(Color.parseColor(GetTheme.colorTransparentDark));
         holder.llGalleryBGT.setBackground(shapeBg);
 
         holder.txtEvent.setText(name);
-        holder.txtEvent.setTextColor(ContextCompat.getColor(context,R.color.colorTextTitle));
+        holder.txtEvent.setTextColor(Color.parseColor(GetTheme.colorTextTitle));
 
         holder.txtImgCount.setText(photoCount + " Photos");
-        holder.txtImgCount.setTextColor(ContextCompat.getColor(context,R.color.colorTextLight));
+        holder.txtImgCount.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         String background = galleryListArray.get(position).get("background");
 

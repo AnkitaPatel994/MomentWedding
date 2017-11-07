@@ -1,6 +1,7 @@
 package com.ankita.momentwedding;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -61,11 +62,13 @@ class attProgramListAdapter extends RecyclerView.Adapter<attProgramListAdapter.V
         String date = attProgramListArray.get(position).get("date");
 
         holder.txtProgramName.setText(name);
-        holder.txtProgramName.setTextColor(ContextCompat.getColor(context,R.color.colorTextDark));
+        holder.txtProgramName.setTextColor(Color.parseColor(GetTheme.colorTextDark));
         holder.txtProgramDateTime.setText(date+" "+time);
-        holder.txtProgramDateTime.setTextColor(ContextCompat.getColor(context,R.color.colorTextDark));
+        holder.txtProgramDateTime.setTextColor(Color.parseColor(GetTheme.colorTextDark));
 
         positions.clear();
+
+        holder.cbSelectProgram.setButtonTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
 
         holder.cbSelectProgram.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -116,7 +119,7 @@ class attProgramListAdapter extends RecyclerView.Adapter<attProgramListAdapter.V
                 .showImageOnFail(fallback)
                 .showImageOnLoading(fallback).build();
         imageLoader.displayImage(image,holder.ivProgtamImg, options);
-        holder.ivProgtamImg.setBorderColor(ContextCompat.getColor(context,R.color.colorPrimaryDark));
+        holder.ivProgtamImg.setBorderColor(Color.parseColor(GetTheme.colorPrimaryDark));
     }
 
     @Override

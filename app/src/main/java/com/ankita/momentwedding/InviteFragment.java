@@ -61,46 +61,46 @@ public class InviteFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_invite, container, false);
 
         ivProfileGroom = (CircleImageView)view.findViewById(R.id.ivProfileGroom);
-        ivProfileGroom.setBorderColor(ContextCompat.getColor(getActivity(),R.color.colorPrimaryDark));
+        ivProfileGroom.setBorderColor(Color.parseColor(GetTheme.colorPrimaryDark));
 
         ivProfileBride = (CircleImageView)view.findViewById(R.id.ivProfileBride);
-        ivProfileBride.setBorderColor(ContextCompat.getColor(getActivity(),R.color.colorPrimaryDark));
+        ivProfileBride.setBorderColor(Color.parseColor(GetTheme.colorPrimaryDark));
 
         LinearLayout llInviteBGT = (LinearLayout)view.findViewById(R.id.llInviteBGT);
         GradientDrawable shapeBg =  new GradientDrawable();
         shapeBg.setCornerRadius(10);
-        shapeBg.setColor(ContextCompat.getColor(getActivity(),R.color.colorTransparentDark));
+        shapeBg.setColor(Color.parseColor(GetTheme.colorTransparentDark));
         llInviteBGT.setBackground(shapeBg);
 
         txtInviteGroomName = (TextView)view.findViewById(R.id.txtInviteGroomName);
-        txtInviteGroomName.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+        txtInviteGroomName.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         txtInviteBrideName = (TextView)view.findViewById(R.id.txtInviteBrideName);
-        txtInviteBrideName.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+        txtInviteBrideName.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         txtInviteName = (TextView)view.findViewById(R.id.txtInviteName);
-        txtInviteName.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+        txtInviteName.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         txtInviteDetails = (TextView)view.findViewById(R.id.txtInviteDetails);
-        txtInviteDetails.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorTextLight));
+        txtInviteDetails.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         TextView lableInviteGroom = (TextView)view.findViewById(R.id.lableInviteGroom);
-        lableInviteGroom.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorLableText));
+        lableInviteGroom.setTextColor(Color.parseColor(GetTheme.colorLableText));
 
         LinearLayout llInviteBorder = (LinearLayout)view.findViewById(R.id.llInviteBorder);
-        llInviteBorder.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.colorLableText));
+        llInviteBorder.setBackgroundColor(Color.parseColor(GetTheme.colorLableText));
 
         TextView lableInviteWeds = (TextView)view.findViewById(R.id.lableInviteWeds);
-        lableInviteWeds.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorLableText));
+        lableInviteWeds.setTextColor(Color.parseColor(GetTheme.colorLableText));
 
         LinearLayout llInviteBo = (LinearLayout)view.findViewById(R.id.llInviteBo);
-        llInviteBo.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.colorLableText));
+        llInviteBo.setBackgroundColor(Color.parseColor(GetTheme.colorLableText));
 
         TextView lableInviteBride = (TextView)view.findViewById(R.id.lableInviteBride);
-        lableInviteBride.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorLableText));
+        lableInviteBride.setTextColor(Color.parseColor(GetTheme.colorLableText));
 
         TextView lableHello = (TextView)view.findViewById(R.id.lableHello);
-        lableHello.setTextColor(ContextCompat.getColor(getActivity(),R.color.colorLableText));
+        lableHello.setTextColor(Color.parseColor(GetTheme.colorLableText));
 
         GetInviteCard getInviteCard = new GetInviteCard();
         getInviteCard.execute();

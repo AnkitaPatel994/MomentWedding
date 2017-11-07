@@ -16,8 +16,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.LinearLayout;
+import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RSVPActivity extends AppCompatActivity {
 
@@ -36,37 +39,32 @@ public class RSVPActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
+        getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor(GetTheme.colorPrimary)));
+
         LinearLayout llBGRsvpColor = (LinearLayout)findViewById(R.id.llBGRsvpColor);
-        llBGRsvpColor.setBackgroundColor(ContextCompat.getColor(RSVPActivity.this,R.color.colorBg));
+        llBGRsvpColor.setBackgroundColor(Color.parseColor(GetTheme.colorBg));
 
         LinearLayout llBgImgRsvp = (LinearLayout)findViewById(R.id.llBgImgRsvp);
+        llBgImgRsvp.setBackground(ContextCompat.getDrawable(RSVPActivity.this,R.drawable.imgi));
 
         LinearLayout llBGTRSVPTransparent = (LinearLayout)findViewById(R.id.llBGTRSVPTransparent);
         GradientDrawable shapeBg =  new GradientDrawable();
-        shapeBg.setColor(ContextCompat.getColor(RSVPActivity.this,R.color.colorTransparentLight));
+        shapeBg.setColor(Color.parseColor(GetTheme.colorTransparentLight));
         llBGTRSVPTransparent.setBackground(shapeBg);
 
         TextView tvAreComing = (TextView)findViewById(R.id.tvAreComing);
-        tvAreComing.setTextColor(ContextCompat.getColor(RSVPActivity.this,R.color.colorTextDark));
+        tvAreComing.setTextColor(Color.parseColor(GetTheme.colorTextDark));
 
         vpRsvp = (ViewPager)findViewById(R.id.vpRsvp);
         setupViewPager(vpRsvp);
 
         tabRsvp =(TabLayout)findViewById(R.id.tabRsvp);
-        //tabRsvp.setSelectedTabIndicatorColor(ContextCompat.getColor(RSVPActivity.this,R.color.colorTextLight));
-        //tabRsvp.setTabTextColors(Color.parseColor(GetTheme.colorTextDark), Color.parseColor(GetTheme.colorTextLight));
+        tabRsvp.setSelectedTabIndicatorColor(Color.parseColor(GetTheme.colorTextLight));
+        tabRsvp.setTabTextColors(Color.parseColor(GetTheme.colorTextSelect), Color.parseColor(GetTheme.colorTextLight));
 
-        //tabRsvp.setBackgroundColor(Color.parseColor(GetTheme.primaryColor));
-
-        /*StateListDrawable states = new StateListDrawable();
-
-        states.addState(new int[] {android.R.attr.state_selected},
-                new ColorDrawable(getResources().getColor(R.color.colorGray)));
-
-        states.addState(new int[] {},
-                new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
-
-        tabRsvp.setBackgroundDrawable(states);*/
+        tabRsvp.setBackgroundColor(Color.parseColor(GetTheme.colorPrimary));
 
         tabRsvp.setupWithViewPager(vpRsvp);
 

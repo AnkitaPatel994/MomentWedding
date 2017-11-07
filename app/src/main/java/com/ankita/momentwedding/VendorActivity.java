@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
@@ -59,20 +60,29 @@ public class VendorActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
+        getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor(GetTheme.colorPrimary)));
+
         LinearLayout llBgVendorColor = (LinearLayout)findViewById(R.id.llBgVendorColor);
-        llBgVendorColor.setBackgroundColor(ContextCompat.getColor(VendorActivity.this,R.color.colorBg));
+        llBgVendorColor.setBackgroundColor(Color.parseColor(GetTheme.colorBg));
+
+        LinearLayout llBgVendorImg = (LinearLayout)findViewById(R.id.llBgVendorImg);
+        llBgVendorImg.setBackground(ContextCompat.getDrawable(VendorActivity.this,R.drawable.imgi));
+
+        LinearLayout llBoVendorColor = (LinearLayout)findViewById(R.id.llBoVendorColor);
+        llBoVendorColor.setBackgroundColor(Color.parseColor(GetTheme.colorIcon));
 
         RelativeLayout rlVendorBGT = (RelativeLayout)findViewById(R.id.rlVendorBGT);
         GradientDrawable shapeBg =  new GradientDrawable();
         shapeBg.setCornerRadius(10);
-        shapeBg.setColor(ContextCompat.getColor(VendorActivity.this,R.color.colorTransparentDark));
+        shapeBg.setColor(Color.parseColor(GetTheme.colorTransparentDark));
         rlVendorBGT.setBackground(shapeBg);
 
         ivVenderLogo = (ImageView)findViewById(R.id.ivVenderLogo);
 
         ivCall = (ImageView)findViewById(R.id.ivCall);
 
-        //ivCall.setColorFilter(ContextCompat.getColor(VendorActivity.this,R.color.colorIcon), PorterDuff.Mode.SRC_IN);
+        ivCall.setColorFilter(Color.parseColor(GetTheme.colorIcon), PorterDuff.Mode.SRC_IN);
 
         ivCall.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +111,7 @@ public class VendorActivity extends AppCompatActivity {
         });
 
         ivInternet = (ImageView)findViewById(R.id.ivInternet);
-        //ivInternet.setColorFilter(Color.parseColor(GetTheme.colorIcon), PorterDuff.Mode.SRC_IN);
+        ivInternet.setColorFilter(Color.parseColor(GetTheme.colorIcon), PorterDuff.Mode.SRC_IN);
         ivInternet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,7 +131,7 @@ public class VendorActivity extends AppCompatActivity {
         });
 
         ivMail = (ImageView)findViewById(R.id.ivMail);
-        //ivMail.setColorFilter(Color.parseColor(GetTheme.colorIcon), PorterDuff.Mode.SRC_IN);
+        ivMail.setColorFilter(Color.parseColor(GetTheme.colorIcon), PorterDuff.Mode.SRC_IN);
         ivMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,17 +146,25 @@ public class VendorActivity extends AppCompatActivity {
         });
 
         txtVenderDetails = (TextView)findViewById(R.id.txtVenderDetails);
-        txtVenderDetails.setTextColor(ContextCompat.getColor(VendorActivity.this,R.color.colorTextLight));
+        txtVenderDetails.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         GetVendorList getVendorList = new GetVendorList();
         getVendorList.execute();
 
         ratingBar = (RatingBar)findViewById(R.id.ratingBar);
 
+        ratingBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+
         GetRatingView getRatingView = new GetRatingView();
         getRatingView.execute();
 
         btnSR = (Button)findViewById(R.id.btnSR);
+        btnSR.setTextColor(Color.parseColor(GetTheme.colorTextLight));
+
+        GradientDrawable shapeBtn =  new GradientDrawable();
+        shapeBtn.setCornerRadius(10);
+        shapeBtn.setColor(Color.parseColor(GetTheme.colorPrimary));
+        btnSR.setBackground(shapeBtn);
 
         btnSR.setOnClickListener(new View.OnClickListener() {
             @Override

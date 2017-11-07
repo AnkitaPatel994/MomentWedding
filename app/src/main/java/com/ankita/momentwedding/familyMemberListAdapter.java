@@ -58,21 +58,21 @@ class familyMemberListAdapter extends RecyclerView.Adapter<familyMemberListAdapt
 
         String member_pic = familyMemberListArray.get(position).get("member_pic");
 
-        holder.ivFMProfile.setBorderColor(ContextCompat.getColor(context,R.color.colorPrimaryDark));
+        holder.ivFMProfile.setBorderColor(Color.parseColor(GetTheme.colorPrimaryDark));
 
         GradientDrawable shapeBg =  new GradientDrawable();
         shapeBg.setCornerRadius(10);
-        shapeBg.setColor(ContextCompat.getColor(context,R.color.colorTransparentDark));
+        shapeBg.setColor(Color.parseColor(GetTheme.colorTransparentDark));
         holder.llMemberBgTransparent.setBackground(shapeBg);
 
         holder.txtFMName.setText(member_name);
-        holder.txtFMName.setTextColor(ContextCompat.getColor(context,R.color.colorTextLight));
+        holder.txtFMName.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         holder.txtFMRelation.setText(member_relation);
-        holder.txtFMRelation.setTextColor(ContextCompat.getColor(context,R.color.colorLableText));
+        holder.txtFMRelation.setTextColor(Color.parseColor(GetTheme.colorLableText));
 
         holder.txtFMDetails.setText(member_details);
-        holder.txtFMDetails.setTextColor(ContextCompat.getColor(context,R.color.colorTextLight));
+        holder.txtFMDetails.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)

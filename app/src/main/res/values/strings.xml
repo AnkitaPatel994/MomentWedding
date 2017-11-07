@@ -10,6 +10,7 @@
 
     <!--Mobile Page-->
     <string name="txt_mobile_no">Enter Your Mobile No</string>
+    <string name="txt_Note">Please provide your full mobile number \n along with 2 digit country code. \n Eg: 919876543210, 019876543210</string>
     <string name="btn_verification">Verification</string>
 
     <!--OTP Code Page-->

@@ -22,13 +22,17 @@
         style="@style/EditText_style"
         android:inputType="number"
         android:digits="0123456789."
-        android:hint="XXXXXXXXXXXX"
-        android:textColorHint="@color/colorGrLight"
         android:maxLength="12"/>
 
     <Button
         android:id="@+id/btnVerification"
         style="@style/Button_style"
         android:text="@string/btn_verification"/>
+
+    <TextView
+        style="@style/TextView_style"
+        android:layout_marginTop="10dp"
+        android:textColor="#c07f86"
+        android:text="@string/txt_Note" />
 
 </LinearLayout>

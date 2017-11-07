@@ -1,6 +1,7 @@
 package com.ankita.momentwedding;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
@@ -12,9 +13,12 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -41,6 +45,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -85,12 +90,17 @@ public class HomeActivity extends AppCompatActivity
 
     public static String wedding_id,profile_id,guest_id;
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor(GetTheme.colorPrimary)));
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -100,8 +110,6 @@ public class HomeActivity extends AppCompatActivity
 
         final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        View header=navigationView.getHeaderView(0);
 
         setTitle("Profile");
 
@@ -116,15 +124,16 @@ public class HomeActivity extends AppCompatActivity
 
         /*------------------ Navigation Header ------------------*/
 
+        View header=navigationView.getHeaderView(0);
+
         LinearLayout llBGHeaderColor = (LinearLayout)header.findViewById(R.id.llBGHeaderColor);
-        llBGHeaderColor.setBackgroundColor(ContextCompat.getColor(HomeActivity.this,R.color.colorPrimary));
-        //llBGHeaderColor.setBackgroundColor(Color.parseColor(GetTheme.colorPrimary));
+        llBGHeaderColor.setBackgroundColor(Color.parseColor(GetTheme.colorPrimary));
 
         txtGuestName = (TextView)header.findViewById(R.id.txtGuestName);
-        //txtGuestName.setTextColor(Color.parseColor(GetTheme.colorTextLight));
+        txtGuestName.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         ivGuestPic = (CircleImageView)header.findViewById(R.id.ivGuestPic);
-        //ivGuestPic.setBorderColor(Color.parseColor(GetTheme.colorPrimaryDark));
+        ivGuestPic.setBorderColor(Color.parseColor(GetTheme.colorPrimaryDark));
 
         GetGuestListone getGuestListone = new GetGuestListone();
         getGuestListone.execute();
@@ -160,11 +169,19 @@ public class HomeActivity extends AppCompatActivity
         });
 
         RelativeLayout rlBgColor = (RelativeLayout)findViewById(R.id.rlBgColor);
-        rlBgColor.setBackgroundColor(ContextCompat.getColor(HomeActivity.this,R.color.colorPrimaryDark));
-        //rlBgColor.setBackgroundColor(Color.parseColor(GetTheme.colorPrimaryDark));
+        rlBgColor.setBackgroundColor(Color.parseColor(GetTheme.colorBg));
+
+        RelativeLayout rlBgImgHome = (RelativeLayout)findViewById(R.id.rlBgImgHome);
+        rlBgImgHome.setBackground(ContextCompat.getDrawable(HomeActivity.this,R.drawable.imgi));
 
         vpAdminEvent = (ViewPager)findViewById(R.id.vpAdminEvent);
         setupViewPager(vpAdminEvent);
+
+        tabAdminEventLayout =(TabLayout)findViewById(R.id.tabAdminEventLayout);
+        tabAdminEventLayout.setSelectedTabIndicatorColor(Color.parseColor(GetTheme.colorTextLight));
+        tabAdminEventLayout.setBackgroundColor(Color.parseColor(GetTheme.colorPrimary));
+
+        tabAdminEventLayout.setupWithViewPager(vpAdminEvent);
 
         vpAdminEvent.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -208,18 +225,47 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        tabAdminEventLayout =(TabLayout)findViewById(R.id.tabAdminEventLayout);
+        Drawable dProfile = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_profile_black_24dp).mutate();
+        dProfile.setColorFilter(Color.parseColor(GetTheme.colorTextLight), PorterDuff.Mode.SRC_ATOP);
 
-        tabAdminEventLayout.setupWithViewPager(vpAdminEvent);
+        Drawable dSchedule = ContextCompat.getDrawable(getApplicationContext(), R.drawable.schedule).mutate();
+        dSchedule.setColorFilter(Color.parseColor(GetTheme.colorIcon), PorterDuff.Mode.SRC_ATOP);
 
-        tabAdminEventLayout.getTabAt(0).setIcon(R.drawable.ic_profile_black_24dp);
-        tabAdminEventLayout.getTabAt(1).setIcon(R.drawable.schedule);
-        tabAdminEventLayout.getTabAt(2).setIcon(R.drawable.gallery);
-        tabAdminEventLayout.getTabAt(3).setIcon(R.drawable.invite);
-        tabAdminEventLayout.getTabAt(4).setIcon(R.drawable.members);
+        Drawable dGallery = ContextCompat.getDrawable(getApplicationContext(), R.drawable.gallery).mutate();
+        dGallery.setColorFilter(Color.parseColor(GetTheme.colorIcon), PorterDuff.Mode.SRC_ATOP);
+
+        Drawable dInvite = ContextCompat.getDrawable(getApplicationContext(), R.drawable.invite).mutate();
+        dInvite.setColorFilter(Color.parseColor(GetTheme.colorIcon), PorterDuff.Mode.SRC_ATOP);
+
+        Drawable dMembers = ContextCompat.getDrawable(getApplicationContext(), R.drawable.members).mutate();
+        dMembers.setColorFilter(Color.parseColor(GetTheme.colorIcon), PorterDuff.Mode.SRC_ATOP);
+
+        tabAdminEventLayout.getTabAt(0).setIcon(dProfile);
+        tabAdminEventLayout.getTabAt(1).setIcon(dSchedule);
+        tabAdminEventLayout.getTabAt(2).setIcon(dGallery);
+        tabAdminEventLayout.getTabAt(3).setIcon(dInvite);
+        tabAdminEventLayout.getTabAt(4).setIcon(dMembers);
+
+        tabAdminEventLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                tab.getIcon().setColorFilter(Color.parseColor(GetTheme.colorTextLight), PorterDuff.Mode.SRC_ATOP);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                tab.getIcon().setColorFilter(Color.parseColor(GetTheme.colorIcon), PorterDuff.Mode.SRC_ATOP);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         /*---------------- RSVP ------------------*/
         txtRsvp =(TextView) findViewById(R.id.txtRsvp);
+        txtRsvp.setTextColor(Color.parseColor(GetTheme.colorTextLight));
         txtRsvp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -230,7 +276,7 @@ public class HomeActivity extends AppCompatActivity
 
         /*---------------- Clock ------------------*/
         ivClock =(ImageView)findViewById(R.id.ivClock);
-
+        ivClock.setColorFilter(Color.parseColor(GetTheme.colorTextLight), PorterDuff.Mode.SRC_IN);
         ivClock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -241,49 +287,49 @@ public class HomeActivity extends AppCompatActivity
                 dialog.setCancelable(true);
 
                 TextView countdown = (TextView)dialog.findViewById(R.id.countdown);
-                countdown.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorPrimary));
+                countdown.setTextColor(Color.parseColor(GetTheme.colorPrimary));
 
                 txtDate =(TextView)dialog.findViewById(R.id.txtDate);
-                txtDate.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
+                txtDate.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
                 txtDays =(TextView)dialog.findViewById(R.id.txtDays);
-                txtDays.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
+                txtDays.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
                 txtHours =(TextView)dialog.findViewById(R.id.txtHours);
-                txtHours.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
+                txtHours.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
                 txtMins =(TextView)dialog.findViewById(R.id.txtMins);
-                txtMins.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
+                txtMins.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
                 txtSecs =(TextView)dialog.findViewById(R.id.txtSecs);
-                txtSecs.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
+                txtSecs.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
                 TextView tvDays =(TextView)dialog.findViewById(R.id.tvDays);
-                tvDays.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
+                tvDays.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
                 TextView tvHours =(TextView)dialog.findViewById(R.id.tvHours);
-                tvHours.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
+                tvHours.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
                 TextView tvMins =(TextView)dialog.findViewById(R.id.tvMins);
-                tvMins.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
+                tvMins.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
                 TextView tvSecs =(TextView)dialog.findViewById(R.id.tvSecs);
-                tvSecs.setTextColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTextLight));
+                tvSecs.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
                 LinearLayout llDialogOther = (LinearLayout)dialog.findViewById(R.id.llDialogOther);
-                llDialogOther.setBackgroundColor(ContextCompat.getColor(HomeActivity.this,R.color.colorTransparentDark));
+                llDialogOther.setBackgroundColor(Color.parseColor(GetTheme.colorTransparentDark));
 
                 LinearLayout llTopDialog = (LinearLayout)dialog.findViewById(R.id.llTopDialog);
 
                 GradientDrawable shapeTop =  new GradientDrawable();
                 shapeTop.setCornerRadii(new float[] { 18, 18, 18, 18, 0, 0, 0, 0 });
-                shapeTop.setColor(ContextCompat.getColor(HomeActivity.this,R.color.colorClockTopBg));
+                shapeTop.setColor(Color.parseColor(GetTheme.colorClockTopBg));
                 llTopDialog.setBackground(shapeTop);
 
                 LinearLayout llBottomDialog = (LinearLayout)dialog.findViewById(R.id.llBottomDialog);
                 GradientDrawable shapeBottom =  new GradientDrawable();
                 shapeBottom.setCornerRadii(new float[] { 0, 0, 0, 0, 18, 18, 18, 18 });
-                shapeBottom.setColor(ContextCompat.getColor(HomeActivity.this,R.color.colorPrimary));
+                shapeBottom.setColor(Color.parseColor(GetTheme.colorPrimary));
                 llBottomDialog.setBackground(shapeBottom);
 
                 LinearLayout llDialog = (LinearLayout)dialog.findViewById(R.id.llDialog);
@@ -306,7 +352,6 @@ public class HomeActivity extends AppCompatActivity
 
                 GetCountDown getCountDown = new  GetCountDown();
                 getCountDown.execute();
-
 
             }
         });

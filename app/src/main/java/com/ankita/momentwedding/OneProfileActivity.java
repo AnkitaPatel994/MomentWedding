@@ -1,6 +1,11 @@
 package com.ankita.momentwedding;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
@@ -8,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,10 +25,17 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.nostra13.universalimageloader.core.imageaware.ImageAware;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -35,6 +49,8 @@ public class OneProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_one_profile);
 
+        getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+
         String GB = getIntent().getExtras().getString("GB");
         setTitle(GB);
 
@@ -44,33 +60,38 @@ public class OneProfileActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        LinearLayout llBgOPColor = (LinearLayout)findViewById(R.id.llBgOPColor);
-        llBgOPColor.setBackgroundColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorBg));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor(GetTheme.colorPrimary)));
 
-        LinearLayout llBgOPImg = (LinearLayout)findViewById(R.id.llBgOPImg);
+        LinearLayout llBgOPColor = (LinearLayout)findViewById(R.id.llBgOPColor);
+        llBgOPColor.setBackgroundColor(Color.parseColor(GetTheme.colorBg));
 
         LinearLayout llBgTransparent = (LinearLayout)findViewById(R.id.llBgTransparent);
         GradientDrawable shapeBg =  new GradientDrawable();
         shapeBg.setCornerRadius(10);
-        shapeBg.setColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTransparentDark));
+        shapeBg.setColor(Color.parseColor(GetTheme.colorTransparentDark));
         llBgTransparent.setBackground(shapeBg);
 
         txtProfileName = (TextView)findViewById(R.id.txtProfileName);
-        txtProfileName.setTextColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTextLight));
+        txtProfileName.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         txtProfileOccupation = (TextView)findViewById(R.id.txtProfileOccupation);
-        txtProfileOccupation.setTextColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTextLight));
+        txtProfileOccupation.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         txtProfileDetails = (TextView)findViewById(R.id.txtProfileDetails);
-        txtProfileDetails.setTextColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorTextLight));
+        txtProfileDetails.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         ivProfilePic = (CircleImageView)findViewById(R.id.ivProfilePic);
-        ivProfilePic.setBorderColor(ContextCompat.getColor(OneProfileActivity.this,R.color.colorPrimaryDark));
+        ivProfilePic.setBorderColor(Color.parseColor(GetTheme.colorPrimaryDark));
 
         String profileId = getIntent().getExtras().getString("profile_id");
 
         GetProfileList getProfileList = new GetProfileList(profileId);
         getProfileList.execute();
+
+        LinearLayout llBgOPImg = (LinearLayout)findViewById(R.id.llBgOPImg);
+        llBgOPImg.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.imgi));
+
+        //new GetImageFromServer(llBgOPImg).execute(GetTheme.imgBg);
     }
 
     @Override
@@ -151,6 +172,46 @@ public class OneProfileActivity extends AppCompatActivity {
             {
                 Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    private class GetImageFromServer extends AsyncTask<String, Void, Bitmap> {
+
+        private Bitmap image;
+        LinearLayout llBgOPImg;
+
+        public GetImageFromServer(LinearLayout llBgOPImg) {
+            this.llBgOPImg = llBgOPImg;
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+
+            try {
+
+                URL urli = new URL(strings[0].trim());
+                URLConnection ucon = urli.openConnection();
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inSampleSize = 2;
+
+                image = BitmapFactory.decodeStream(ucon.getInputStream(),null,options);
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result){
+
+            Drawable dr = new BitmapDrawable(result);
+            llBgOPImg.setBackgroundDrawable(dr);
+            //llBgOPImg.setBackgroundDrawable(result);
+
         }
     }
 }

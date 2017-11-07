@@ -2,6 +2,7 @@ package com.ankita.momentwedding;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
@@ -40,15 +41,27 @@ public class ProgramActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_program);
 
+        getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor(GetTheme.colorPrimary)));
+
         LinearLayout llBGProgram = (LinearLayout)findViewById(R.id.llBGProgram);
-        llBGProgram.setBackgroundColor(ContextCompat.getColor(ProgramActivity.this,R.color.colorBg));
+        llBGProgram.setBackgroundColor(Color.parseColor(GetTheme.colorBg));
+
+        LinearLayout llBGProgramImg = (LinearLayout)findViewById(R.id.llBGProgramImg);
+        llBGProgramImg.setBackground(ContextCompat.getDrawable(ProgramActivity.this,R.drawable.imgi));
 
         LinearLayout llBGTProgram = (LinearLayout)findViewById(R.id.llBGTProgram);
         GradientDrawable shapeBg =  new GradientDrawable();
-        shapeBg.setColor(ContextCompat.getColor(ProgramActivity.this,R.color.colorTransparentLight));
+        shapeBg.setColor(Color.parseColor(GetTheme.colorTransparentLight));
         llBGTProgram.setBackground(shapeBg);
 
         btnProgtam = (Button)findViewById(R.id.btnProgtam);
+        btnProgtam.setTextColor(Color.parseColor(GetTheme.colorTextLight));
+
+        GradientDrawable shapeBtn =  new GradientDrawable();
+        shapeBtn.setCornerRadius(10);
+        shapeBtn.setColor(Color.parseColor(GetTheme.colorPrimary));
+        btnProgtam.setBackground(shapeBtn);
 
         rvAttProgram = (RecyclerView)findViewById(R.id.rvAttProgram);
         rvAttProgram.setHasFixedSize(true);

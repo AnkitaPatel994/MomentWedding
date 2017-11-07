@@ -43,8 +43,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnSRNo"
             android:layout_marginTop="10dp"
-            android:background="@drawable/button_background"
-            android:textColor="@color/colorTextLight"
             android:text="@string/btn_submit" />
 
     </LinearLayout>

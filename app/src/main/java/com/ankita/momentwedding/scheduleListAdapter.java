@@ -69,33 +69,33 @@ class scheduleListAdapter extends RecyclerView.Adapter<scheduleListAdapter.ViewH
         final String venueWeb = scheduleListArray.get(position).get("venueWeb");
 
         holder.txtScheduleEvent.setText(name);
-        holder.txtScheduleEvent.setTextColor(ContextCompat.getColor(context,R.color.colorTextTitle));
+        holder.txtScheduleEvent.setTextColor(Color.parseColor(GetTheme.colorTextTitle));
 
         holder.txtScheduleTimeAddress.setText(time+" | "+location);
-        holder.txtScheduleTimeAddress.setTextColor(ContextCompat.getColor(context,R.color.colorTextLight));
+        holder.txtScheduleTimeAddress.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         holder.txtScheduleDetails.setText(event_note);
-        holder.txtScheduleDetails.setTextColor(ContextCompat.getColor(context,R.color.colorTextLight));
+        holder.txtScheduleDetails.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         holder.txtScheduleDate.setText(eventDay);
-        holder.txtScheduleDate.setTextColor(ContextCompat.getColor(context,R.color.colorTextLight));
+        holder.txtScheduleDate.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
         holder.txtScheduleMonth.setText(eventMonth);
-        holder.txtScheduleMonth.setTextColor(ContextCompat.getColor(context,R.color.colorLableText));
+        holder.txtScheduleMonth.setTextColor(Color.parseColor(GetTheme.colorLableText));
 
         GradientDrawable shapeBg =  new GradientDrawable();
-        shapeBg.setColor(ContextCompat.getColor(context,R.color.colorTransparentDark));
+        shapeBg.setColor(Color.parseColor(GetTheme.colorTransparentDark));
         holder.llScheduleBGT.setBackground(shapeBg);
 
         GradientDrawable shapeBgDe =  new GradientDrawable();
-        shapeBgDe.setColor(ContextCompat.getColor(context,R.color.colorTransparentDark));
+        shapeBgDe.setColor(Color.parseColor(GetTheme.colorTransparentDark));
         holder.llScheduleDetailBGT.setBackground(shapeBgDe);
 
         GradientDrawable shapeRoundBg =  new GradientDrawable();
         shapeRoundBg.setShape(GradientDrawable.OVAL);
-        shapeRoundBg.setStroke(3,ContextCompat.getColor(context,R.color.colorLableText));
+        shapeRoundBg.setStroke(3,Color.parseColor(GetTheme.colorLableText));
         shapeRoundBg.setCornerRadius(10);
-        shapeRoundBg.setColor(ContextCompat.getColor(context,R.color.colorPrimaryDark));
+        shapeRoundBg.setColor(Color.parseColor(GetTheme.colorPrimaryDark));
         holder.llRoungBG.setBackground(shapeRoundBg);
 
         final String image = scheduleListArray.get(position).get("image");
