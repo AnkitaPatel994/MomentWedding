@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -26,7 +25,7 @@ public class GridGalleryActivity extends AppCompatActivity {
     RecyclerView rvGalleryGrid;
     RecyclerView.LayoutManager rvGalleryGridManager;
     RecyclerView.Adapter rvGalleryGridAdapter;
-    ArrayList<HashMap<String,String>> galleryGridListArray=new ArrayList<>();
+    ArrayList<String> galleryGridImgArray=new ArrayList<>();
     static String eventName;
 
     @Override
@@ -95,7 +94,7 @@ public class GridGalleryActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
 
-            galleryGridListArray.clear();
+            galleryGridImgArray.clear();
             JSONObject joGg=new JSONObject();
             try {
 
@@ -114,13 +113,9 @@ public class GridGalleryActivity extends AppCompatActivity {
                     {
                         JSONObject jo=JsArry.getJSONObject(i);
 
-                        HashMap<String,String > hashMap = new HashMap<>();
-
                         String gallery_pic =jo.getString("gallery_pic");
 
-                        hashMap.put("gallery_pic",gallery_pic);
-
-                        galleryGridListArray.add(hashMap);
+                        galleryGridImgArray.add(gallery_pic);
                     }
                 }
                 else
@@ -141,7 +136,7 @@ public class GridGalleryActivity extends AppCompatActivity {
             dialog.dismiss();
             if(status.equals("1"))
             {
-                rvGalleryGridAdapter=new galleryGridListAdapter(GridGalleryActivity.this,galleryGridListArray);
+                rvGalleryGridAdapter=new galleryGridListAdapter(GridGalleryActivity.this,galleryGridImgArray);
                 rvGalleryGrid.setAdapter(rvGalleryGridAdapter);
             }
             else

@@ -191,8 +191,19 @@ public class HomeActivity extends AppCompatActivity
 
         tabAdminEventLayout.setupWithViewPager(vpAdminEvent);
 
-        navigationView.setItemTextColor(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
-        navigationView.setItemIconTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+        int[][] states = new int[][]{
+                new int[]{android.R.attr.state_checked},   // checked
+                new int[]{}                                // default
+        };
+
+        int[] colors = new int[]{
+                Color.parseColor(GetTheme.colorPrimary),
+                Color.parseColor("#595959")
+        };
+
+        ColorStateList navigationViewColorStateList = new ColorStateList(states, colors);
+        navigationView.setItemTextColor(navigationViewColorStateList);
+        navigationView.setItemIconTintList(navigationViewColorStateList);
 
         vpAdminEvent.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

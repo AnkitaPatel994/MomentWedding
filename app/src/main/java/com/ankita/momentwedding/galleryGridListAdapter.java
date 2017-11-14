@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -29,12 +30,13 @@ class galleryGridListAdapter extends RecyclerView.Adapter<galleryGridListAdapter
 
     View v;
     Context context;
-    ArrayList<HashMap<String, String>> galleryGridListArray;
+    ArrayList<String> galleryGridImgArray;
 
-    public galleryGridListAdapter(Context context, ArrayList<HashMap<String, String>> galleryGridListArray) {
+    public galleryGridListAdapter(Context context, ArrayList<String> galleryGridImgArray) {
 
         this.context = context;
-        this.galleryGridListArray = galleryGridListArray;
+        this.galleryGridImgArray = galleryGridImgArray;
+
     }
 
     @Override
@@ -49,7 +51,9 @@ class galleryGridListAdapter extends RecyclerView.Adapter<galleryGridListAdapter
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        final String gallery_pic = galleryGridListArray.get(position).get("gallery_pic");
+        final String gallery_pic = galleryGridImgArray.get(position);
+
+        final int picPosition = position;
 
         holder.llBGTGalleryGrid.setBackgroundColor(Color.parseColor(GetTheme.colorGalleryImgBG));
 
@@ -73,11 +77,12 @@ class galleryGridListAdapter extends RecyclerView.Adapter<galleryGridListAdapter
                 .showImageOnLoading(fallback).build();
         imageLoader.displayImage(gallery_pic,holder.ivBgImgGrid, options);
 
-        v.setOnClickListener(new View.OnClickListener() {
+        holder.ivBgImgGrid.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Intent i = new Intent(context,ZoomGalleryImgActivity.class);
-                i.putExtra("galleryPic",gallery_pic);
+                i.putExtra("picPosition",picPosition);
+                i.putStringArrayListExtra("galleryGridImgArray",galleryGridImgArray);
                 context.startActivity(i);
             }
         });
@@ -86,7 +91,7 @@ class galleryGridListAdapter extends RecyclerView.Adapter<galleryGridListAdapter
 
     @Override
     public int getItemCount() {
-        return galleryGridListArray.size();
+        return galleryGridImgArray.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

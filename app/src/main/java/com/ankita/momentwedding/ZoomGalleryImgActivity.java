@@ -2,9 +2,11 @@ package com.ankita.momentwedding;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -13,13 +15,20 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
+import java.util.ArrayList;
+
 public class ZoomGalleryImgActivity extends AppCompatActivity {
+
+    ViewPager vpZoomImg;
+    ArrayList<String> galleryPicArray=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setTitle(GridGalleryActivity.eventName);
+        setContentView(R.layout.activity_zoom_gallery_img);
+
+        setTitle("");
 
         if(getSupportActionBar()!= null)
         {
@@ -27,37 +36,42 @@ public class ZoomGalleryImgActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor(GetTheme.colorPrimary)));
+        getWindow().setStatusBarColor(Color.BLACK);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
 
-        String galleryPic = getIntent().getExtras().getString("galleryPic");
+        galleryPicArray = getIntent().getExtras().getStringArrayList("galleryGridImgArray");
+        int picPosition = getIntent().getExtras().getInt("picPosition");
 
-        TouchImageView img = new TouchImageView(this);
+        vpZoomImg = (ViewPager)findViewById(R.id.vpZoomImg);
+        vpZoomImg.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
-                .cacheOnDisc(true).cacheInMemory(true)
-                .imageScaleType(ImageScaleType.EXACTLY)
-                .displayer(new FadeInBitmapDisplayer(300)).build();
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
-                .defaultDisplayImageOptions(defaultOptions)
-                .memoryCache(new WeakMemoryCache())
-                .discCacheSize(100 * 1024 * 1024).build();
+            }
 
-        ImageLoader.getInstance().init(config);
+            @Override
+            public void onPageSelected(int position) {
+                if(vpZoomImg != null)
+                {
+                    vpZoomImg.setCurrentItem(position);
+                }
+            }
 
-        ImageLoader imageLoader = ImageLoader.getInstance();
-        int fallback = 0;
-        DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
-                .cacheOnDisc(true).resetViewBeforeLoading(true)
-                .showImageForEmptyUri(fallback)
-                .showImageOnFail(fallback)
-                .showImageOnLoading(fallback).build();
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
-        imageLoader.displayImage(galleryPic,img, options);
+            }
+        });
+        setupViewPager(vpZoomImg,picPosition);
+    }
 
-        img.setMaxZoom(4f);
+    private void setupViewPager(ViewPager vpZoomImg, int picPosition) {
 
-        setContentView(img);
+        FullScreenZoomImgAdapter fullScreenZoomImgAdapter = new FullScreenZoomImgAdapter(getApplicationContext(),galleryPicArray);
+        vpZoomImg.setAdapter(fullScreenZoomImgAdapter);
+
+        vpZoomImg.setCurrentItem(picPosition);
+
     }
 
     @Override
