@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,7 +42,11 @@ public class ProgramActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_program);
 
-        getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+        if(Build.VERSION.SDK_INT >= 21)
+        {
+            getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+        }
+
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor(GetTheme.colorPrimary)));
 
         LinearLayout llBGProgram = (LinearLayout)findViewById(R.id.llBGProgram);

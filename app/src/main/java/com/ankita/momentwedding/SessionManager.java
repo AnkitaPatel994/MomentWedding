@@ -116,9 +116,6 @@ public class SessionManager {
         editor.clear();
         editor.commit();
 
-        /*editor1.clear();
-        editor1.commit();*/
-
         // After logout redirect user to Loing Activity
         Intent i = new Intent(_context, LoginActivity.class);
         // Closing all the Activities
@@ -139,6 +136,7 @@ public class SessionManager {
         editor.remove(wedding_id);
         editor.remove(profile_id);
         editor.remove(mobile);
+
         editor.commit();
     }
 }

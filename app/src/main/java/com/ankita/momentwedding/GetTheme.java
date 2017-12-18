@@ -1,10 +1,19 @@
 package com.ankita.momentwedding;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
 /**
  * Created by kalpe on 11/3/2017.
@@ -12,15 +21,15 @@ import org.json.JSONObject;
 
 class GetTheme extends AsyncTask<String,Void,String> {
 
-    public static String colorPrimary,colorTextSelect,colorTabIcon,colorRoundBorder,colorPrimaryDark,colorTransparentDark,colorTransparentLight,colorTextLight,colorTextDark,colorLableText,colorTextTitle,colorClockTopBg,colorBg,imgBg,colorGalleryImgBG,colorIcon,colorIconDark,colorIconLight;
-
+    public static String imgBackground,colorPrimary,colorTextSelect,colorTabIcon,colorRoundBorder,colorPrimaryDark,colorTransparentDark,colorTransparentLight,colorTextLight,colorTextDark,colorLableText,colorTextTitle,colorClockTopBg,colorBg,colorGalleryImgBG,colorIcon,colorIconDark,colorIconLight;
     String guest_id,wedding_id,status,message;
 
     public GetTheme(String guest_id, String wedding_id) {
         this.guest_id = guest_id;
         this.wedding_id = wedding_id;
     }
-    String primaryColor,textSelectColor,tabIconColor,roundBorderColor,iconColorDark,iconColorLight,primaryDarkColor,transparentDarkColor,transparentLightColor,textLightColor,textDarkColor,lableTextColor,textTitleColor,clockTopBgColor,backgroundColor,backgroundImg,galleryImgBG,iconColor;
+    String backgroundImg,primaryColor,primaryDarkColor,transparentDarkColor,transparentLightColor,textLightColor,textDarkColor,lableTextColor,textTitleColor,clockTopBgColor,galleryImgBG,iconColor,backgroundColor,iconColorDark,iconColorLight,roundBorderColor,textSelectColor,tabIconColor;
+
     @Override
     protected String doInBackground(String... strings) {
 
@@ -90,13 +99,12 @@ class GetTheme extends AsyncTask<String,Void,String> {
             colorGalleryImgBG = galleryImgBG;
             colorIcon = iconColor;
             colorBg = backgroundColor;
-            imgBg = backgroundImg;
             colorIconDark = iconColorDark;
             colorIconLight = iconColorLight;
             colorRoundBorder = roundBorderColor;
             colorTextSelect = textSelectColor;
             colorTabIcon = tabIconColor;
-
+            imgBackground = backgroundImg;
         }
         else
         {

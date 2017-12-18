@@ -13,6 +13,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
@@ -60,14 +61,17 @@ public class VendorActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+        if(Build.VERSION.SDK_INT >= 21)
+        {
+            getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+        }
+
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor(GetTheme.colorPrimary)));
 
         LinearLayout llBgVendorColor = (LinearLayout)findViewById(R.id.llBgVendorColor);
         llBgVendorColor.setBackgroundColor(Color.parseColor(GetTheme.colorBg));
 
         LinearLayout llBgVendorImg = (LinearLayout)findViewById(R.id.llBgVendorImg);
-
         GetImageFromServer getImageFromServer = new GetImageFromServer(llBgVendorImg);
         getImageFromServer.execute();
 
@@ -154,8 +158,11 @@ public class VendorActivity extends AppCompatActivity {
         getVendorList.execute();
 
         ratingBar = (RatingBar)findViewById(R.id.ratingBar);
+        if(Build.VERSION.SDK_INT >= 21)
+        {
+            ratingBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+        }
 
-        ratingBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
 
         GetRatingView getRatingView = new GetRatingView();
         getRatingView.execute();

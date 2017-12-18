@@ -2,6 +2,7 @@ package com.ankita.momentwedding;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,7 +37,11 @@ public class ZoomGalleryImgActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        getWindow().setStatusBarColor(Color.BLACK);
+        if(Build.VERSION.SDK_INT >= 21)
+        {
+            getWindow().setStatusBarColor(Color.BLACK);
+        }
+
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
 
         galleryPicArray = getIntent().getExtras().getStringArrayList("galleryGridImgArray");

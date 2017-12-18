@@ -236,6 +236,7 @@ public class GuestInviteIdActivity extends AppCompatActivity {
             if(status.equals("1"))
             {
                 session.createLoginSession(guest_id,weddingId,profileId,mobileNo);
+
                 Intent i = new Intent(getApplicationContext(),HomeActivity.class);
                 startActivity(i);
                 finish();

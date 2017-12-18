@@ -23,6 +23,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
@@ -103,9 +104,12 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+        if(Build.VERSION.SDK_INT >= 21)
+        {
+            getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+        }
 
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor(GetTheme.colorPrimary)));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor(GetTheme.colorPrimaryDark)));
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -177,8 +181,6 @@ public class HomeActivity extends AppCompatActivity
         rlBgColor.setBackgroundColor(Color.parseColor(GetTheme.colorBg));
 
         RelativeLayout rlBgImgHome = (RelativeLayout)findViewById(R.id.rlBgImgHome);
-        //rlBgImgHome.setBackground(ContextCompat.getDrawable(HomeActivity.this,R.drawable.imgi));
-
         GetImagetoServer getImagetoServer = new GetImagetoServer(rlBgImgHome);
         getImagetoServer.execute();
 
@@ -836,7 +838,7 @@ public class HomeActivity extends AppCompatActivity
 
             try {
 
-                URL urli = new URL(GetTheme.imgBg);
+                URL urli = new URL(GetTheme.imgBackground);
                 URLConnection ucon = urli.openConnection();
                 BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inSampleSize = 2;

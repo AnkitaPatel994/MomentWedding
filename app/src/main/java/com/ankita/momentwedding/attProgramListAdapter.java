@@ -3,6 +3,7 @@ package com.ankita.momentwedding;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -68,8 +69,9 @@ class attProgramListAdapter extends RecyclerView.Adapter<attProgramListAdapter.V
 
         positions.clear();
 
-        holder.cbSelectProgram.setButtonTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
-
+        if(Build.VERSION.SDK_INT >= 21) {
+            holder.cbSelectProgram.setButtonTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+        }
         holder.cbSelectProgram.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {

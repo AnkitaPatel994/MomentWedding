@@ -6,6 +6,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -39,7 +40,10 @@ public class RSVPActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+        if(Build.VERSION.SDK_INT >= 21)
+        {
+            getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+        }
 
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor(GetTheme.colorPrimary)));
 

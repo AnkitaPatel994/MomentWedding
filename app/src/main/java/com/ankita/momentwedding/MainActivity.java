@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         lnSnackbar = (LinearLayout)findViewById(R.id.lnSnackbar);
 
         ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(this.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo=connectivityManager.getActiveNetworkInfo();
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         if(networkInfo!=null && networkInfo.isConnected())
         {
             Thread background = new Thread()

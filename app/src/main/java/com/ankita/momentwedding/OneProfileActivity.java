@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,8 +50,10 @@ public class OneProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_one_profile);
 
-        getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
-
+        if(Build.VERSION.SDK_INT >= 21)
+        {
+            getWindow().setStatusBarColor(Color.parseColor(GetTheme.colorPrimaryDark));
+        }
         String GB = getIntent().getExtras().getString("GB");
         setTitle(GB);
 
@@ -66,7 +69,6 @@ public class OneProfileActivity extends AppCompatActivity {
         llBgOPColor.setBackgroundColor(Color.parseColor(GetTheme.colorBg));
 
         LinearLayout llBgOPImg = (LinearLayout)findViewById(R.id.llBgOPImg);
-
         GetImageFromServer getImageFromServer = new GetImageFromServer(llBgOPImg);
         getImageFromServer.execute();
 

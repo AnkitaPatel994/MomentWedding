@@ -11,6 +11,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -66,12 +67,19 @@ public class RsvpNoFragment extends Fragment {
 
         txtReason = (EditText)v.findViewById(R.id.txtReason);
         txtReason.setTextColor(Color.parseColor(GetTheme.colorTextDark));
-        txtReason.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+
+        if(Build.VERSION.SDK_INT >= 21)
+        {
+            txtReason.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+        }
+
 
         txtWishes = (EditText)v.findViewById(R.id.txtWishes);
         txtWishes.setTextColor(Color.parseColor(GetTheme.colorTextDark));
-        txtWishes.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
-
+        if(Build.VERSION.SDK_INT >= 21)
+        {
+            txtWishes.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+        }
         btnSRNo = (Button) v.findViewById(R.id.btnSRNo);
         btnSRNo.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 

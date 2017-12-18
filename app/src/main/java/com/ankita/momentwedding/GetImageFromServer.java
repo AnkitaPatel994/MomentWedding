@@ -13,23 +13,25 @@ import java.net.URL;
 import java.net.URLConnection;
 
 /**
- * Created by kalpe on 11/7/2017.
+ * Created by kalpe on 12/18/2017.
  */
 
 class GetImageFromServer extends AsyncTask<String,Void,String> {
 
     Bitmap image;
     LinearLayout llBgImg;
+
     public GetImageFromServer(LinearLayout llBgImg) {
         this.llBgImg = llBgImg;
     }
+
 
     @Override
     protected String doInBackground(String... strings) {
 
         try {
 
-            URL urli = new URL(GetTheme.imgBg);
+            URL urli = new URL(GetTheme.imgBackground);
             URLConnection ucon = urli.openConnection();
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inSampleSize = 2;
@@ -49,7 +51,8 @@ class GetImageFromServer extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
-        Drawable dr = new BitmapDrawable(image);
-        llBgImg.setBackgroundDrawable(dr);
+        Drawable bitmapDrawable = new BitmapDrawable(image);
+        llBgImg.setBackgroundDrawable(bitmapDrawable);
+
     }
 }

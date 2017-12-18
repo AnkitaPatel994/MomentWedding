@@ -19,6 +19,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -427,20 +428,35 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
 
         final EditText txtSR = (EditText)v.findViewById(R.id.txtSR);
         txtSR.setTextColor(Color.parseColor(GetTheme.colorTextDark));
-        txtSR.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+        if(Build.VERSION.SDK_INT >= 21)
+        {
+            txtSR.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+        }
 
         final EditText txtPNRNoA = (EditText)v.findViewById(R.id.txtPNRNoA);
         txtPNRNoA.setTextColor(Color.parseColor(GetTheme.colorTextDark));
-        txtPNRNoA.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+
+        if(Build.VERSION.SDK_INT >= 21)
+        {
+            txtPNRNoA.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+        }
+
 
         final EditText txtPNRNoD = (EditText)v.findViewById(R.id.txtPNRNoD);
         txtPNRNoD.setTextColor(Color.parseColor(GetTheme.colorTextDark));
-        txtPNRNoD.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+
+        if(Build.VERSION.SDK_INT >= 21)
+        {
+            txtPNRNoD.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+        }
 
         rgYesNo = (RadioGroup)v.findViewById(R.id.rgYesNo);
         rbYes = (RadioButton) v.findViewById(R.id.rbYes);
+        if(Build.VERSION.SDK_INT >= 21)
+        {
+            rbYes.setButtonTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+        }
 
-        rbYes.setButtonTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
         rbYes.setTextColor(Color.parseColor(GetTheme.colorTextDark));
         rbYes.setChecked(true);
         GetProgramId getProgramId = new GetProgramId();
@@ -448,7 +464,10 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
 
         rbNo = (RadioButton) v.findViewById(R.id.rbNo);
         rbNo.setTextColor(Color.parseColor(GetTheme.colorTextDark));
-        rbNo.setButtonTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+        if(Build.VERSION.SDK_INT >= 21)
+        {
+            rbNo.setButtonTintList(ColorStateList.valueOf(Color.parseColor(GetTheme.colorPrimary)));
+        }
 
         /*int selectedId = rgYesNo.getCheckedRadioButtonId();
         rbYesNo = (RadioButton)v.findViewById(selectedId);*/
