@@ -12,12 +12,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -74,7 +69,7 @@ class familyMemberListAdapter extends RecyclerView.Adapter<familyMemberListAdapt
         holder.txtFMDetails.setText(member_details);
         holder.txtFMDetails.setTextColor(Color.parseColor(GetTheme.colorTextLight));
 
-        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+        /*DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)
                 .imageScaleType(ImageScaleType.EXACTLY)
                 .displayer(new FadeInBitmapDisplayer(300)).build();
@@ -92,7 +87,10 @@ class familyMemberListAdapter extends RecyclerView.Adapter<familyMemberListAdapt
                 .showImageForEmptyUri(fallback)
                 .showImageOnFail(fallback)
                 .showImageOnLoading(fallback).build();
-        imageLoader.displayImage(member_pic,holder.ivFMProfile, options);
+        imageLoader.displayImage(member_pic,holder.ivFMProfile, options);*/
+
+        Picasso.with(context).load(member_pic).into(holder.ivFMProfile);
+
     }
 
     @Override

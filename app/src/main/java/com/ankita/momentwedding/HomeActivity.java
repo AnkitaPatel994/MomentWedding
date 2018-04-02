@@ -55,12 +55,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -749,7 +744,7 @@ public class HomeActivity extends AppCompatActivity
             if(status.equals("1"))
             {
                 txtGuestName.setText(name);
-                DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                /*DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                         .cacheOnDisc(true).cacheInMemory(true)
                         .imageScaleType(ImageScaleType.EXACTLY)
                         .displayer(new FadeInBitmapDisplayer(300)).build();
@@ -769,7 +764,8 @@ public class HomeActivity extends AppCompatActivity
                         .showImageOnLoading(fallback).build();
 
 
-                imageLoader.displayImage(image,ivGuestPic, options);
+                imageLoader.displayImage(image,ivGuestPic, options);*/
+                Picasso.with(getApplicationContext()).load(image).into(ivGuestPic);
 
             }
             else

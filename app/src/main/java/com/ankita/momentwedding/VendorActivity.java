@@ -31,12 +31,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -253,7 +248,7 @@ public class VendorActivity extends AppCompatActivity {
             super.onPostExecute(s);
             if(status.equals("1"))
             {
-                DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                /*DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                         .cacheOnDisc(true).cacheInMemory(true)
                         .imageScaleType(ImageScaleType.EXACTLY)
                         .displayer(new FadeInBitmapDisplayer(300)).build();
@@ -272,7 +267,9 @@ public class VendorActivity extends AppCompatActivity {
                         .showImageOnFail(fallback)
                         .showImageOnLoading(fallback).build();
 
-                imageLoader.displayImage(logo, ivVenderLogo, options);
+                imageLoader.displayImage(logo, ivVenderLogo, options);*/
+
+                Picasso.with(getApplicationContext()).load(logo).into(ivVenderLogo);
 
                 txtVenderDetails.setText(description);
             }

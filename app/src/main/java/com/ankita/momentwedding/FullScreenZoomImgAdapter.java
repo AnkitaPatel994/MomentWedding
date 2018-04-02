@@ -8,12 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -53,7 +48,7 @@ class FullScreenZoomImgAdapter extends PagerAdapter {
 
         ImageView ivTouchImageView = (ImageView)view.findViewById(R.id.ivTouchImageView);
 
-        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+        /*DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)
                 .imageScaleType(ImageScaleType.EXACTLY)
                 .displayer(new FadeInBitmapDisplayer(300)).build();
@@ -72,7 +67,9 @@ class FullScreenZoomImgAdapter extends PagerAdapter {
                 .showImageOnFail(fallback)
                 .showImageOnLoading(fallback).build();
 
-        imageLoader.displayImage(imgPosition,ivTouchImageView, options);
+        imageLoader.displayImage(imgPosition,ivTouchImageView, options);*/
+
+        Picasso.with(context).load(imgPosition).into(ivTouchImageView);
 
         container.addView(view);
 

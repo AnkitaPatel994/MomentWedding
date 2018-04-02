@@ -18,12 +18,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -162,28 +157,9 @@ public class ProfileFragment extends Fragment {
             super.onPostExecute(s);
             if(status.equals("1"))
             {
-                DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
-                        .cacheOnDisc(true).cacheInMemory(true)
-                        .imageScaleType(ImageScaleType.EXACTLY)
-                        .displayer(new FadeInBitmapDisplayer(300)).build();
-                final ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getActivity())
-                        .defaultDisplayImageOptions(defaultOptions)
-                        .memoryCache(new WeakMemoryCache())
-                        .discCacheSize(100 * 1024 * 1024).build();
+                Picasso.with(getContext()).load(groomProfilePic).into(ivGroomProfilePic);
+                Picasso.with(getContext()).load(brideProfilePic).into(ivBrideProfilePic);
 
-                ImageLoader.getInstance().init(config);
-
-                ImageLoader imageLoader = ImageLoader.getInstance();
-                int fallback = 0;
-                DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
-                        .cacheOnDisc(true).resetViewBeforeLoading(true)
-                        .showImageForEmptyUri(fallback)
-                        .showImageOnFail(fallback)
-                        .showImageOnLoading(fallback).build();
-
-
-                imageLoader.displayImage(groomProfilePic,ivGroomProfilePic, options);
-                imageLoader.displayImage(brideProfilePic,ivBrideProfilePic, options);
                 txtProGroomName.setText(groomName);
                 txtProBrideName.setText(brideName);
             }

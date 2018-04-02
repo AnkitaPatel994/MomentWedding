@@ -20,12 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -151,7 +146,7 @@ public class OneProfileActivity extends AppCompatActivity {
                 txtProfileOccupation.setText(occupation);
                 txtProfileDetails.setText(profile_details);
 
-                DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                /*DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                         .cacheOnDisc(true).cacheInMemory(true)
                         .imageScaleType(ImageScaleType.EXACTLY)
                         .displayer(new FadeInBitmapDisplayer(300)).build();
@@ -169,7 +164,9 @@ public class OneProfileActivity extends AppCompatActivity {
                         .showImageForEmptyUri(fallback)
                         .showImageOnFail(fallback)
                         .showImageOnLoading(fallback).build();
-                imageLoader.displayImage(profile_pic,ivProfilePic, options);
+                imageLoader.displayImage(profile_pic,ivProfilePic, options);*/
+
+                Picasso.with(getApplicationContext()).load(profile_pic).into(ivProfilePic);
             }
             else
             {

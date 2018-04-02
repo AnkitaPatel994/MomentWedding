@@ -27,12 +27,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.squareup.picasso.Picasso;
 
 public class VenueActivity extends AppCompatActivity {
 
@@ -103,7 +98,7 @@ public class VenueActivity extends AppCompatActivity {
         String VenueEventImage = getIntent().getExtras().getString("image");
         ivVenueImg = (ImageView) findViewById(R.id.ivVenueImg);
 
-        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+        /*DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)
                 .imageScaleType(ImageScaleType.EXACTLY)
                 .displayer(new FadeInBitmapDisplayer(300)).build();
@@ -121,7 +116,9 @@ public class VenueActivity extends AppCompatActivity {
                 .showImageForEmptyUri(fallback)
                 .showImageOnFail(fallback)
                 .showImageOnLoading(fallback).build();
-        imageLoader.displayImage(VenueEventImage, ivVenueImg, options);
+        imageLoader.displayImage(VenueEventImage, ivVenueImg, options);*/
+
+        Picasso.with(getApplicationContext()).load(VenueEventImage).into(ivVenueImg);
 
         txtVenueTitle = (TextView) findViewById(R.id.txtVenueTitle);
         String venueName = getIntent().getExtras().getString("venueName");

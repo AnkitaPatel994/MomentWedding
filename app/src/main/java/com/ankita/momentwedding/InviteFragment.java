@@ -16,12 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -150,7 +145,7 @@ public class InviteFragment extends Fragment {
             if(status.equals("1"))
             {
 
-                DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                /*DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                         .cacheOnDisc(true).cacheInMemory(true)
                         .imageScaleType(ImageScaleType.EXACTLY)
                         .displayer(new FadeInBitmapDisplayer(300)).build();
@@ -167,15 +162,18 @@ public class InviteFragment extends Fragment {
                         .cacheOnDisc(true).resetViewBeforeLoading(true)
                         .showImageForEmptyUri(fallback)
                         .showImageOnFail(fallback)
-                        .showImageOnLoading(fallback).build();
+                        .showImageOnLoading(fallback).build();*/
 
                 txtInviteGroomName.setText(groom_name);
                 txtInviteBrideName.setText(bride_name);
                 txtInviteName.setText(guest_name);
                 txtInviteDetails.setText(inv_details);
 
-                imageLoader.displayImage(groom_pic,ivProfileGroom, options);
-                imageLoader.displayImage(bride_pic,ivProfileBride, options);
+                /*imageLoader.displayImage(groom_pic,ivProfileGroom, options);
+                imageLoader.displayImage(bride_pic,ivProfileBride, options);*/
+
+                Picasso.with(getContext()).load(groom_pic).into(ivProfileGroom);
+                Picasso.with(getContext()).load(bride_pic).into(ivProfileBride);
             }
             else
             {

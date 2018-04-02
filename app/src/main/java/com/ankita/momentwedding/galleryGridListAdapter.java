@@ -12,12 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,7 +52,7 @@ class galleryGridListAdapter extends RecyclerView.Adapter<galleryGridListAdapter
 
         holder.llBGTGalleryGrid.setBackgroundColor(Color.parseColor(GetTheme.colorGalleryImgBG));
 
-        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+        /*DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)
                 .imageScaleType(ImageScaleType.EXACTLY)
                 .displayer(new FadeInBitmapDisplayer(300)).build();
@@ -75,7 +70,9 @@ class galleryGridListAdapter extends RecyclerView.Adapter<galleryGridListAdapter
                 .showImageForEmptyUri(fallback)
                 .showImageOnFail(fallback)
                 .showImageOnLoading(fallback).build();
-        imageLoader.displayImage(gallery_pic,holder.ivBgImgGrid, options);
+        imageLoader.displayImage(gallery_pic,holder.ivBgImgGrid, options);*/
+
+        Picasso.with(context).load(gallery_pic).into(holder.ivBgImgGrid);
 
         holder.ivBgImgGrid.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -111,6 +111,7 @@ public class ProgramActivity extends AppCompatActivity {
             try {
 
                 joSchedule.put("wedding_id",HomeActivity.wedding_id);
+                joSchedule.put("profile_id",HomeActivity.profile_id);
                 Postdata postdata=new Postdata();
                 String pdSchedule=postdata.post(MainActivity.mainUrl+"getEventList",joSchedule.toString());
                 JSONObject j=new JSONObject(pdSchedule);

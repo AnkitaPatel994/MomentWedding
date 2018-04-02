@@ -12,12 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -148,7 +143,7 @@ public class GuestInviteIdActivity extends AppCompatActivity {
             dialog.dismiss();
             if(status.equals("1"))
             {
-                DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                /*DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                         .cacheOnDisc(true).cacheInMemory(true)
                         .imageScaleType(ImageScaleType.EXACTLY)
                         .displayer(new FadeInBitmapDisplayer(300)).build();
@@ -169,7 +164,11 @@ public class GuestInviteIdActivity extends AppCompatActivity {
 
 
                 imageLoader.displayImage(groomProfilePic,ivGroomPic, options);
-                imageLoader.displayImage(brideProfilePic,ivBridePic, options);
+                imageLoader.displayImage(brideProfilePic,ivBridePic, options);*/
+
+                Picasso.with(getApplicationContext()).load(groomProfilePic).into(ivGroomPic);
+                Picasso.with(getApplicationContext()).load(brideProfilePic).into(ivBridePic);
+
                 txtGroomName.setText(groomName);
                 txtBrideName.setText(brideName);
             }

@@ -15,12 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -102,7 +97,7 @@ class attProgramListAdapter extends RecyclerView.Adapter<attProgramListAdapter.V
 
         String image = attProgramListArray.get(position).get("image");
 
-        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+        /*DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)
                 .imageScaleType(ImageScaleType.EXACTLY)
                 .displayer(new FadeInBitmapDisplayer(300)).build();
@@ -120,7 +115,10 @@ class attProgramListAdapter extends RecyclerView.Adapter<attProgramListAdapter.V
                 .showImageForEmptyUri(fallback)
                 .showImageOnFail(fallback)
                 .showImageOnLoading(fallback).build();
-        imageLoader.displayImage(image,holder.ivProgtamImg, options);
+        imageLoader.displayImage(image,holder.ivProgtamImg, options);*/
+
+        Picasso.with(context).load(image).into(holder.ivProgtamImg);
+
         holder.ivProgtamImg.setBorderColor(Color.parseColor(GetTheme.colorPrimaryDark));
     }
 
