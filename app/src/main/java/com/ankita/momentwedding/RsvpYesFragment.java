@@ -526,7 +526,7 @@ public class RsvpYesFragment extends Fragment implements View.OnClickListener {
                     String PNRNoArrival= txtPNRNoA.getText().toString();
                     String PNRNoDeparture= txtPNRNoD.getText().toString();
 
-                    String event_access = "";
+                    String event_access = listString;
 
                     if(AttemptProgram == "Yes")
                     {
